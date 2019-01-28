@@ -34,7 +34,7 @@ include('header.php');
 		<div id="main">
 			<header>
 				<h1>
-					<a href="history">Aldebaran Farm</a>
+					<a href="welcome">Aldebaran Farm</a>
 				</h1>
 			</header>
 			<article>
