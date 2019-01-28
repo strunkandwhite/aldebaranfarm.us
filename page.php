@@ -44,10 +44,10 @@ include('header.php');
 						<?= $page_titles[$page] ?>
 					</h2>
 					<ul class="mobile-nav">
-					<?  foreach($allowed_pages as $allowed_page) { ?>
-						<? if($allowed_page == $page) { continue; } ?>
-						<li><h3><a href="<?= $allowed_page ?>"><?= $page_titles[$allowed_page] ?></a></h3></li>
-					<? } ?>
+					<?php foreach($allowed_pages as $allowed_page) { ?>
+						<?php if($allowed_page == $page) { continue; } ?>
+						<li><h3><a href="<?=$allowed_page?>"><?=$page_titles[$allowed_page]?></a></h3></li>
+					<?php } ?>
 					</ul>
 				</header>
 				<section>

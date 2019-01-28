@@ -1,17 +1,3 @@
-					<script type="text/javascript">
-						$(document).ready(function() {
-							$('.fancybox').fancybox({
-								arrows: true,
-								margin: [20, 60, 20, 60],
-								helpers: {
-									overlay: {
-										locked: false
-									}
-								}
-							});
-						});
-					</script>
-
 <?php
 	$photos = array(
 		'gallery_20.jpg' => '',
