@@ -5,15 +5,23 @@ body {
   height: 100%;
 }
 
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
+body {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 16px;
+  line-height: 1.66em;
+  background-color: #339966;
+  text-align: center;
+  color: #222;
 }
 
 ul {
   font-variant: small-caps;
   list-style: none;
+}
+
+h1,
+h2 {
+  margin: 0;
 }
 
 ul.homeNav {
@@ -71,20 +79,6 @@ p {
 
 img {
   border: 0;
-}
-
-html,
-body {
-  height: 100%;
-}
-
-body {
-  font-family: Georgia, "Times New Roman", Times, serif;
-  font-size: 16px;
-  line-height: 1.66em;
-  background-color: #339966;
-  text-align: center;
-  color: #222;
 }
 
 body.home.winter {
@@ -168,11 +162,19 @@ body.home {
   float: left;
   width: 184px;
 }
-#sidebar img {
+#sidebar .corner-image {
+  height: 125px;
+}
+#sidebar .corner-image img {
   display: block;
+  height: 100%;
 }
 #sidebar nav {
   padding: 25px 15px;
+}
+#sidebar nav ul {
+  margin: 0;
+  padding: 0;
 }
 #sidebar nav ul li a.active {
   font-weight: bold;
