@@ -7,18 +7,19 @@ body {
 }
 
 body {
-  font-family: Georgia, "Times New Roman", Times, serif;
+  font-family: "Libre Baskerville", serif;
   font-size: 16px;
   line-height: 1.66em;
-  background-color: #339966;
+  background-color: $green;
   text-align: center;
-  color: #222;
+  color: $black;
 }
 
 h1,
 h2,
 h3 {
   margin: 0;
+  font-family: "Josefin Slab", serif;
 }
 
 ul {
@@ -37,14 +38,14 @@ p {
 a:link,
 a:active,
 a:visited {
-  border-bottom: 1px dotted #000000;
+  border-bottom: 1px dotted $darkgreen;
   text-decoration: none;
-  color: #030;
+  color: $darkgreen;
 }
 
 a:hover {
-  border-bottom: 1px solid #000000;
-  color: #000;
+  border-bottom: 1px solid $black;
+  color: $black;
 }
 
 ul.homeNav {
@@ -102,21 +103,31 @@ body.home {
   -webkit-box-shadow: 0px 0px 20px 4px rgba(0, 0, 0, 0.5);
   -moz-box-shadow: 0px 0px 20px 4px rgba(0, 0, 0, 0.5);
   box-shadow: 0px 0px 20px 4px rgba(0, 0, 0, 0.5);
+  box-sizing: border-box;
 }
 #main {
   float: left;
   width: 596px;
   overflow: auto;
-}
-#main > header {
-  background: url("../images/header_grass.jpg") no-repeat center center;
-  text-align: center;
-  height: 125px;
-  border-right: 1px solid black;
-}
-#main > header a {
-  border-bottom: none;
-  display: block;
+
+  > header {
+    background: url("../images/header_grass.jpg") no-repeat center center;
+    text-align: center;
+    height: 125px;
+    border-right: 1px solid black;
+
+    h1 {
+      line-height: 125px;
+      font-size: 4rem;
+      font-weight: 300;
+    }
+
+    a {
+      border-bottom: none;
+      display: block;
+      color: white;
+    }
+  }
 }
 #main article {
   padding: 0 19px 60px 20px;
@@ -128,8 +139,7 @@ body.home {
   position: relative;
 }
 #main article header h2 {
-  color: #0b4026;
-  font-family: Helvetica;
+  color: $darkgreen;
   font-weight: 300;
   font-size: 2.75em;
   line-height: 1.5em;
@@ -175,8 +185,7 @@ body.home {
   padding: 0;
 }
 #sidebar nav ul li a.active {
-  font-weight: bold;
-  border: 0;
+  border-bottom: 1px solid $black;
 }
 #sidebar nav ul li a.active:before {
   content: "\00BB";

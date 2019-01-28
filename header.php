@@ -9,6 +9,7 @@
 	<title>Aldebaran Farm<?=($page) ? " | " . ucfirst($page) : '' ?></title>
 	<link rel="shortcut icon" href="images/favicon.ico">
 	<link rel="stylesheet" type="text/css" href="js/fancybox/jquery.fancybox.css" media="screen" />
+	<link href="https://fonts.googleapis.com/css?family=Josefin+Slab:300|Libre+Baskerville:400,700" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="css/normalize.css" />
 	<link rel="stylesheet" type="text/css" href="css/styles.css" />
 </head>
