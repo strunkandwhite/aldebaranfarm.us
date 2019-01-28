@@ -2,5 +2,5 @@ LimitRequestBody 0
 RewriteEngine On
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule ^([^\.]+)$ page.php?p=$1 [NC,L]
+RewriteRule ^([^\.]+)$ index.php?p=$1 [NC,L]
 ############ END OF .htaccess FILE #############

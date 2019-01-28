@@ -1,15 +1,10 @@
 $(document).ready(function() {
-  var _body = $("body.home");
   var _window = $(window);
   var _pageHeader = $("div#main > header");
   var _articleHeader = $("article > header");
   var _sidebarMenu = $("aside#sidebar > nav");
   var _pageTitle = $("#main article header h2");
   var _mobileMenu = $("#main article header ul.mobile-nav");
-
-  _body.on("click", function() {
-    window.location.assign("/welcome");
-  });
 
   $(".fancybox").fancybox({
     arrows: true,
