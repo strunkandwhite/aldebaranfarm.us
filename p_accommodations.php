@@ -1,5 +1,5 @@
 					<p class="image-holder">
-						<img src="images/ph_bedroom.jpg" class="fp_ph" alt="" />
+						<img src="images/bedroom.jpg" class="fp_ph" alt="" />
 						<span class="caption">Downstairs front bedroom</span>
 					</p>
 
@@ -8,7 +8,7 @@
 					<p>Upstairs there are two more bedrooms: The front bedroom has a double bed plus a single. The rear bedroom has a queen and a single. There's also a second spacious bathroom and a large loft area with a single bed and long cushioned benches.  Children love to spend the night here in their sleeping bags.</p>
 
 					<p class="image-holder">
-						<img src="images/ph_dining.jpg" class="fp_ph" alt="" />
+						<img src="images/dining_room.jpg" class="fp_ph" alt="" />
 						<span class="caption">Dining room</span>
 					</p>
 

@@ -1,5 +1,5 @@
 					<p class="image-holder">
-						<img src="images/ph_history.jpg" class="fp_ph" alt=""/>
+						<img src="images/history.jpg" class="fp_ph" alt=""/>
 						<span class="caption">Main House</span>
 					</p>
 

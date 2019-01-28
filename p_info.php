@@ -1,5 +1,5 @@
 					<p class="image-holder">
-						<img src="images/ph_taliesin.jpg" class="fp_ph" alt="" />
+						<img src="images/taliesin.jpg" class="fp_ph" alt="" />
 						<span class="caption">Front porch view</span>
 					</p>
 
