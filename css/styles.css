@@ -222,15 +222,6 @@ footer {
   height: 50%;
 }
 
-.photo_nav_bar {
-  width: 536px;
-  height: 28px;
-  margin: 10px 0;
-  padding: 2px 10px 0 10px;
-  background: url(../images/photo_bar_bg.gif);
-  text-align: center;
-}
-
 .pushDownFixed {
   height: 142px;
 }

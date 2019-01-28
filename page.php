@@ -56,7 +56,7 @@ include('header.php');
 			</article>
 		</div>
 		<aside id="sidebar">
-			<img src="images/corner<?=rand(1,9)?>.jpg"/>
+			<img src="images/corner/corner<?=rand(1,9)?>.jpg"/>
 			<nav>
 				<ul>
 					<li><a href="welcome"<?=nav_class("welcome")?>>Welcome</a></li>
