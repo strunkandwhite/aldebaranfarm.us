@@ -11,10 +11,14 @@ file-based content · deployed on Vercel.
 
 ```bash
 pnpm install
-pnpm dev      # dev server at http://localhost:3000
-pnpm build    # production build (doubles as the type check)
-pnpm lint     # ESLint
+pnpm dev           # dev server at http://localhost:3000
+pnpm build         # production build
+pnpm typecheck     # tsc --noEmit
+pnpm lint          # ESLint
+pnpm format        # Prettier (write)
 ```
+
+Commits run a pre-commit hook (lint-staged, knip, typecheck) via husky.
 
 ## Where things live
 

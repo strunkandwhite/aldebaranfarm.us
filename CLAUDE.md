@@ -11,10 +11,14 @@ Marketing/booking-info site for Aldebaran Farm, a single vacation-rental propert
 Use **pnpm**.
 
 - `pnpm dev` — dev server at localhost:3000
-- `pnpm build` — production build (also the de facto type check; there is no separate typecheck script)
+- `pnpm build` — production build
+- `pnpm typecheck` — `tsc --noEmit`
 - `pnpm lint` — ESLint
+- `pnpm format` / `pnpm format:check` — Prettier write/check
 
 There is no test suite.
+
+A husky pre-commit hook runs lint-staged (eslint --fix + prettier on staged files), knip (dead code/deps — config in `knip.json`; CSS-only deps are ignore-listed there), then `tsc --noEmit`. Any failure blocks the commit.
 
 ## Architecture
 
