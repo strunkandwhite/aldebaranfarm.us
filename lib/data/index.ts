@@ -59,11 +59,8 @@ function assertValidFrontmatter(
     "maxGuests",
     "beds",
     "amenities",
-    "houseRules",
     "history",
     "images",
-    "airbnbUrl",
-    "vrboUrl",
     "contactEmail",
     "contactPhone",
   ];

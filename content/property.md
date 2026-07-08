@@ -49,12 +49,7 @@ amenities:
   - Outdoor firepit
   - Books and board games
 
-houseRules:
-  - No pets on the property
-  - No smoking inside the house
-  - No tents or RVs on the property
-  - No fireworks or shooting
-  - Gatherings limited to 20 people total; keep noise and lights to a minimum after 10pm
+# House rules live in content/faqs.ts (rendered as Q&A on the FAQs page).
 
 history:
   - >-
@@ -96,11 +91,6 @@ images:
   - src: /images/property/bedroom.png
     alt: A bedroom with wood-paneled walls
     caption: Downstairs bedroom
-
-# Outbound listing links (guests can also book "old school" by email/phone).
-# TODO: replace with the real Airbnb and VRBO listing URLs.
-airbnbUrl: https://www.airbnb.com/rooms/00000000
-vrboUrl: https://www.vrbo.com/00000000
 
 contactEmail: aldebaran.farm.rental@gmail.com
 contactPhone: (312) 401-2484

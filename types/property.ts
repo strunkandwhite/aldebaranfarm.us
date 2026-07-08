@@ -54,15 +54,9 @@ export interface Property {
   /** Sleeping arrangements — one line per bed/room, shown on The House page. */
   beds: string[];
   amenities: string[];
-  houseRules: string[];
   /** Long-form property history — one entry per paragraph (The House page). */
   history: string[];
   images: PropertyImage[];
-
-  /** Outbound link to the property's Airbnb listing. */
-  airbnbUrl: string;
-  /** Outbound link to the property's VRBO listing. */
-  vrboUrl: string;
 
   /** Owner inbox for "email to book" inquiries (used to build a mailto link). */
   contactEmail: string;

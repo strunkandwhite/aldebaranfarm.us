@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
+import { buildInquiryMailtoUrl } from "@/lib/booking";
 import { getProperty } from "@/lib/data";
 import { Container } from "@/components/layout/Container";
 import { PageTitle } from "@/components/layout/PageTitle";
@@ -40,7 +41,7 @@ export default async function ReservationsPage() {
         <p className="mt-4">
           <span className="font-semibold">Email:</span>{" "}
           <a
-            href={`mailto:${property.contactEmail}`}
+            href={buildInquiryMailtoUrl(property)}
             className="underline underline-offset-4 hover:opacity-70"
           >
             {property.contactEmail}

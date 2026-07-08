@@ -3,6 +3,8 @@
  * these groups and their Q&A pairs directly.
  */
 
+import { cancellationPolicy } from "./rates";
+
 export interface FaqItem {
   q: string;
   a: string;
@@ -27,7 +29,7 @@ export const faqGroups: FaqGroup[] = [
       },
       {
         q: "What's your cancellation policy?",
-        a: "Cancellations made 30 days or more before arrival receive a full refund. Cancellations within 30 days of arrival are refunded 50% of the total, and cancellations within 14 days are non-refundable.",
+        a: cancellationPolicy,
       },
     ],
   },

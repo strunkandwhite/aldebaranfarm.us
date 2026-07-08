@@ -4,14 +4,16 @@ import type { Property } from "@/types/property";
  * BOOKING LAYER.
  *
  * TODAY: guests book "old school" — they email the owner. The only live export
- * is `buildInquiryMailtoUrl()`, which the BookingCta uses to open the guest's
- * mail client. The property also has Airbnb/VRBO listings we link out to.
+ * is `buildInquiryMailtoUrl()`, which the reservations page uses to open the
+ * guest's mail client with a pre-filled inquiry.
  *
  * FUTURE: this module is where direct booking + cross-platform availability
  * sync will live. The stubs below sketch the intended surface so the UI can be
  * wired against it incrementally. When implemented, `lib/data.getProperty()`
- * can pull live availability from here, and the BookingCta can switch from a
- * mailto link to a real booking flow — without restructuring the app.
+ * can pull live availability from here, and the reservations page can switch
+ * from a mailto link to a real booking flow — without restructuring the app.
+ * (We never send guests off-site to book; the platform listings exist only as
+ * calendars to sync against so we don't double-book.)
  *
  * See `docs/architecture.md` for the full integration plan.
  */
