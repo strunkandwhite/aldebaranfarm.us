@@ -53,7 +53,7 @@ Today booking is deliberately low-tech:
   keep in sync.
 
 The goal is direct booking with availability kept in sync across platforms so we
-never double-book. `lib/booking` already declares that surface as stubs:
+never double-book. The intended surface, to be built in `lib/booking`:
 
 - `getSyncedCalendar()` — merge Airbnb + VRBO (+ direct) availability (likely via
   iCal feeds and/or platform APIs) into one calendar.
@@ -63,7 +63,7 @@ never double-book. `lib/booking` already declares that surface as stubs:
 
 ### How it plugs in without a rewrite
 
-1. **Implement the stubs** in `lib/booking` (API clients, iCal sync, a small
+1. **Build the sync layer** in `lib/booking` (API clients, iCal sync, a small
    store for direct bookings). No UI changes yet.
 2. **Enrich the property.** `lib/data.getProperty()` can call
    `getSyncedCalendar()` and attach availability to the returned object (extend

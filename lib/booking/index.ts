@@ -7,15 +7,10 @@ import type { Property } from "@/types/property";
  * is `buildInquiryMailtoUrl()`, which the reservations page uses to open the
  * guest's mail client with a pre-filled inquiry.
  *
- * FUTURE: this module is where direct booking + cross-platform availability
- * sync will live. The stubs below sketch the intended surface so the UI can be
- * wired against it incrementally. When implemented, `lib/data.getProperty()`
- * can pull live availability from here, and the reservations page can switch
- * from a mailto link to a real booking flow — without restructuring the app.
- * (We never send guests off-site to book; the platform listings exist only as
- * calendars to sync against so we don't double-book.)
- *
- * See `docs/architecture.md` for the full integration plan.
+ * FUTURE: direct booking + Airbnb/VRBO calendar sync is a future concern that
+ * will live in this module when built. The intended surface is described in
+ * `docs/architecture.md` — we never send guests off-site to book; platform
+ * listings matter only as calendars to sync against.
  */
 
 // ---------------------------------------------------------------------------
@@ -54,61 +49,4 @@ export function buildInquiryMailtoUrl(
   });
 
   return `mailto:${property.contactEmail}?${params.toString()}`;
-}
-
-// ---------------------------------------------------------------------------
-// FUTURE — direct booking + calendar sync (STUBS, not yet implemented)
-// ---------------------------------------------------------------------------
-
-/** A single blocked/booked date range from an upstream platform. */
-export interface CalendarBlock {
-  start: string; // ISO date
-  end: string; // ISO date
-  source: "airbnb" | "vrbo" | "direct";
-}
-
-export interface AvailabilityQuery {
-  checkIn: string;
-  checkOut: string;
-  guests: number;
-}
-
-export interface BookingRequest extends AvailabilityQuery {
-  guestName: string;
-  guestEmail: string;
-  message?: string;
-}
-
-export interface BookingResult {
-  status: "confirmed" | "pending" | "rejected";
-  confirmationCode?: string;
-}
-
-/**
- * FUTURE: merge availability from Airbnb + VRBO (+ direct bookings) into one
- * calendar so we never double-book. Will likely pull iCal feeds and/or the
- * platform APIs and cache the result.
- */
-export async function getSyncedCalendar(): Promise<CalendarBlock[]> {
-  throw new Error(
-    "Not implemented: calendar sync. See docs/architecture.md § Booking.",
-  );
-}
-
-/** FUTURE: true availability check against the synced calendar. */
-export async function checkAvailability(
-  _query: AvailabilityQuery,
-): Promise<boolean> {
-  throw new Error("Not implemented: availability check.");
-}
-
-/**
- * FUTURE: create a real direct booking (and push the block back to Airbnb/VRBO
- * so their calendars stay in sync). Today, booking goes through
- * `buildInquiryMailtoUrl()` instead.
- */
-export async function createBooking(
-  _request: BookingRequest,
-): Promise<BookingResult> {
-  throw new Error("Not implemented: direct booking.");
 }

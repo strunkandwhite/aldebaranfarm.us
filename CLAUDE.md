@@ -22,7 +22,7 @@ Read `docs/architecture.md` first — it is the authoritative description. The c
 
 - `lib/data` — `getProperty()`, the ONLY code that reads/parses `content/property.md`. Returns a typed `Property` (`types/property.ts`). Intentionally `async` so a future API-backed source drops in without changing callers.
 - `lib/images` — `imageUrl()`. Every image src goes through it; never hard-code `/images/...` in a component. CDN migration = set `NEXT_PUBLIC_IMAGE_BASE_URL`.
-- `lib/booking` — `buildInquiryMailtoUrl()` is the live "make a booking" implementation. `getSyncedCalendar()` / `checkAvailability()` / `createBooking()` are deliberate stubs for future Airbnb/VRBO calendar sync; they throw `Not implemented`.
+- `lib/booking` — `buildInquiryMailtoUrl()` is the live "make a booking" implementation, used by the reservations page. Future direct booking + Airbnb/VRBO calendar sync will live in this module when built (surface described in `docs/architecture.md`); we never send guests off-site to book.
 
 Content has two access patterns — don't conflate them:
 
