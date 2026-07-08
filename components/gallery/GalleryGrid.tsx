@@ -68,6 +68,11 @@ export function GalleryGrid({ categories }: { categories: GalleryCategory[] }) {
                   src={imageUrl(img.src)}
                   alt={img.alt}
                   fill
+                  quality={60}
+                  // The first row is above the fold and contains the page's
+                  // LCP element — load it eagerly at high priority.
+                  priority={offsets[ci] + ii < 4}
+                  fetchPriority={offsets[ci] + ii < 4 ? "high" : undefined}
                   sizes="(min-width: 1024px) 25vw, (min-width: 640px) 33vw, 50vw"
                   className="object-cover transition-transform duration-300 group-hover:scale-105"
                 />
