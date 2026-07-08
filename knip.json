@@ -1,0 +1,11 @@
+{
+  "project": [
+    "app/**/*.{ts,tsx}",
+    "components/**/*.tsx",
+    "lib/**/*.ts",
+    "content/**/*.ts",
+    "types/**/*.ts"
+  ],
+  "ignoreDependencies": ["tailwindcss", "tw-animate-css", "shadcn"],
+  "ignoreExportsUsedInFile": true
+}
