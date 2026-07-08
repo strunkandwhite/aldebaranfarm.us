@@ -45,8 +45,7 @@ export const rateTable: RateRow[] = [
   },
 ];
 
-export const taxNote =
-  "Wisconsin sales tax of 5.5% will be added to all rates.";
+export const taxNote = "Wisconsin sales tax of 5.5% will be added to all rates.";
 
 export const cancellationPolicy =
   "Cancellations made 30 days or more before arrival receive a full refund. Cancellations within 30 days of arrival are refunded 50% of the total, and cancellations within 14 days are non-refundable.";

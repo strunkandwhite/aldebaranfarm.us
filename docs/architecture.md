@@ -29,15 +29,15 @@ Rules that keep this clean:
 - **`types/property.ts` is the contract.** Components depend on the `Property`
   type, not on the file format.
 - **`getProperty()` is `async`** even though reading a local file is sync — so
-  the future API version (which *is* async) drops in without changing callers.
+  the future API version (which _is_ async) drops in without changing callers.
 
 ## The isolation layers in `/lib`
 
-| Layer         | Hides                          | Swap later to…                         |
-| ------------- | ------------------------------ | -------------------------------------- |
-| `lib/data`    | where property content lives   | Airbnb/VRBO API or a headless CMS      |
-| `lib/images`  | where images are hosted        | Cloudinary / S3+CloudFront (set env)   |
-| `lib/booking` | how a guest books              | direct booking + calendar sync         |
+| Layer         | Hides                        | Swap later to…                       |
+| ------------- | ---------------------------- | ------------------------------------ |
+| `lib/data`    | where property content lives | Airbnb/VRBO API or a headless CMS    |
+| `lib/images`  | where images are hosted      | Cloudinary / S3+CloudFront (set env) |
+| `lib/booking` | how a guest books            | direct booking + calendar sync       |
 
 Each is the single point of change for its concern.
 

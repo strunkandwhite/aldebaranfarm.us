@@ -38,9 +38,7 @@ export function Hero({ property }: { property: Property }) {
           {property.tagline}
         </h1>
 
-        <p className="mt-6 text-base leading-relaxed text-foreground">
-          {property.description}
-        </p>
+        <p className="mt-6 text-base leading-relaxed text-foreground">{property.description}</p>
 
         <p className="mt-6 font-medium text-primary">{facts}</p>
 

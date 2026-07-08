@@ -28,10 +28,7 @@ export interface InquiryDetails {
  * Build a `mailto:` URL that pre-fills a booking inquiry to the owner.
  * This is the current implementation of "make a booking".
  */
-export function buildInquiryMailtoUrl(
-  property: Property,
-  details: InquiryDetails = {},
-): string {
+export function buildInquiryMailtoUrl(property: Property, details: InquiryDetails = {}): string {
   const subject = `Booking inquiry — ${property.name}`;
 
   const lines = [

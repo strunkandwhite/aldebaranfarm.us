@@ -52,7 +52,7 @@ export function MobileNav() {
               render={<Link href={bookNowHref} />}
               className={cn(
                 buttonVariants(),
-                "mt-2 h-auto rounded-none px-5 py-2 font-heading text-base",
+                "mt-2 h-auto rounded-none px-5 py-2 font-heading text-base"
               )}
             >
               Book Now

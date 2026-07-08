@@ -51,38 +51,98 @@ export const galleryCategories: GalleryCategory[] = [
     title: "Living & Dining Room",
     slug: "living-dining",
     images: [
-      { src: "/images/gallery/living-dining/tz-9.jpg", alt: "Living & Dining Room at Aldebaran Farm" },
-      { src: "/images/gallery/living-dining/tz-10.jpg", alt: "Living & Dining Room at Aldebaran Farm" },
-      { src: "/images/gallery/living-dining/tz-13.jpg", alt: "Living & Dining Room at Aldebaran Farm" },
-      { src: "/images/gallery/living-dining/tz-14.jpg", alt: "Living & Dining Room at Aldebaran Farm" },
-      { src: "/images/gallery/living-dining/tz-11.jpg", alt: "Living & Dining Room at Aldebaran Farm" },
-      { src: "/images/gallery/living-dining/tz-12.jpg", alt: "Living & Dining Room at Aldebaran Farm" },
-      { src: "/images/gallery/living-dining/tz-18.jpg", alt: "Living & Dining Room at Aldebaran Farm" },
-      { src: "/images/gallery/living-dining/tz-15.jpg", alt: "Living & Dining Room at Aldebaran Farm" },
-      { src: "/images/gallery/living-dining/tz-16.jpg", alt: "Living & Dining Room at Aldebaran Farm" },
-      { src: "/images/gallery/living-dining/tz-17.jpg", alt: "Living & Dining Room at Aldebaran Farm" },
-      { src: "/images/gallery/living-dining/tz-34.jpg", alt: "Living & Dining Room at Aldebaran Farm" },
+      {
+        src: "/images/gallery/living-dining/tz-9.jpg",
+        alt: "Living & Dining Room at Aldebaran Farm",
+      },
+      {
+        src: "/images/gallery/living-dining/tz-10.jpg",
+        alt: "Living & Dining Room at Aldebaran Farm",
+      },
+      {
+        src: "/images/gallery/living-dining/tz-13.jpg",
+        alt: "Living & Dining Room at Aldebaran Farm",
+      },
+      {
+        src: "/images/gallery/living-dining/tz-14.jpg",
+        alt: "Living & Dining Room at Aldebaran Farm",
+      },
+      {
+        src: "/images/gallery/living-dining/tz-11.jpg",
+        alt: "Living & Dining Room at Aldebaran Farm",
+      },
+      {
+        src: "/images/gallery/living-dining/tz-12.jpg",
+        alt: "Living & Dining Room at Aldebaran Farm",
+      },
+      {
+        src: "/images/gallery/living-dining/tz-18.jpg",
+        alt: "Living & Dining Room at Aldebaran Farm",
+      },
+      {
+        src: "/images/gallery/living-dining/tz-15.jpg",
+        alt: "Living & Dining Room at Aldebaran Farm",
+      },
+      {
+        src: "/images/gallery/living-dining/tz-16.jpg",
+        alt: "Living & Dining Room at Aldebaran Farm",
+      },
+      {
+        src: "/images/gallery/living-dining/tz-17.jpg",
+        alt: "Living & Dining Room at Aldebaran Farm",
+      },
+      {
+        src: "/images/gallery/living-dining/tz-34.jpg",
+        alt: "Living & Dining Room at Aldebaran Farm",
+      },
     ],
   },
   {
     title: "Downstairs Bedrooms",
     slug: "downstairs-bedrooms",
     images: [
-      { src: "/images/gallery/downstairs-bedrooms/tz-19.jpg", alt: "Downstairs Bedrooms at Aldebaran Farm" },
-      { src: "/images/gallery/downstairs-bedrooms/tz-20.jpg", alt: "Downstairs Bedrooms at Aldebaran Farm" },
-      { src: "/images/gallery/downstairs-bedrooms/tz-21.jpg", alt: "Downstairs Bedrooms at Aldebaran Farm" },
-      { src: "/images/gallery/downstairs-bedrooms/tz-22.jpg", alt: "Downstairs Bedrooms at Aldebaran Farm" },
+      {
+        src: "/images/gallery/downstairs-bedrooms/tz-19.jpg",
+        alt: "Downstairs Bedrooms at Aldebaran Farm",
+      },
+      {
+        src: "/images/gallery/downstairs-bedrooms/tz-20.jpg",
+        alt: "Downstairs Bedrooms at Aldebaran Farm",
+      },
+      {
+        src: "/images/gallery/downstairs-bedrooms/tz-21.jpg",
+        alt: "Downstairs Bedrooms at Aldebaran Farm",
+      },
+      {
+        src: "/images/gallery/downstairs-bedrooms/tz-22.jpg",
+        alt: "Downstairs Bedrooms at Aldebaran Farm",
+      },
     ],
   },
   {
     title: "Upstairs Bedrooms",
     slug: "upstairs-bedrooms",
     images: [
-      { src: "/images/gallery/upstairs-bedrooms/tz-27.jpg", alt: "Upstairs Bedrooms at Aldebaran Farm" },
-      { src: "/images/gallery/upstairs-bedrooms/tz-28.jpg", alt: "Upstairs Bedrooms at Aldebaran Farm" },
-      { src: "/images/gallery/upstairs-bedrooms/tz-29.jpg", alt: "Upstairs Bedrooms at Aldebaran Farm" },
-      { src: "/images/gallery/upstairs-bedrooms/tz-30.jpg", alt: "Upstairs Bedrooms at Aldebaran Farm" },
-      { src: "/images/gallery/upstairs-bedrooms/tz-31.jpg", alt: "Upstairs Bedrooms at Aldebaran Farm" },
+      {
+        src: "/images/gallery/upstairs-bedrooms/tz-27.jpg",
+        alt: "Upstairs Bedrooms at Aldebaran Farm",
+      },
+      {
+        src: "/images/gallery/upstairs-bedrooms/tz-28.jpg",
+        alt: "Upstairs Bedrooms at Aldebaran Farm",
+      },
+      {
+        src: "/images/gallery/upstairs-bedrooms/tz-29.jpg",
+        alt: "Upstairs Bedrooms at Aldebaran Farm",
+      },
+      {
+        src: "/images/gallery/upstairs-bedrooms/tz-30.jpg",
+        alt: "Upstairs Bedrooms at Aldebaran Farm",
+      },
+      {
+        src: "/images/gallery/upstairs-bedrooms/tz-31.jpg",
+        alt: "Upstairs Bedrooms at Aldebaran Farm",
+      },
     ],
   },
   {

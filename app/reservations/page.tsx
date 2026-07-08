@@ -49,24 +49,18 @@ export default async function ReservationsPage() {
         </p>
         <p className="mt-2">
           <span className="font-bold">Phone:</span>{" "}
-          <a
-            href={telHref}
-            className="underline underline-offset-4 hover:opacity-70"
-          >
+          <a href={telHref} className="underline underline-offset-4 hover:opacity-70">
             {property.contactPhone}
           </a>
         </p>
 
         <p className="mt-6">
           Please read through our{" "}
-          <Link
-            href="/faqs"
-            className="underline underline-offset-4 hover:opacity-70"
-          >
+          <Link href="/faqs" className="underline underline-offset-4 hover:opacity-70">
             FAQs
           </Link>{" "}
-          before reserving — it covers house rules, what&apos;s provided, and
-          other details worth knowing ahead of time.
+          before reserving — it covers house rules, what&apos;s provided, and other details worth
+          knowing ahead of time.
         </p>
 
         <SectionHeading className="mt-12">Rates</SectionHeading>

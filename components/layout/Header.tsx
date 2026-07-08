@@ -3,12 +3,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Container } from "./Container";
 import { MobileNav } from "./MobileNav";
-import {
-  leftNavLinks,
-  rightNavLinks,
-  bookNowHref,
-  navLinkClass,
-} from "./Nav";
+import { leftNavLinks, rightNavLinks, bookNowHref, navLinkClass } from "./Nav";
 
 /**
  * Header — responsive site header.
@@ -26,20 +21,14 @@ export function Header() {
     <header className="bg-background">
       <Container className="py-6">
         {/* Desktop (xl+): full evenly-spaced nav */}
-        <nav
-          aria-label="Primary"
-          className="hidden items-center justify-between min-[820px]:flex"
-        >
+        <nav aria-label="Primary" className="hidden items-center justify-between min-[820px]:flex">
           {leftNavLinks.map((link) => (
             <Link key={link.href} href={link.href} className={navLinkClass}>
               {link.label}
             </Link>
           ))}
 
-          <Link
-            href="/"
-            className="font-heading text-4xl text-primary xl:text-5xl"
-          >
+          <Link href="/" className="font-heading text-4xl text-primary xl:text-5xl">
             Aldebaran Farm
           </Link>
 
@@ -60,10 +49,7 @@ export function Header() {
 
         {/* Phones & small tablets (< 820px): wordmark + hamburger drawer */}
         <div className="flex items-center justify-between min-[820px]:hidden">
-          <Link
-            href="/"
-            className="font-heading text-3xl text-primary sm:text-4xl"
-          >
+          <Link href="/" className="font-heading text-3xl text-primary sm:text-4xl">
             Aldebaran Farm
           </Link>
           <MobileNav />

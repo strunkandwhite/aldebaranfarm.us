@@ -31,11 +31,11 @@ export function GalleryGrid({ categories }: { categories: GalleryCategory[] }) {
 
   const prev = useCallback(
     () => setIndex((i) => (i === null ? i : (i - 1 + flat.length) % flat.length)),
-    [flat.length],
+    [flat.length]
   );
   const next = useCallback(
     () => setIndex((i) => (i === null ? i : (i + 1) % flat.length)),
-    [flat.length],
+    [flat.length]
   );
 
   useEffect(() => {

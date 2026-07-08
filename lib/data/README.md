@@ -6,7 +6,7 @@ boundary in the project.
 ## What it does
 
 Exposes `getProperty(): Promise<Property>` — the ONLY function in the codebase
-that knows *where* property content comes from. Today it reads
+that knows _where_ property content comes from. Today it reads
 `content/property.md` and parses the frontmatter with `gray-matter`.
 
 ## Rules

@@ -1,6 +1,6 @@
 # lib/booking/
 
-The booking layer. Isolates *how a guest books* from the rest of the app.
+The booking layer. Isolates _how a guest books_ from the rest of the app.
 
 ## Today (live)
 

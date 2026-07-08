@@ -6,13 +6,7 @@ import type { RateRow } from "@/content/rates";
  * Semantic <table> for accessibility; wrapped in an overflow guard so it never
  * forces horizontal page scroll on small screens.
  */
-export function RateTable({
-  rows,
-  className,
-}: {
-  rows: RateRow[];
-  className?: string;
-}) {
+export function RateTable({ rows, className }: { rows: RateRow[]; className?: string }) {
   return (
     <div className={cn("overflow-x-auto", className)}>
       <table className="w-full border-collapse text-left">
@@ -35,12 +29,8 @@ export function RateTable({
               <td className="py-3 pr-4">
                 <span className="font-medium">{row.label}</span> — {row.detail}
               </td>
-              <td className="py-3 pl-4 text-right whitespace-nowrap">
-                {row.peak}
-              </td>
-              <td className="py-3 pl-4 text-right whitespace-nowrap">
-                {row.offPeak}
-              </td>
+              <td className="py-3 pl-4 text-right whitespace-nowrap">{row.peak}</td>
+              <td className="py-3 pl-4 text-right whitespace-nowrap">{row.offPeak}</td>
             </tr>
           ))}
         </tbody>
