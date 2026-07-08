@@ -22,12 +22,12 @@ export function GalleryGrid({ categories }: { categories: GalleryCategory[] }) {
   const open = index !== null;
 
   // Global index offset where each category begins in the flattened list.
+  const offsets: number[] = [];
   let running = 0;
-  const offsets = categories.map((c) => {
-    const off = running;
+  for (const c of categories) {
+    offsets.push(running);
     running += c.images.length;
-    return off;
-  });
+  }
 
   const prev = useCallback(
     () => setIndex((i) => (i === null ? i : (i - 1 + flat.length) % flat.length)),
