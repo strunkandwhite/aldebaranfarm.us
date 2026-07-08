@@ -1,0 +1,114 @@
+---
+# ---------------------------------------------------------------------------
+# THE single property's content.
+#
+# This file is the current SOURCE OF TRUTH for the property. It is read ONLY by
+# `lib/data/getProperty()` — no component reads this file directly. To swap the
+# source for an external API later, you only reimplement `lib/data`; the
+# frontmatter fields below map 1:1 to the `Property` type in `types/property.ts`.
+#
+# Everything above the second `---` is YAML frontmatter (structured fields).
+# Everything below it is the Markdown `description` body.
+# ---------------------------------------------------------------------------
+
+slug: aldebaran-farm
+name: Aldebaran Farm
+tagline: A Historic Retreat in Spring Green
+
+location:
+  city: Spring Green
+  region: Wisconsin
+  country: USA
+
+bedrooms: 4
+loftedBeds: 1
+bathrooms: 2
+maxGuests: 11
+
+beds:
+  - Downstairs Bedroom 1 - queen bed
+  - Downstairs Bedroom 2 - queen bed
+  - Upstairs Bedroom 1 - full bed + twin bed
+  - Upstairs Bedroom 2 - queen bed + twin bed
+  - Upstairs loft - twin bed
+  - Screened sleeping porch - twin bed (not included in sleep count)
+
+amenities:
+  - Solar Power
+  - Central A/C
+  - Heat
+  - Washer/dryer
+  - Dishwasher
+  - Microwave
+  - Refrigerator
+  - Coffee grinder and auto-drip coffeemaker
+  - Full kitchen with stove and oven
+  - WiFi
+  - Wood-burning fireplace
+  - Outdoor barbecue grills (please supply your own charcoal)
+  - Outdoor firepit
+  - Books and board games
+
+houseRules:
+  - No pets on the property
+  - No smoking inside the house
+  - No tents or RVs on the property
+  - No fireworks or shooting
+  - Gatherings limited to 20 people total; keep noise and lights to a minimum after 10pm
+
+history:
+  - >-
+    This house, built in 1861, was the home of Frank Lloyd Wright's uncle James
+    Lloyd-Jones. Wright spent boyhood summers here, working on his uncle's farm and
+    falling in love with the valley where he would later build his own home. It's
+    said that from the upper front window of the house, young Wright could see the
+    sites of Taliesin, the masterpiece he built for himself; and Unity Chapel, whose
+    ceiling represents his first work as an architect; and Hillside School, which he
+    designed for his aunts and later made the headquarters of his architectural
+    fellowship. Taliesin and the school, obscured by trees, are no longer visible
+    from the Main House at Aldebaran but can be seen from other parts of the property.
+    Still clearly visible from the Main House is Midway Barn, which lies halfway
+    between the school and Taliesin.
+  - >-
+    In 1943, the James Lloyd-Jones property was purchased by the architect William
+    Wesley Peters, Wright's associate and son-in-law, who renovated the Main House
+    and the Great Barn. Peters, who considered himself an acolyte of the great man,
+    named the farm Aldebaran, which is Arabic for "the follower" and the name of a
+    bright red star in the eye of the constellation Taurus.
+  - >-
+    The property, which comprises several buildings and about 18 acres, was later
+    owned by Robert and Derry Graves, who sold it to the present owners in 2003.
+    Robert and Derry had a hand in many Spring Green community enterprises, including
+    the Gard Theatre, the American Players Theatre, and the Wyoming Valley School.
+    Until his death in 2011, Robert, who was a landscape architect for Wright in the
+    late 1950s, tended to the valley lovingly and worked to protect its beauty.
+
+# Paths are relative to /public. Always render these through `imageUrl()`.
+# NOTE: the lead image below is the real hero photo; the remaining entries are
+# still placeholder scaffold images — swap once real photos are uploaded.
+images:
+  - src: /images/property/aldebaran_main_house.jpg
+    alt: The tree-lined drive at Aldebaran Farm with the main house beyond
+    caption: The approach to the main house
+  - src: /images/property/living-room.png
+    alt: The living and dining room with exposed wood beams
+    caption: Living room
+  - src: /images/property/bedroom.png
+    alt: A bedroom with wood-paneled walls
+    caption: Downstairs bedroom
+
+# Outbound listing links (guests can also book "old school" by email/phone).
+# TODO: replace with the real Airbnb and VRBO listing URLs.
+airbnbUrl: https://www.airbnb.com/rooms/00000000
+vrboUrl: https://www.vrbo.com/00000000
+
+contactEmail: aldebaran.farm.rental@gmail.com
+contactPhone: (312) 401-2484
+---
+
+Tucked into the rolling hills of Wisconsin's Driftless region, Aldebaran Farm is
+a historic countryside retreat in Spring Green, just across the road from Frank
+Lloyd Wright's Taliesin. The spacious main house welcomes families and friends
+year-round to relax, reconnect, and gather together. Just minutes from American
+Players Theatre, the Wisconsin River, and downtown Spring Green, it's the perfect
+home base for a peaceful getaway.

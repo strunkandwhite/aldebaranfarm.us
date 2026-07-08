@@ -1,26 +1,201 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@custom-variant dark (&:is(.dark *));
+
+/* ==========================================================================
+   DESIGN TOKENS
+   --------------------------------------------------------------------------
+   This project uses Tailwind v4, where the theme is configured HERE in CSS
+   (via `@theme`) rather than in a `tailwind.config.js`. shadcn/ui generated the
+   semantic color / radius tokens below (`--primary`, `--radius`, etc.) as a
+   neutral, grayscale STARTING POINT.
+
+   >>> BRAND TOKENS GO HERE <<<  (fill in when the style guide lands)
+   When you have the brand palette, type, and spacing:
+     • Colors  — override the color variables in the `:root` (light) and `.dark`
+                 blocks further down. They're OKLCH; keep both light + dark.
+     • Fonts   — swap the Geist fonts in `app/layout.tsx` (they feed
+                 `--font-sans` / `--font-mono` below). Add `--font-heading` if
+                 the brand uses a separate display face.
+     • Spacing — add named brand spacing tokens in the `@theme` block below
+                 (see the reserved `--spacing-brand-*` placeholders).
+     • Radii   — adjust `--radius` in `:root`; the `--radius-*` scale derives
+                 from it automatically.
+   See `docs/style-guide.md` for the checklist.
+   ========================================================================== */
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+  --font-heading: var(--font-heading);
+
+  /* -- BRAND PALETTE ------------------------------------------------------
+     Aldebaran Farm style guide. Raw brand hues, usable directly as
+     `bg-brand-burgundy`, `text-brand-sage`, etc. The semantic shadcn tokens
+     in `:root` below are mapped onto these so the component library themes
+     itself automatically. Source hex (confirm vs. Figma):
+       burgundy #770A15 · cream #F4EDE1 · sand #E6DAC6 · sage #6C7F63
+     Burgundy is the default text color site-wide (`--foreground` = `--primary`);
+     use a non-burgundy text color only when explicitly intended.
+     --------------------------------------------------------------------- */
+  --color-brand-burgundy: #770a15;
+  --color-brand-cream: oklch(0.955 0.012 85);
+  --color-brand-sand: oklch(0.89 0.022 80);
+  --color-brand-sage: oklch(0.56 0.045 135);
+  /* Offset dropshadow block behind framed images (exact hex from the mock). */
+  --color-brand-shadow: #e8ded2;
+
+  /* Named brand spacing (usable as p-brand-section, gap-brand-gutter, etc.) */
+  --spacing-brand-gutter: 1.5rem;
+  --spacing-brand-section: 5rem;
+
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+:root {
+  /* Fonts are loaded in app/layout.tsx via next/font and exposed as CSS vars:
+     --font-sans = self-hosted Helvetica Neue, --font-heading = Playfair Display
+     (both set on <html>). --font-mono is unused by the design but kept so the
+     token exists. */
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+  --background: oklch(0.955 0.012 85); /* cream */
+  --foreground: #770a15; /* deep burgundy text */
+  --card: oklch(0.955 0.012 85);
+  --card-foreground: #770a15;
+  --popover: oklch(0.955 0.012 85);
+  --popover-foreground: #770a15;
+  --primary: #770a15; /* burgundy */
+  --primary-foreground: oklch(0.955 0.012 85); /* cream on burgundy */
+  --secondary: oklch(0.89 0.022 80); /* sand */
+  --secondary-foreground: #770a15;
+  --muted: oklch(0.91 0.018 82);
+  --muted-foreground: oklch(0.48 0.08 25);
+  --accent: oklch(0.56 0.045 135); /* sage */
+  --accent-foreground: oklch(0.985 0.01 85);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.86 0.025 78); /* sand-toned */
+  --input: oklch(0.86 0.025 78);
+  --ring: #770a15;
+  --chart-1: #770a15;
+  --chart-2: oklch(0.56 0.045 135);
+  --chart-3: oklch(0.89 0.022 80);
+  --chart-4: oklch(0.48 0.08 25);
+  --chart-5: #770a15;
+  --radius: 0.25rem;
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+}
+
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.922 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.556 0 0);
+  --chart-1: oklch(0.87 0 0);
+  --chart-2: oklch(0.556 0 0);
+  --chart-3: oklch(0.439 0 0);
+  --chart-4: oklch(0.371 0 0);
+  --chart-5: oklch(0.269 0 0);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.556 0 0);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  html {
+    @apply font-sans;
+  }
+  h1, h2, h3, h4 {
+    @apply font-heading;
+  }
+  /* Visible keyboard focus for interactive elements (mouse focus stays clean). */
+  a:focus-visible,
+  button:focus-visible,
+  [tabindex]:focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Respect users who prefer reduced motion. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
