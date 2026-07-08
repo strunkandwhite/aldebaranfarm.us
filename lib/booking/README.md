@@ -6,10 +6,10 @@ The booking layer. Isolates *how a guest books* from the rest of the app.
 
 - **`buildInquiryMailtoUrl(property, details?)`** — builds a `mailto:` link that
   pre-fills a booking inquiry to the owner. This is the current implementation
-  of "make a booking". Used by `components/property/BookingCta`.
+  of "make a booking". Used by the reservations page (`app/reservations`).
 
-Guests can also book through the property's separate Airbnb / VRBO listings,
-which we link out to (`airbnbUrl`, `vrboUrl`).
+We never send guests off-site to book. The property's Airbnb/VRBO listings
+matter here only as calendars to sync against (below) so we don't double-book.
 
 ## Future (stubs)
 
@@ -23,6 +23,5 @@ cross-platform availability sync**:
   Airbnb/VRBO.
 
 These throw `Not implemented` for now. When built, `lib/data.getProperty()` can
-enrich the property with live availability from here, and `BookingCta` can move
-from a mailto link to a real booking flow — all without changing the component
-API. See `docs/architecture.md`.
+enrich the property with live availability from here, and the reservations page
+can move from a mailto link to a real booking flow. See `docs/architecture.md`.

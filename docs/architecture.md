@@ -16,8 +16,9 @@ lib/data/getProperty()         ← the ONLY code that reads the file / parses it
 app/page.tsx (Server Component)
         │  passes `property` down as props
         ▼
-components/property/*          ← Hero renders the name; BookingCta renders the
-                                 mailto button + Airbnb/VRBO links
+components/property/*          ← Hero renders the name/tagline/facts; the
+                                 reservations page builds the inquiry mailto
+                                 via lib/booking
 ```
 
 Rules that keep this clean:
@@ -45,8 +46,11 @@ Each is the single point of change for its concern.
 Today booking is deliberately low-tech:
 
 - `lib/booking.buildInquiryMailtoUrl(property)` builds a `mailto:` link to the
-  owner. That's the "make a booking" implementation.
-- We also link out to the property's separate **Airbnb** and **VRBO** listings.
+  owner, used by the reservations page. That's the "make a booking"
+  implementation.
+- We never send guests off-site to book. The property's separate **Airbnb** and
+  **VRBO** listings exist, but on this site they matter only as calendars to
+  keep in sync.
 
 The goal is direct booking with availability kept in sync across platforms so we
 never double-book. `lib/booking` already declares that surface as stubs:
@@ -65,9 +69,8 @@ never double-book. `lib/booking` already declares that surface as stubs:
    `getSyncedCalendar()` and attach availability to the returned object (extend
    `Property` with an optional `availability` field). Components that don't use
    it are unaffected.
-3. **Upgrade the CTA.** `components/property/BookingCta` swaps its `mailto:` link
-   for a date-picker + `createBooking()` flow. Its props (`property`) don't
-   change, so `app/page.tsx` is untouched.
+3. **Upgrade the CTA.** The reservations page swaps its `mailto:` link for a
+   date-picker + `createBooking()` flow. The rest of the site is untouched.
 
 Because every step is behind an existing boundary, the migration is incremental:
 mailto today, hybrid tomorrow, full direct booking later — same component tree.

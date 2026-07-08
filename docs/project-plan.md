@@ -12,7 +12,7 @@ content · local images · deployed on Vercel.
 ## Design system
 
 From the style-guide mock. Theme is configured in `app/globals.css` (`@theme`) with fonts in
-`app/layout.tsx`. See the `>>> BRAND TOKENS GO HERE <<<` marker.
+`app/layout.tsx`. See `docs/style-guide.md` for the shipped values.
 
 ### Colors (starter hex — confirm against Figma tokens)
 
@@ -32,6 +32,16 @@ From the style-guide mock. Theme is configured in `app/globals.css` (`@theme`) w
 ---
 
 ## Font strategy (Helvetica Neue)
+
+> **Outcome:** the site shipped with Option 2's mechanics but not its license —
+> self-hosted `HelveticaNeue-*.woff2` files (extracted from the macOS `.ttc`)
+> load via `next/font/local` in `app/layout.tsx`, with the Option 1 system
+> stack as fallback. A web-embedding license has **not** been confirmed; this
+> must be resolved (buy the license, or drop the files and rely on the system
+> stack) before the licensing risk is acceptable for production. See
+> `docs/style-guide.md`.
+
+Original analysis, kept for context:
 
 Helvetica Neue is a proprietary Monotype/Linotype typeface. The copy installed on macOS is
 licensed for local use **only** — it does **not** include web-embedding rights. Self-hosting
@@ -182,7 +192,8 @@ plus `/public/images/hero`, `/history`, `/things-to-do`, `/brand`. Served via `n
 
 ## Open items
 
-- **Font decision** (see Font strategy) — default Option 1 unless told otherwise.
+- **Font license** (see Font strategy outcome) — self-hosted Helvetica Neue
+  shipped; web-embedding license still unconfirmed.
 - **Mobile designs** — mocks are desktop only; responsive behavior uses sensible defaults
   unless mobile layouts are provided.
 - **Photo upload** — organize source photos by room category for the gallery.

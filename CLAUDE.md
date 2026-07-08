@@ -8,7 +8,7 @@ Marketing/booking-info site for Aldebaran Farm, a single vacation-rental propert
 
 ## Commands
 
-Use **pnpm** (a stale `package-lock.json` exists, but `node_modules/.pnpm` and `pnpm-workspace.yaml` show pnpm is the active package manager).
+Use **pnpm**.
 
 - `pnpm dev` — dev server at localhost:3000
 - `pnpm build` — production build (also the de facto type check; there is no separate typecheck script)

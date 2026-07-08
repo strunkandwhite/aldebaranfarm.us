@@ -6,6 +6,14 @@ single property.
 - **`property.md`** — YAML frontmatter (structured fields) + a Markdown body
   (`description`). The frontmatter keys map 1:1 to the `Property` type in
   `types/property.ts`.
+- **`faqs.ts`** — grouped Q&A for the FAQs page (includes house rules).
+- **`rates.ts`** — rate table rows, peak definition, tax note, cancellation
+  policy.
+- **`things-to-do.ts`** — activity sections + outbound links.
+- **`gallery.ts`** — room categories → image lists for the gallery.
+
+The `.ts` files are already-structured data and are imported directly by their
+pages; only `property.md` needs the parsing layer below.
 
 ## Rules
 

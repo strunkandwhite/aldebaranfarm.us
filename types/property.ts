@@ -19,7 +19,7 @@ export interface PropertyLocation {
 
 export interface PropertyImage {
   /**
-   * Path RELATIVE TO /public, e.g. "/images/property/living-room.jpg".
+   * Path RELATIVE TO /public, e.g. "/images/property/living-room.png".
    * Never reference this directly in a component — pass it through
    * `imageUrl()` from `lib/images` so a future move to a CDN is one change.
    */

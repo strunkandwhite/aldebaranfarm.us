@@ -29,7 +29,7 @@ CSS uses OKLCH approximations — **confirm/fine-tune against Figma** as pages a
 | Header         | Playfair Display  | 40pt  | Page titles (`PageTitle`)|
 | Subheader      | Playfair Display  | 28pt  | Section headings         |
 | Menu links     | Playfair Display  | 20pt  | Nav                      |
-| Body           | System sans*      | 16pt  | Paragraph text           |
+| Body           | Helvetica Neue*   | 16pt  | Paragraph text           |
 
 - Headings → `--font-heading` (Playfair Display, loaded via `next/font/google`).
   `h1–h4` default to it in the base layer; use `font-heading` elsewhere.
