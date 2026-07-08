@@ -6,7 +6,7 @@
 export function QAItem({ q, a }: { q: string; a: string }) {
   return (
     <div>
-      <p className="font-semibold">{q}</p>
+      <p className="font-bold">{q}</p>
       <p className="mt-1 leading-relaxed">{a}</p>
     </div>
   );

@@ -18,13 +18,13 @@ export function RateTable({
       <table className="w-full border-collapse text-left">
         <thead>
           <tr className="border-b border-primary/50">
-            <th scope="col" className="py-2 pr-4 font-semibold">
+            <th scope="col" className="py-2 pr-4 font-bold">
               <span className="sr-only">Rate type</span>
             </th>
-            <th scope="col" className="py-2 pl-4 text-right font-semibold">
+            <th scope="col" className="py-2 pl-4 text-right font-bold">
               Peak
             </th>
-            <th scope="col" className="py-2 pl-4 text-right font-semibold">
+            <th scope="col" className="py-2 pl-4 text-right font-bold">
               Off-Peak
             </th>
           </tr>

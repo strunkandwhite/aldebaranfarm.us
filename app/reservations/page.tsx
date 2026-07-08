@@ -39,7 +39,7 @@ export default async function ReservationsPage() {
         <p>{reservationIntro}</p>
 
         <p className="mt-4">
-          <span className="font-semibold">Email:</span>{" "}
+          <span className="font-bold">Email:</span>{" "}
           <a
             href={buildInquiryMailtoUrl(property)}
             className="underline underline-offset-4 hover:opacity-70"
@@ -48,7 +48,7 @@ export default async function ReservationsPage() {
           </a>
         </p>
         <p className="mt-2">
-          <span className="font-semibold">Phone:</span>{" "}
+          <span className="font-bold">Phone:</span>{" "}
           <a
             href={telHref}
             className="underline underline-offset-4 hover:opacity-70"
@@ -76,7 +76,7 @@ export default async function ReservationsPage() {
 
         <p className="mt-6">{taxNote}</p>
 
-        <p className="mt-8 font-semibold">Cancellation Policy</p>
+        <p className="mt-8 font-bold">Cancellation Policy</p>
         <p className="mt-1 leading-relaxed">{cancellationPolicy}</p>
       </div>
     </Container>

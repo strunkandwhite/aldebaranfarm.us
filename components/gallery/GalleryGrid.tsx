@@ -102,7 +102,6 @@ export function GalleryGrid({ categories }: { categories: GalleryCategory[] }) {
                   fill
                   sizes="(min-width: 1024px) 1024px, 100vw"
                   className="object-contain"
-                  priority
                 />
               </div>
             )}

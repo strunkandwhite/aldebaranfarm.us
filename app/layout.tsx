@@ -4,6 +4,7 @@ import localFont from "next/font/local";
 
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+import { imageUrl } from "@/lib/images";
 
 import "./globals.css";
 
@@ -54,7 +55,7 @@ export const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL ?? "https://aldebaranfarm.us";
 
 const description =
-  "A historic countryside retreat in Spring Green, Wisconsin's Driftless region, across the road from Frank Lloyd Wright's Taliesin. Book directly by email or phone, or through Airbnb or VRBO.";
+  "A historic countryside retreat in Spring Green, Wisconsin's Driftless region, across the road from Frank Lloyd Wright's Taliesin. Book directly by email or phone.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -71,7 +72,7 @@ export const metadata: Metadata = {
     url: siteUrl,
     images: [
       {
-        url: "/images/brand/og-image.jpg",
+        url: imageUrl("/images/brand/og-image.jpg"),
         width: 1200,
         height: 630,
         alt: "Aldebaran Farm — A Historic Retreat in Spring Green, Wisconsin",
@@ -82,7 +83,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Aldebaran Farm — Spring Green, Wisconsin",
     description,
-    images: ["/images/brand/og-image.jpg"],
+    images: [imageUrl("/images/brand/og-image.jpg")],
   },
 };
 

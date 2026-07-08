@@ -30,10 +30,8 @@ export function MobileNav() {
         <Dialog.Backdrop className="fixed inset-0 z-40 bg-black/40 transition-opacity duration-300 data-[ending-style]:opacity-0 data-[starting-style]:opacity-0" />
 
         <Dialog.Popup className="fixed inset-y-0 right-0 z-50 flex w-72 max-w-[80vw] flex-col bg-background shadow-xl transition-transform duration-300 ease-in-out data-[ending-style]:translate-x-full data-[starting-style]:translate-x-full">
-          <div className="flex items-center justify-between border-border p-4">
-            <Dialog.Title className="font-heading text-xl text-primary">
-
-            </Dialog.Title>
+          <div className="flex items-center justify-end border-border p-4">
+            <Dialog.Title className="sr-only">Menu</Dialog.Title>
             <Dialog.Close aria-label="Close menu" className="text-primary">
               <X className="size-6" />
             </Dialog.Close>
