@@ -8,7 +8,6 @@ import { PageTitle } from "@/components/layout/PageTitle";
 import { SectionHeading } from "@/components/layout/SectionHeading";
 import { RateTable } from "@/components/property/RateTable";
 import { AirbnbLink } from "@/components/property/AirbnbLink";
-import { AirbnbEmbed } from "@/components/property/AirbnbEmbed";
 import { VrboLink } from "@/components/property/VrboLink";
 import {
   reservationIntro,
@@ -67,7 +66,6 @@ export default async function ReservationsPage() {
         </p>
         <div className="mt-3 flex flex-col items-start gap-4 sm:flex-row sm:items-center">
           <AirbnbLink property={property} />
-          <AirbnbEmbed property={property} />
         </div>
 
         <p className="mt-6">

@@ -13,7 +13,5 @@ content or know where the data came from.
   from `content/rates.ts`).
 - **`AirbnbLink.tsx`** — Reservations: a button that opens the property's
   Airbnb listing in a new tab (reuses `components/shared/ExternalLink`).
-- **`AirbnbEmbed.tsx`** — Reservations: Airbnb's official embed widget,
-  reproduced as JSX; derives the listing ID from `property.airbnbUrl`.
 - **`VrboLink.tsx`** — Reservations: a button that opens the property's Vrbo
   listing in a new tab (reuses `components/shared/ExternalLink`).

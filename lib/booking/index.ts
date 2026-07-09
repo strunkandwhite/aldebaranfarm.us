@@ -8,10 +8,9 @@ import type { Property } from "@/types/property";
  * guest's mail client with a pre-filled inquiry.
  *
  * ALSO LIVE: the reservations page also presents direct paths to the
- * property's Airbnb listing (see `AirbnbLink`/`AirbnbEmbed` in
- * `components/property`) and Vrbo listing (see `VrboLink` in
- * `components/property`) as equally-weighted alternatives alongside the
- * mailto flow above.
+ * property's Airbnb listing (see `AirbnbLink` in `components/property`) and
+ * Vrbo listing (see `VrboLink` in `components/property`) as equally-weighted
+ * alternatives alongside the mailto flow above.
  *
  * FUTURE: direct booking + Airbnb/VRBO calendar sync is a future concern that
  * will live in this module when built. The intended surface is described in

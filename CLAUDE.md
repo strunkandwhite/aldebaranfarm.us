@@ -26,7 +26,7 @@ Read `docs/architecture.md` first — it is the authoritative description. The c
 
 - `lib/data` — `getProperty()`, the ONLY code that reads/parses `content/property.md`. Returns a typed `Property` (`types/property.ts`). Intentionally `async` so a future API-backed source drops in without changing callers.
 - `lib/images` — `imageUrl()`. Every image src goes through it; never hard-code `/images/...` in a component. CDN migration = set `NEXT_PUBLIC_IMAGE_BASE_URL`.
-- `lib/booking` — `buildInquiryMailtoUrl()` is the live "make a booking" implementation, used by the reservations page; it's commission-free for the guest. The reservations page also presents direct paths to the property's Airbnb listing (`AirbnbLink` + `AirbnbEmbed` in `components/property`) and Vrbo listing (`VrboLink` in `components/property`) as equally-weighted alternatives. Future direct booking + Airbnb/VRBO calendar sync will live in this module when built (surface described in `docs/architecture.md`).
+- `lib/booking` — `buildInquiryMailtoUrl()` is the live "make a booking" implementation, used by the reservations page; it's commission-free for the guest. The reservations page also presents direct paths to the property's Airbnb listing (`AirbnbLink` in `components/property`) and Vrbo listing (`VrboLink` in `components/property`) as equally-weighted alternatives. Future direct booking + Airbnb/VRBO calendar sync will live in this module when built (surface described in `docs/architecture.md`).
 - `lib/analytics` — `trackEvent()`/`EVENTS`, the only caller of `@vercel/analytics`'s `track()`. Instrument clicks via `data-track` attributes, handled by the single delegated listener in `components/analytics/TrackedClicks`.
 
 Content has two access patterns — don't conflate them:
