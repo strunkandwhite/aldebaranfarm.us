@@ -11,6 +11,8 @@ Next.js App Router: routes, root layout, and global styles.
 - **`things-to-do/page.tsx`** — Things To Do sections with outbound links.
 - **`faqs/page.tsx`** — grouped Q&A.
 - **`reservations/page.tsx`** — rates table + contact info (the Book Now target).
+- **`not-found.tsx`** — global 404 boundary; redirects unknown routes to `/`
+  rather than showing a dead-end page.
 - **`robots.ts` / `sitemap.ts`** — SEO routes, built from `NEXT_PUBLIC_SITE_URL`.
 - **`globals.css`** — Tailwind v4 entry + design tokens (see the brand-token
   marker inside).

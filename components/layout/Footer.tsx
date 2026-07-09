@@ -22,34 +22,40 @@ const footerLinks = [
 export function Footer() {
   return (
     <footer className="mt-auto border-t border-border py-10">
-      <Container className="flex flex-col gap-6 sm:flex-row sm:items-start sm:justify-between">
-        <div>
-          <Link href="/" className="flex items-center gap-2 font-heading text-2xl text-primary">
-            <Image
-              src={imageUrl("/images/brand/logo.png")}
-              alt=""
-              width={32}
-              height={32}
-              className="size-8 rounded-sm"
-            />
-            Aldebaran Farm
-          </Link>
-          <p className="mt-1 text-sm text-foreground">
-            <ExternalLink href={mapsUrl} className="underline-offset-4 hover:underline">
-              6557 County T, Spring Green, WI
-            </ExternalLink>
-          </p>
-          <p className="text-sm text-foreground">
-            <a
-              href="mailto:aldebaran.farm.rental@gmail.com"
-              className="underline-offset-4 hover:underline"
-            >
-              aldebaran.farm.rental@gmail.com
-            </a>{" "}
-            &middot;{" "}
-            <a href="tel:+13124012484" className="underline-offset-4 hover:underline">
-              (312) 401-2484
-            </a>
+      <Container className="flex flex-col gap-6 sm:flex-row sm:items-stretch sm:justify-between">
+        <div className="flex flex-col">
+          <div>
+            <Link href="/" className="flex items-center gap-2 font-heading text-2xl text-primary">
+              <Image
+                src={imageUrl("/images/brand/logo.png")}
+                alt=""
+                width={32}
+                height={32}
+                className="size-8 rounded-sm"
+              />
+              Aldebaran Farm
+            </Link>
+            <p className="mt-1 text-sm text-foreground">
+              <ExternalLink href={mapsUrl} className="underline-offset-4 hover:underline">
+                6557 County T, Spring Green, WI
+              </ExternalLink>
+            </p>
+            <p className="text-sm text-foreground">
+              <a
+                href="mailto:aldebaran.farm.rental@gmail.com"
+                className="underline-offset-4 hover:underline"
+              >
+                aldebaran.farm.rental@gmail.com
+              </a>{" "}
+              &middot;{" "}
+              <a href="tel:+13124012484" className="underline-offset-4 hover:underline">
+                (312) 401-2484
+              </a>
+            </p>
+          </div>
+
+          <p className="mt-6 text-xs text-foreground sm:mt-auto">
+            &copy; {new Date().getFullYear()} Aldebaran Farm
           </p>
         </div>
 
@@ -64,10 +70,6 @@ export function Footer() {
             ))}
           </ul>
         </nav>
-      </Container>
-
-      <Container className="mt-8">
-        <p className="text-xs text-foreground">&copy; {new Date().getFullYear()} Aldebaran Farm</p>
       </Container>
     </footer>
   );
