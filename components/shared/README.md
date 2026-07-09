@@ -9,5 +9,7 @@ aren't structural layout chrome.
   throughout the site. Resolves its src through `imageUrl()`.
 - **`QAItem.tsx`** — a question/answer pair (FAQs page).
 - **`RichText.tsx`** — renders content strings that may contain inline links.
+- **`ConsoleWordmark.tsx`** — logs the Lenehan–Hu wordmark to the console once
+  per page load (easter egg; renders nothing).
 
 Add small, generic building blocks here as they're needed.
