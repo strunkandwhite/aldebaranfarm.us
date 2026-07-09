@@ -94,6 +94,7 @@ images:
 
 contactEmail: aldebaran.farm.rental@gmail.com
 contactPhone: (312) 401-2484
+airbnbUrl: https://www.airbnb.com/rooms/30441325
 ---
 
 Tucked into the rolling hills of Wisconsin's Driftless region, Aldebaran Farm is

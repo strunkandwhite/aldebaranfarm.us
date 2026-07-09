@@ -63,6 +63,7 @@ function assertValidFrontmatter(
     "images",
     "contactEmail",
     "contactPhone",
+    "airbnbUrl",
   ];
 
   const missing = required.filter((key) => fm[key] === undefined);

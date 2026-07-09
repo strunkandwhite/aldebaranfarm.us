@@ -62,4 +62,9 @@ export interface Property {
   contactEmail: string;
   /** Owner phone for booking inquiries (used to build a tel link). */
   contactPhone: string;
+  /**
+   * The property's Airbnb listing URL, e.g. "https://www.airbnb.com/rooms/30441325".
+   * Used to build both a direct link and the official Airbnb embed widget.
+   */
+  airbnbUrl: string;
 }
