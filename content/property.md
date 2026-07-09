@@ -32,14 +32,14 @@ beds:
   - Upstairs Bedroom 2 - queen bed + twin bed
   - Upstairs loft - twin bed
 amenities:
-  - Solar Power
+  - 100% solar powered
   - Central A/C
   - Heat
   - Washer/dryer
   - Dishwasher
   - Microwave
   - Refrigerator
-  - Coffee grinder and auto-drip coffeemaker
+  - Burr coffee grinder and auto-drip coffeemaker
   - Full kitchen with stove and oven
   - WiFi
   - Wood-burning fireplace
