@@ -26,7 +26,7 @@ bathrooms: 2
 maxGuests: 11
 
 beds:
-  - Downstairs Bedroom 1 - queen bed
+  - Downstairs Bedroom 1 - king bed
   - Downstairs Bedroom 2 - queen bed
   - Upstairs Bedroom 1 - full bed + twin bed
   - Upstairs Bedroom 2 - queen bed + twin bed
