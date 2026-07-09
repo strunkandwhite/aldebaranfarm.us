@@ -11,6 +11,8 @@ React components, grouped by role:
 - **`gallery/`** — the photo grid + lightbox (GalleryGrid).
 - **`shared/`** — small cross-cutting building blocks (ExternalLink,
   FramedImage, QAItem, RichText).
+- **`analytics/`** — analytics plumbing (TrackedClicks), mounted once in the
+  root layout.
 
 **Data rule:** components receive data as props (a `Property`). They never read
 `content/` or call `gray-matter`. Only `lib/data` knows the source. See

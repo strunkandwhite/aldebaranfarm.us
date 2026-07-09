@@ -39,7 +39,9 @@ export function Header() {
           ))}
 
           <Button
-            render={<Link href={bookNowHref} />}
+            render={
+              <Link href={bookNowHref} data-track="book_now_click" data-track-location="header" />
+            }
             nativeButton={false}
             className="h-auto rounded-none px-5 py-2 font-heading text-base"
           >

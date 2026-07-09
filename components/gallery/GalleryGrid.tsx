@@ -5,6 +5,7 @@ import Image from "next/image";
 import { Dialog } from "@base-ui/react/dialog";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
 
+import { EVENTS, trackEvent } from "@/lib/analytics";
 import { imageUrl } from "@/lib/images";
 import { SectionHeading } from "@/components/layout/SectionHeading";
 import type { GalleryCategory } from "@/content/gallery";
@@ -60,7 +61,10 @@ export function GalleryGrid({ categories }: { categories: GalleryCategory[] }) {
               <button
                 key={img.src}
                 type="button"
-                onClick={() => setIndex(offsets[ci] + ii)}
+                onClick={() => {
+                  setIndex(offsets[ci] + ii);
+                  trackEvent(EVENTS.galleryPhotoOpen, { category: cat.title });
+                }}
                 aria-label={`View ${img.alt}`}
                 className="group relative aspect-[4/3] overflow-hidden focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
               >

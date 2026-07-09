@@ -49,7 +49,13 @@ export function MobileNav() {
             ))}
 
             <Dialog.Close
-              render={<Link href={bookNowHref} />}
+              render={
+                <Link
+                  href={bookNowHref}
+                  data-track="book_now_click"
+                  data-track-location="mobile_nav"
+                />
+              }
               className={cn(
                 buttonVariants(),
                 "mt-2 h-auto rounded-none px-5 py-2 font-heading text-base"

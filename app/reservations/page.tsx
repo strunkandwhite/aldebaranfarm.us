@@ -42,6 +42,7 @@ export default async function ReservationsPage() {
           <span className="font-bold">Email:</span>{" "}
           <a
             href={buildInquiryMailtoUrl(property)}
+            data-track="inquiry_email_click"
             className="underline underline-offset-4 hover:opacity-70"
           >
             {property.contactEmail}
@@ -49,7 +50,11 @@ export default async function ReservationsPage() {
         </p>
         <p className="mt-2">
           <span className="font-bold">Phone:</span>{" "}
-          <a href={telHref} className="underline underline-offset-4 hover:opacity-70">
+          <a
+            href={telHref}
+            data-track="inquiry_phone_click"
+            className="underline underline-offset-4 hover:opacity-70"
+          >
             {property.contactPhone}
           </a>
         </p>

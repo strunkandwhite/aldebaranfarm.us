@@ -1,9 +1,12 @@
 import type { Metadata } from "next";
 import { Playfair_Display } from "next/font/google";
 import localFont from "next/font/local";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+import { TrackedClicks } from "@/components/analytics/TrackedClicks";
 import { imageUrl } from "@/lib/images";
 
 import "./globals.css";
@@ -98,6 +101,9 @@ export default function RootLayout({
           {children}
         </main>
         <Footer />
+        <Analytics />
+        <SpeedInsights />
+        <TrackedClicks />
       </body>
     </html>
   );
