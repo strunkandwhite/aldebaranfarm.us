@@ -7,6 +7,8 @@ import { Container } from "@/components/layout/Container";
 import { PageTitle } from "@/components/layout/PageTitle";
 import { SectionHeading } from "@/components/layout/SectionHeading";
 import { RateTable } from "@/components/property/RateTable";
+import { AirbnbLink } from "@/components/property/AirbnbLink";
+import { AirbnbEmbed } from "@/components/property/AirbnbEmbed";
 import {
   reservationIntro,
   peakDefinition,
@@ -58,6 +60,12 @@ export default async function ReservationsPage() {
             {property.contactPhone}
           </a>
         </p>
+
+        <p className="mt-6 font-bold">Or book directly on Airbnb:</p>
+        <div className="mt-3 flex flex-col items-start gap-4 sm:flex-row sm:items-center">
+          <AirbnbLink property={property} />
+          <AirbnbEmbed property={property} />
+        </div>
 
         <p className="mt-6">
           Please read through our{" "}
