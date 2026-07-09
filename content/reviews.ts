@@ -32,8 +32,7 @@ export const ratingCount = 0;
  * Link out to the full Google listing (and where guests can leave a review).
  * This is the canonical Maps deep link for the Aldebaran Farm place (by CID).
  */
-export const googleReviewsUrl =
-  "https://www.google.com/maps?cid=3949785469219734696";
+export const googleReviewsUrl = "https://www.google.com/maps?cid=3949785469219734696";
 
 export const reviews: Review[] = [
   {

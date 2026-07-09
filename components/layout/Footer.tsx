@@ -36,10 +36,7 @@ export function Footer() {
             Aldebaran Farm
           </Link>
           <p className="mt-1 text-sm text-foreground">
-            <ExternalLink
-              href={mapsUrl}
-              className="underline-offset-4 hover:underline"
-            >
+            <ExternalLink href={mapsUrl} className="underline-offset-4 hover:underline">
               6557 County T, Spring Green, WI
             </ExternalLink>
           </p>

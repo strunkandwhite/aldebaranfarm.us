@@ -26,7 +26,7 @@ export function ReviewsBadge({
       href={googleReviewsUrl}
       className={cn(
         "inline-flex items-center gap-2 text-sm text-primary underline-offset-4 hover:underline",
-        className,
+        className
       )}
     >
       {hasRatings ? (
@@ -35,10 +35,7 @@ export function ReviewsBadge({
           <span>
             <span className="font-semibold">{ratingAverage}</span>
             {showCount && (
-              <span className="text-muted-foreground">
-                {" "}
-                &middot; {ratingCount} reviews
-              </span>
+              <span className="text-muted-foreground"> &middot; {ratingCount} reviews</span>
             )}{" "}
             on Google
           </span>
