@@ -90,6 +90,25 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${fontHeading.variable} ${fontSans.variable} h-full antialiased`}>
       <body className="flex min-h-full flex-col">
+        {/* View-source easter egg: the Lenehan–Hu Applied Dynamics wordmark,
+            emitted as a real HTML comment. JSX can't render comments, so it
+            goes through dangerouslySetInnerHTML — the string passes through
+            prerendering untouched, which is what lets it survive minification. */}
+        <div
+          hidden
+          aria-hidden
+          dangerouslySetInnerHTML={{
+            __html: `<!--
+
+    ◇───◇
+   / \\ / \\    L E N E H A N — H U
+  ◇   ◇   ◇    — A P P L I E D —
+   \\ / \\ /      D Y N A M I C S
+    ◇───◇
+
+-->`,
+          }}
+        />
         <a
           href="#main-content"
           className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[60] focus:rounded-none focus:bg-primary focus:px-4 focus:py-2 focus:font-heading focus:text-primary-foreground"
