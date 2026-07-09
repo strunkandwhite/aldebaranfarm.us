@@ -19,10 +19,13 @@ export interface RateRow {
 }
 
 export const reservationIntro =
-  "Aldebaran is available for rental year-round. Reservations can be made directly by email or phone.";
+  "Aldebaran is available for rental year-round. Reservations made directly by email or phone get our best rate, since we don't have to pay service fees.";
 
 export const peakDefinition =
-  'Higher rates (shown below as "Peak") apply Memorial Day through Labor Day, Thanksgiving, and Christmas Eve through New Year\'s Day. All other dates are "Off-Peak."';
+  'Higher rates (shown below as "Peak") apply Memorial Day through Labor Day, Thanksgiving, and Christmas Eve through New Year\'s Day. All other dates are "Off-Peak." These rates apply to reservations booked directly by email or phone.';
+
+export const alsoListedIntro =
+  "Aldebaran Farm can also be booked on Airbnb and Vrbo at slightly higher rates.";
 
 export const rateTable: RateRow[] = [
   {

@@ -15,12 +15,13 @@ import {
   rateTable,
   taxNote,
   cancellationPolicy,
+  alsoListedIntro,
 } from "@/content/rates";
 
 export const metadata: Metadata = {
   title: "Rates & Reservations — Aldebaran Farm",
   description:
-    "Peak and off-peak rates for Aldebaran Farm in Spring Green, Wisconsin. Reserve directly by email or phone.",
+    "Peak and off-peak rates for direct bookings at Aldebaran Farm in Spring Green, Wisconsin — also listed on Airbnb and Vrbo.",
 };
 
 /**
@@ -62,20 +63,6 @@ export default async function ReservationsPage() {
         </p>
 
         <p className="mt-6">
-          <span className="font-bold">Airbnb:</span>
-        </p>
-        <div className="mt-3 flex flex-col items-start gap-4 sm:flex-row sm:items-center">
-          <AirbnbLink property={property} />
-        </div>
-
-        <p className="mt-6">
-          <span className="font-bold">Vrbo:</span>
-        </p>
-        <div className="mt-3 flex flex-col items-start gap-4 sm:flex-row sm:items-center">
-          <VrboLink property={property} />
-        </div>
-
-        <p className="mt-6">
           Please read through our{" "}
           <Link href="/faqs" className="underline underline-offset-4 hover:opacity-70">
             FAQs
@@ -84,12 +71,22 @@ export default async function ReservationsPage() {
           knowing ahead of time.
         </p>
 
-        <SectionHeading className="mt-12">Rates</SectionHeading>
+        <SectionHeading className="mt-10">Rates</SectionHeading>
         <p className="mt-4">{peakDefinition}</p>
 
         <RateTable rows={rateTable} className="mt-6" />
 
         <p className="mt-6">{taxNote}</p>
+
+        <SectionHeading as="h3" className="mt-8">
+          Also Listed on Airbnb &amp; Vrbo
+        </SectionHeading>
+        <p className="mt-4">{alsoListedIntro}</p>
+
+        <div className="mt-6 flex flex-col items-start gap-4 sm:flex-row sm:items-center">
+          <AirbnbLink property={property} />
+          <VrboLink property={property} />
+        </div>
 
         <p className="mt-8 font-bold">Cancellation Policy</p>
         <p className="mt-1 leading-relaxed">{cancellationPolicy}</p>
