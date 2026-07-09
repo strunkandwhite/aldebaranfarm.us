@@ -1,9 +1,14 @@
 import type { Metadata } from "next";
 import { Playfair_Display } from "next/font/google";
 import localFont from "next/font/local";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+import { TrackedClicks } from "@/components/analytics/TrackedClicks";
+import { ConsoleWordmark } from "@/components/shared/ConsoleWordmark";
+import { imageUrl } from "@/lib/images";
 
 import "./globals.css";
 
@@ -30,14 +35,7 @@ const fontHeading = Playfair_Display({
 const fontSans = localFont({
   variable: "--font-sans",
   display: "swap",
-  fallback: [
-    "-apple-system",
-    "BlinkMacSystemFont",
-    "Segoe UI",
-    "Roboto",
-    "Arial",
-    "sans-serif",
-  ],
+  fallback: ["-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "Arial", "sans-serif"],
   src: [
     { path: "./fonts/HelveticaNeue-Regular.woff2", weight: "400", style: "normal" },
     { path: "./fonts/HelveticaNeue-Medium.woff2", weight: "500", style: "normal" },
@@ -50,11 +48,10 @@ const fontSans = localFont({
  * NEXT_PUBLIC_SITE_URL to the production domain at deploy; the fallback is a
  * placeholder to update. Also exported for robots.ts / sitemap.ts.
  */
-export const siteUrl =
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://aldebaranfarm.us";
+export const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://aldebaranfarm.us";
 
 const description =
-  "A historic countryside retreat in Spring Green, Wisconsin's Driftless region, across the road from Frank Lloyd Wright's Taliesin. Book directly by email or phone, or through Airbnb or VRBO.";
+  "A historic countryside retreat in Spring Green, Wisconsin's Driftless region, across the road from Frank Lloyd Wright's Taliesin. Book directly by email or phone.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -71,7 +68,7 @@ export const metadata: Metadata = {
     url: siteUrl,
     images: [
       {
-        url: "/images/brand/og-image.jpg",
+        url: imageUrl("/images/brand/og-image.jpg"),
         width: 1200,
         height: 630,
         alt: "Aldebaran Farm — A Historic Retreat in Spring Green, Wisconsin",
@@ -82,7 +79,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Aldebaran Farm — Spring Green, Wisconsin",
     description,
-    images: ["/images/brand/og-image.jpg"],
+    images: [imageUrl("/images/brand/og-image.jpg")],
   },
 };
 
@@ -92,10 +89,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className={`${fontHeading.variable} ${fontSans.variable} h-full antialiased`}
-    >
+    <html lang="en" className={`${fontHeading.variable} ${fontSans.variable} h-full antialiased`}>
       <body className="flex min-h-full flex-col">
         <a
           href="#main-content"
@@ -108,6 +102,10 @@ export default function RootLayout({
           {children}
         </main>
         <Footer />
+        <Analytics />
+        <SpeedInsights />
+        <TrackedClicks />
+        <ConsoleWordmark />
       </body>
     </html>
   );

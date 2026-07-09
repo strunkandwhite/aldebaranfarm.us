@@ -21,6 +21,8 @@ export function DetailsAndAmenities({ property }: { property: Property }) {
         src="/images/property/aldebaran_details.jpg"
         alt="The main house at Aldebaran Farm, framed by oak trees"
         orientation="landscape"
+        // First section on /house — this photo is the page's LCP element.
+        priority
         className="mx-auto w-full max-w-lg md:mx-0 md:max-w-none"
         sizes="(min-width: 768px) 45vw, 85vw"
       />

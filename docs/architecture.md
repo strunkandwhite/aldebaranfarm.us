@@ -16,8 +16,9 @@ lib/data/getProperty()         ← the ONLY code that reads the file / parses it
 app/page.tsx (Server Component)
         │  passes `property` down as props
         ▼
-components/property/*          ← Hero renders the name; BookingCta renders the
-                                 mailto button + Airbnb/VRBO links
+components/property/*          ← Hero renders the name/tagline/facts; the
+                                 reservations page builds the inquiry mailto
+                                 via lib/booking
 ```
 
 Rules that keep this clean:
@@ -28,15 +29,15 @@ Rules that keep this clean:
 - **`types/property.ts` is the contract.** Components depend on the `Property`
   type, not on the file format.
 - **`getProperty()` is `async`** even though reading a local file is sync — so
-  the future API version (which *is* async) drops in without changing callers.
+  the future API version (which _is_ async) drops in without changing callers.
 
 ## The isolation layers in `/lib`
 
-| Layer         | Hides                          | Swap later to…                         |
-| ------------- | ------------------------------ | -------------------------------------- |
-| `lib/data`    | where property content lives   | Airbnb/VRBO API or a headless CMS      |
-| `lib/images`  | where images are hosted        | Cloudinary / S3+CloudFront (set env)   |
-| `lib/booking` | how a guest books              | direct booking + calendar sync         |
+| Layer         | Hides                        | Swap later to…                       |
+| ------------- | ---------------------------- | ------------------------------------ |
+| `lib/data`    | where property content lives | Airbnb/VRBO API or a headless CMS    |
+| `lib/images`  | where images are hosted      | Cloudinary / S3+CloudFront (set env) |
+| `lib/booking` | how a guest books            | direct booking + calendar sync       |
 
 Each is the single point of change for its concern.
 
@@ -45,11 +46,22 @@ Each is the single point of change for its concern.
 Today booking is deliberately low-tech:
 
 - `lib/booking.buildInquiryMailtoUrl(property)` builds a `mailto:` link to the
-  owner. That's the "make a booking" implementation.
-- We also link out to the property's separate **Airbnb** and **VRBO** listings.
+  owner, used by the reservations page. It's commission-free for the guest.
+- The reservations page also presents a direct link to the property's
+  **Airbnb** listing (`property.airbnbUrl`), opening in a new tab, as an
+  equally-weighted way to book, alongside email and phone. This is a
+  deliberate exception to keeping guests on-site, trialed starting
+  2026-07-09 (see
+  `docs/superpowers/specs/2026-07-09-airbnb-booking-option-design.md`). An
+  earlier version also embedded Airbnb's official listing widget
+  (`airbnb_jssdk`), but it was dropped — slow and unreliable in practice — in
+  favor of the link alone. The reservations page also links directly to the
+  property's **VRBO** listing (`property.vrboUrl`) the same equally-weighted,
+  link-only way. Both platform listings still matter as calendars to keep in
+  sync.
 
 The goal is direct booking with availability kept in sync across platforms so we
-never double-book. `lib/booking` already declares that surface as stubs:
+never double-book. The intended surface, to be built in `lib/booking`:
 
 - `getSyncedCalendar()` — merge Airbnb + VRBO (+ direct) availability (likely via
   iCal feeds and/or platform APIs) into one calendar.
@@ -59,15 +71,14 @@ never double-book. `lib/booking` already declares that surface as stubs:
 
 ### How it plugs in without a rewrite
 
-1. **Implement the stubs** in `lib/booking` (API clients, iCal sync, a small
+1. **Build the sync layer** in `lib/booking` (API clients, iCal sync, a small
    store for direct bookings). No UI changes yet.
 2. **Enrich the property.** `lib/data.getProperty()` can call
    `getSyncedCalendar()` and attach availability to the returned object (extend
    `Property` with an optional `availability` field). Components that don't use
    it are unaffected.
-3. **Upgrade the CTA.** `components/property/BookingCta` swaps its `mailto:` link
-   for a date-picker + `createBooking()` flow. Its props (`property`) don't
-   change, so `app/page.tsx` is untouched.
+3. **Upgrade the CTA.** The reservations page swaps its `mailto:` link for a
+   date-picker + `createBooking()` flow. The rest of the site is untouched.
 
 Because every step is behind an existing boundary, the migration is incremental:
 mailto today, hybrid tomorrow, full direct booking later — same component tree.

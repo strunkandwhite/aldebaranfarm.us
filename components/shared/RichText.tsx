@@ -27,7 +27,7 @@ export function RichText({ runs }: { runs: TextRun[] }) {
           >
             {run.text}
           </ExternalLink>
-        ),
+        )
       )}
     </>
   );

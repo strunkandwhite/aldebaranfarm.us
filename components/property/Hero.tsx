@@ -38,14 +38,14 @@ export function Hero({ property }: { property: Property }) {
           {property.tagline}
         </h1>
 
-        <p className="mt-6 text-base leading-relaxed text-foreground">
-          {property.description}
-        </p>
+        <p className="mt-6 text-base leading-relaxed text-foreground">{property.description}</p>
 
         <p className="mt-6 font-medium text-primary">{facts}</p>
 
         <Button
-          render={<Link href={bookNowHref} />}
+          render={
+            <Link href={bookNowHref} data-track="book_now_click" data-track-location="hero" />
+          }
           nativeButton={false}
           className="mt-8 h-auto rounded-none px-8 py-3 font-heading text-base"
         >

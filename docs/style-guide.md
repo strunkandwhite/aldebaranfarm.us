@@ -9,12 +9,12 @@ CSS uses OKLCH approximations — **confirm/fine-tune against Figma** as pages a
 
 ## Colors
 
-| Name     | Hex       | CSS value               | Semantic role                                  | Utility           |
-| -------- | --------- | ----------------------- | ---------------------------------------------- | ----------------- |
+| Name     | Hex       | CSS value               | Semantic role                                                | Utility          |
+| -------- | --------- | ----------------------- | ------------------------------------------------------------ | ---------------- |
 | Burgundy | `#770A15` | `#770a15`               | `--foreground`, `--primary`, `--ring` (text, buttons, links) | `brand-burgundy` |
-| Cream    | `#F4EDE1` | `oklch(0.955 0.012 85)` | `--background`, `--card`                       | `brand-cream`     |
-| Sand     | `#E6DAC6` | `oklch(0.89 0.022 80)`  | `--secondary`, image frames, borders           | `brand-sand`      |
-| Sage     | `#6C7F63` | `oklch(0.56 0.045 135)` | `--accent`                                     | `brand-sage`      |
+| Cream    | `#F4EDE1` | `oklch(0.955 0.012 85)` | `--background`, `--card`                                     | `brand-cream`    |
+| Sand     | `#E6DAC6` | `oklch(0.89 0.022 80)`  | `--secondary`, image frames, borders                         | `brand-sand`     |
+| Sage     | `#6C7F63` | `oklch(0.56 0.045 135)` | `--accent`                                                   | `brand-sage`     |
 
 - **All text is `#770A15` (burgundy) by default** — both `--foreground` (body) and
   `--primary` (headings, links, button fill) are set to it. Use a different text color only
@@ -23,13 +23,13 @@ CSS uses OKLCH approximations — **confirm/fine-tune against Figma** as pages a
 
 ## Typography
 
-| Style          | Font              | Size  | Usage                    |
-| -------------- | ----------------- | ----- | ------------------------ |
-| Homepage title | Playfair Display  | 60pt  | Home hero wordmark       |
-| Header         | Playfair Display  | 40pt  | Page titles (`PageTitle`)|
-| Subheader      | Playfair Display  | 28pt  | Section headings         |
-| Menu links     | Playfair Display  | 20pt  | Nav                      |
-| Body           | System sans*      | 16pt  | Paragraph text           |
+| Style          | Font             | Size | Usage                     |
+| -------------- | ---------------- | ---- | ------------------------- |
+| Homepage title | Playfair Display | 60pt | Home hero wordmark        |
+| Header         | Playfair Display | 40pt | Page titles (`PageTitle`) |
+| Subheader      | Playfair Display | 28pt | Section headings          |
+| Menu links     | Playfair Display | 20pt | Nav                       |
+| Body           | Helvetica Neue*  | 16pt | Paragraph text            |
 
 - Headings → `--font-heading` (Playfair Display, loaded via `next/font/google`).
   `h1–h4` default to it in the base layer; use `font-heading` elsewhere.

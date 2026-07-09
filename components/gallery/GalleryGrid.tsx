@@ -5,6 +5,7 @@ import Image from "next/image";
 import { Dialog } from "@base-ui/react/dialog";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
 
+import { EVENTS, trackEvent } from "@/lib/analytics";
 import { imageUrl } from "@/lib/images";
 import { SectionHeading } from "@/components/layout/SectionHeading";
 import type { GalleryCategory } from "@/content/gallery";
@@ -22,20 +23,20 @@ export function GalleryGrid({ categories }: { categories: GalleryCategory[] }) {
   const open = index !== null;
 
   // Global index offset where each category begins in the flattened list.
+  const offsets: number[] = [];
   let running = 0;
-  const offsets = categories.map((c) => {
-    const off = running;
+  for (const c of categories) {
+    offsets.push(running);
     running += c.images.length;
-    return off;
-  });
+  }
 
   const prev = useCallback(
     () => setIndex((i) => (i === null ? i : (i - 1 + flat.length) % flat.length)),
-    [flat.length],
+    [flat.length]
   );
   const next = useCallback(
     () => setIndex((i) => (i === null ? i : (i + 1) % flat.length)),
-    [flat.length],
+    [flat.length]
   );
 
   useEffect(() => {
@@ -67,7 +68,10 @@ export function GalleryGrid({ categories }: { categories: GalleryCategory[] }) {
               <button
                 key={img.src}
                 type="button"
-                onClick={() => setIndex(offsets[ci] + ii)}
+                onClick={() => {
+                  setIndex(offsets[ci] + ii);
+                  trackEvent(EVENTS.galleryPhotoOpen, { category: cat.title });
+                }}
                 aria-label={`View ${img.alt}`}
                 className="group relative aspect-[4/3] cursor-pointer overflow-hidden focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
               >
@@ -75,6 +79,11 @@ export function GalleryGrid({ categories }: { categories: GalleryCategory[] }) {
                   src={imageUrl(img.src)}
                   alt={img.alt}
                   fill
+                  quality={60}
+                  // The first row is above the fold and contains the page's
+                  // LCP element — load it eagerly at high priority.
+                  priority={offsets[ci] + ii < 4}
+                  fetchPriority={offsets[ci] + ii < 4 ? "high" : undefined}
                   sizes="(min-width: 1024px) 25vw, (min-width: 640px) 33vw, 50vw"
                   className="object-cover transition-transform duration-300 group-hover:scale-105"
                 />
@@ -109,7 +118,6 @@ export function GalleryGrid({ categories }: { categories: GalleryCategory[] }) {
                   fill
                   sizes="(min-width: 1024px) 1024px, 100vw"
                   className="object-contain"
-                  priority
                 />
               </div>
             )}

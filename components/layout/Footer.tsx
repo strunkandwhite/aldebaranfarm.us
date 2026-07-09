@@ -44,7 +44,10 @@ export function Footer() {
             </ExternalLink>
           </p>
           <p className="text-sm text-foreground">
-            <a href="mailto:aldebaran.farm.rental@gmail.com" className="underline-offset-4 hover:underline">
+            <a
+              href="mailto:aldebaran.farm.rental@gmail.com"
+              className="underline-offset-4 hover:underline"
+            >
               aldebaran.farm.rental@gmail.com
             </a>{" "}
             &middot;{" "}
@@ -61,10 +64,7 @@ export function Footer() {
           <ul className="flex flex-col gap-2 text-sm sm:items-end">
             {footerLinks.map((link) => (
               <li key={link.href}>
-                <Link
-                  href={link.href}
-                  className="text-primary underline-offset-4 hover:underline"
-                >
+                <Link href={link.href} className="text-primary underline-offset-4 hover:underline">
                   {link.label}
                 </Link>
               </li>
@@ -74,9 +74,7 @@ export function Footer() {
       </Container>
 
       <Container className="mt-8">
-        <p className="text-xs text-foreground">
-          &copy; {new Date().getFullYear()} Aldebaran Farm
-        </p>
+        <p className="text-xs text-foreground">&copy; {new Date().getFullYear()} Aldebaran Farm</p>
       </Container>
     </footer>
   );

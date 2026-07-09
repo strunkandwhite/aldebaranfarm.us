@@ -9,6 +9,8 @@ touching components.
 - **`images/`** — `imageUrl()` path helper. Swap local → CDN here.
 - **`booking/`** — booking layer. Email-to-book today; direct booking + Airbnb/
   VRBO calendar sync later (stubs present).
+- **`analytics/`** — `trackEvent()` / `EVENTS`. The only caller of
+  `@vercel/analytics`'s `track()`; swap vendors here.
 - **`utils.ts`** — shared helpers (`cn()` for Tailwind class merging, used by
   shadcn/ui).
 

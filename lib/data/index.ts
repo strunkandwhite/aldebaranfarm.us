@@ -46,7 +46,7 @@ export async function getProperty(): Promise<Property> {
  * the equivalent check on the API response.
  */
 function assertValidFrontmatter(
-  fm: Partial<PropertyFrontmatter>,
+  fm: Partial<PropertyFrontmatter>
 ): asserts fm is PropertyFrontmatter {
   const required: (keyof PropertyFrontmatter)[] = [
     "slug",
@@ -59,20 +59,17 @@ function assertValidFrontmatter(
     "maxGuests",
     "beds",
     "amenities",
-    "houseRules",
     "history",
     "images",
-    "airbnbUrl",
-    "vrboUrl",
     "contactEmail",
     "contactPhone",
+    "airbnbUrl",
+    "vrboUrl",
   ];
 
   const missing = required.filter((key) => fm[key] === undefined);
   if (missing.length > 0) {
-    throw new Error(
-      `content/property.md is missing required field(s): ${missing.join(", ")}`,
-    );
+    throw new Error(`content/property.md is missing required field(s): ${missing.join(", ")}`);
   }
 
   if (!Array.isArray(fm.images) || fm.images.length === 0) {
@@ -81,9 +78,7 @@ function assertValidFrontmatter(
 
   for (const image of fm.images as PropertyImage[]) {
     if (!image.src || !image.alt) {
-      throw new Error(
-        "Every image in content/property.md needs both `src` and `alt`.",
-      );
+      throw new Error("Every image in content/property.md needs both `src` and `alt`.");
     }
   }
 }

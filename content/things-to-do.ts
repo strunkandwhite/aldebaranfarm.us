@@ -31,11 +31,20 @@ export const outdoors = {
       body: [
         { text: "Tower Hill State Park", href: "https://www.stateparks.com/tower_hill.html" },
         " is close by and has trails leading up to the old Shot Tower, with views over the Wisconsin River bluffs. ",
-        { text: "Governor Dodge State Park", href: "https://dnr.wisconsin.gov/topic/parks/govdodge" },
+        {
+          text: "Governor Dodge State Park",
+          href: "https://dnr.wisconsin.gov/topic/parks/govdodge",
+        },
         ", one of the state's largest, has nearly 40 miles of trails winding past two lakes and a waterfall at Stephens Falls. ",
-        { text: "White Mound County Park", href: "https://www.co.sauk.wi.us/parksandrecreation/white-mound-county-park" },
+        {
+          text: "White Mound County Park",
+          href: "https://www.co.sauk.wi.us/parksandrecreation/white-mound-county-park",
+        },
         ", the largest park in Sauk County, has an easy lakeside trail that's good for families. ",
-        { text: "Devil's Lake State Park", href: "https://dnr.wisconsin.gov/topic/parks/devilslake" },
+        {
+          text: "Devil's Lake State Park",
+          href: "https://dnr.wisconsin.gov/topic/parks/devilslake",
+        },
         " is a bit further out but worth the drive, with quartzite bluffs rising above the water.",
       ],
     },
@@ -51,7 +60,10 @@ export const outdoors = {
         "The Wisconsin River is typically slow-moving and gentle, with no rapids along its length, so it suits paddlers of any experience level. A couple of local outfitters handle rentals and shuttle service, so you don't need to bring your own boat: ",
         { text: "Wisconsin Canoe Company", href: "https://thebestcanoecompanyever.com/" },
         " and ",
-        { text: "Wisconsin Riverside Resort", href: "https://www.wiriverside.com/canoes-tubes-kayaks/" },
+        {
+          text: "Wisconsin Riverside Resort",
+          href: "https://www.wiriverside.com/canoes-tubes-kayaks/",
+        },
         ", both based in Spring Green.",
       ],
     },

@@ -15,7 +15,7 @@ export function PageTitle({
     <h1
       className={cn(
         "text-center font-heading text-[32px] leading-tight text-primary sm:text-[40px]",
-        className,
+        className
       )}
     >
       {children}

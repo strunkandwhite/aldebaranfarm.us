@@ -8,22 +8,12 @@
    DESIGN TOKENS
    --------------------------------------------------------------------------
    This project uses Tailwind v4, where the theme is configured HERE in CSS
-   (via `@theme`) rather than in a `tailwind.config.js`. shadcn/ui generated the
-   semantic color / radius tokens below (`--primary`, `--radius`, etc.) as a
-   neutral, grayscale STARTING POINT.
-
-   >>> BRAND TOKENS GO HERE <<<  (fill in when the style guide lands)
-   When you have the brand palette, type, and spacing:
-     • Colors  — override the color variables in the `:root` (light) and `.dark`
-                 blocks further down. They're OKLCH; keep both light + dark.
-     • Fonts   — swap the Geist fonts in `app/layout.tsx` (they feed
-                 `--font-sans` / `--font-mono` below). Add `--font-heading` if
-                 the brand uses a separate display face.
-     • Spacing — add named brand spacing tokens in the `@theme` block below
-                 (see the reserved `--spacing-brand-*` placeholders).
-     • Radii   — adjust `--radius` in `:root`; the `--radius-*` scale derives
-                 from it automatically.
-   See `docs/style-guide.md` for the checklist.
+   (via `@theme`) rather than in a `tailwind.config.js`. The Aldebaran Farm
+   brand tokens (palette, spacing, radius) live in the blocks below; fonts are
+   wired in `app/layout.tsx` (they feed `--font-sans` / `--font-heading`).
+   The shadcn/ui semantic tokens (`--primary`, `--radius`, …) in `:root` are
+   mapped onto the brand palette so the component library themes itself.
+   See `docs/style-guide.md` for the source values and usage rules.
    ========================================================================== */
 
 @theme inline {
@@ -176,7 +166,10 @@
   html {
     @apply font-sans;
   }
-  h1, h2, h3, h4 {
+  h1,
+  h2,
+  h3,
+  h4 {
     @apply font-heading;
   }
   /* Visible keyboard focus for interactive elements (mouse focus stays clean). */

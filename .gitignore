@@ -13,8 +13,8 @@
 # testing
 /coverage
 
-# next.js
-/.next/
+# next.js (anywhere, not just the repo root — stray .next dirs have slipped in)
+.next/
 /out/
 
 # production

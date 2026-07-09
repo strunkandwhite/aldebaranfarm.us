@@ -1,11 +1,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
+import { buildInquiryMailtoUrl } from "@/lib/booking";
 import { getProperty } from "@/lib/data";
 import { Container } from "@/components/layout/Container";
 import { PageTitle } from "@/components/layout/PageTitle";
 import { SectionHeading } from "@/components/layout/SectionHeading";
 import { RateTable } from "@/components/property/RateTable";
+import { AirbnbLink } from "@/components/property/AirbnbLink";
+import { VrboLink } from "@/components/property/VrboLink";
 import {
   reservationIntro,
   peakDefinition,
@@ -38,18 +41,20 @@ export default async function ReservationsPage() {
         <p>{reservationIntro}</p>
 
         <p className="mt-4">
-          <span className="font-semibold">Email:</span>{" "}
+          <span className="font-bold">Email:</span>{" "}
           <a
-            href={`mailto:${property.contactEmail}`}
+            href={buildInquiryMailtoUrl(property)}
+            data-track="inquiry_email_click"
             className="underline underline-offset-4 hover:opacity-70"
           >
             {property.contactEmail}
           </a>
         </p>
         <p className="mt-2">
-          <span className="font-semibold">Phone:</span>{" "}
+          <span className="font-bold">Phone:</span>{" "}
           <a
             href={telHref}
+            data-track="inquiry_phone_click"
             className="underline underline-offset-4 hover:opacity-70"
           >
             {property.contactPhone}
@@ -57,15 +62,26 @@ export default async function ReservationsPage() {
         </p>
 
         <p className="mt-6">
+          <span className="font-bold">Airbnb:</span>
+        </p>
+        <div className="mt-3 flex flex-col items-start gap-4 sm:flex-row sm:items-center">
+          <AirbnbLink property={property} />
+        </div>
+
+        <p className="mt-6">
+          <span className="font-bold">Vrbo:</span>
+        </p>
+        <div className="mt-3 flex flex-col items-start gap-4 sm:flex-row sm:items-center">
+          <VrboLink property={property} />
+        </div>
+
+        <p className="mt-6">
           Please read through our{" "}
-          <Link
-            href="/faqs"
-            className="underline underline-offset-4 hover:opacity-70"
-          >
+          <Link href="/faqs" className="underline underline-offset-4 hover:opacity-70">
             FAQs
           </Link>{" "}
-          before reserving — it covers house rules, what&apos;s provided, and
-          other details worth knowing ahead of time.
+          before reserving — it covers house rules, what&apos;s provided, and other details worth
+          knowing ahead of time.
         </p>
 
         <SectionHeading className="mt-12">Rates</SectionHeading>
@@ -75,7 +91,7 @@ export default async function ReservationsPage() {
 
         <p className="mt-6">{taxNote}</p>
 
-        <p className="mt-8 font-semibold">Cancellation Policy</p>
+        <p className="mt-8 font-bold">Cancellation Policy</p>
         <p className="mt-1 leading-relaxed">{cancellationPolicy}</p>
       </div>
     </Container>

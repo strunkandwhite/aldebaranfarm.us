@@ -12,16 +12,16 @@ content · local images · deployed on Vercel.
 ## Design system
 
 From the style-guide mock. Theme is configured in `app/globals.css` (`@theme`) with fonts in
-`app/layout.tsx`. See the `>>> BRAND TOKENS GO HERE <<<` marker.
+`app/layout.tsx`. See `docs/style-guide.md` for the shipped values.
 
 ### Colors (starter hex — confirm against Figma tokens)
 
-| Token           | Approx. value | Use                                                  |
-| --------------- | ------------- | ---------------------------------------------------- |
-| `brand.burgundy`| `#7A0C1C`     | Headings, nav text, links, "Book Now" button         |
-| `brand.cream`   | `#F4EDE1`     | Page background                                       |
-| `brand.sand`    | `#E6DAC6`     | Image frames / offset shadow blocks                  |
-| `brand.sage`    | `#6C7F63`     | Secondary accent                                     |
+| Token            | Approx. value | Use                                          |
+| ---------------- | ------------- | -------------------------------------------- |
+| `brand.burgundy` | `#7A0C1C`     | Headings, nav text, links, "Book Now" button |
+| `brand.cream`    | `#F4EDE1`     | Page background                              |
+| `brand.sand`     | `#E6DAC6`     | Image frames / offset shadow blocks          |
+| `brand.sage`     | `#6C7F63`     | Secondary accent                             |
 
 ### Typography
 
@@ -32,6 +32,16 @@ From the style-guide mock. Theme is configured in `app/globals.css` (`@theme`) w
 ---
 
 ## Font strategy (Helvetica Neue)
+
+> **Outcome:** the site shipped with Option 2's mechanics but not its license —
+> self-hosted `HelveticaNeue-*.woff2` files (extracted from the macOS `.ttc`)
+> load via `next/font/local` in `app/layout.tsx`, with the Option 1 system
+> stack as fallback. A web-embedding license has **not** been confirmed; this
+> must be resolved (buy the license, or drop the files and rely on the system
+> stack) before the licensing risk is acceptable for production. See
+> `docs/style-guide.md`.
+
+Original analysis, kept for context:
 
 Helvetica Neue is a proprietary Monotype/Linotype typeface. The copy installed on macOS is
 licensed for local use **only** — it does **not** include web-embedding rights. Self-hosting
@@ -59,14 +69,14 @@ Shared header on every page:
 `The House` · `Things To Do` · **Aldebaran Farm** (centered logo → `/`) · `FAQs` ·
 **Book Now** (→ `/reservations`).
 
-| Route            | Page                              |
-| ---------------- | --------------------------------- |
-| `/`              | Home                              |
-| `/house`         | The House — details, amenities, history |
-| `/gallery`       | Gallery — photos grouped by room  |
-| `/things-to-do`  | Things To Do                      |
-| `/faqs`          | FAQs                              |
-| `/reservations`  | Rates & Reservations (Book Now)   |
+| Route           | Page                                    |
+| --------------- | --------------------------------------- |
+| `/`             | Home                                    |
+| `/house`        | The House — details, amenities, history |
+| `/gallery`      | Gallery — photos grouped by room        |
+| `/things-to-do` | Things To Do                            |
+| `/faqs`         | FAQs                                    |
+| `/reservations` | Rates & Reservations (Book Now)         |
 
 ---
 
@@ -105,12 +115,14 @@ considered.
 ## Pages
 
 ### 1. Home (`/`)
+
 Two-column hero: `FramedImage` (property/path photo) + intro block — "A Historic Retreat in
 Spring Green", description, `Sleeps 11 • 4 Bedrooms • 1 Lofted Bed • 2 Bathrooms`, Book Now CTA.
 
 ### 2. The House (`/house`)
+
 - **Details & Amenities** — bed configuration + amenities list + "Please note there is NO TV"
-  + "View Gallery →" link.
+  - "View Gallery →" link.
 - Property photo (`FramedImage`).
 - **History** — 3 paragraphs + historic sepia photo.
 - Bed config: Sleeps 11 / 4 bedrooms / 1 lofted bed / 2 full baths — Downstairs Bedroom 1
@@ -121,21 +133,25 @@ Spring Green", description, `Sleeps 11 • 4 Bedrooms • 1 Lofted Bed • 2 Bat
   Wood-burning fireplace, Outdoor barbecue grills, Outdoor firepit, Books & board games. NO TV.
 
 ### 3. Gallery (`/gallery`)
+
 - `GalleryGrid` grouped by **category** (Kitchen, Downstairs Full Bath, Living Room/Dining
   Room, Downstairs Bedroom 1, …). Data-driven so dropping photos into a category folder makes
   them appear — no per-photo layout work (handles the incomplete mock).
 - `Lightbox` on click (recommended; not in mock but expected).
 
 ### 4. Things To Do (`/things-to-do`)
+
 - **In Town**, **The Outdoors** (Hiking / Biking / Kayaking & Canoeing / Tubing / Fishing with
   outbound links), **Architecture & Theater** — mixed text + `FramedImage`. Google Maps link
   at the bottom.
 
 ### 5. FAQs (`/faqs`)
+
 - Grouped Q&A: **Booking & Stay**, **Location**, **The House**, **House Rules** — rendered
   from a data file via `QAItem`.
 
 ### 6. Rates & Reservations (`/reservations`)
+
 - Contact block — email `aldebaran.farm.rental@gmail.com` (mailto), phone `(312) 401-2484`
   (tel). Address: 6557 County T, Spring Green, WI.
 - `RateTable` — Peak / Off-Peak columns:
@@ -182,7 +198,8 @@ plus `/public/images/hero`, `/history`, `/things-to-do`, `/brand`. Served via `n
 
 ## Open items
 
-- **Font decision** (see Font strategy) — default Option 1 unless told otherwise.
+- **Font license** (see Font strategy outcome) — self-hosted Helvetica Neue
+  shipped; web-embedding license still unconfirmed.
 - **Mobile designs** — mocks are desktop only; responsive behavior uses sensible defaults
   unless mobile layouts are provided.
 - **Photo upload** — organize source photos by room category for the gallery.

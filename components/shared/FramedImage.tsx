@@ -63,6 +63,10 @@ export function FramedImage({
           alt={alt}
           fill
           priority={priority}
+          // `priority` alone doesn't set the browser fetch priority; hint it
+          // explicitly so the LCP image wins bandwidth over scripts/styles.
+          fetchPriority={priority ? "high" : undefined}
+          quality={priority ? 50 : 60}
           sizes={sizes}
           className="object-cover"
         />

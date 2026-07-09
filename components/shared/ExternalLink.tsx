@@ -11,7 +11,7 @@ export function ExternalLink({
   ...props
 }: React.ComponentPropsWithoutRef<"a"> & { href: string }) {
   return (
-    <a href={href} target="_blank" rel="noopener noreferrer" {...props}>
+    <a href={href} target="_blank" rel="noopener noreferrer" data-track="outbound_click" {...props}>
       {children}
     </a>
   );

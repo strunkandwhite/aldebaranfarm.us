@@ -41,7 +41,7 @@ export default function ThingsToDoPage() {
           <div className="mt-6 space-y-5">
             {outdoors.activities.map((activity) => (
               <div key={activity.name}>
-                <p className="font-semibold">{activity.name}</p>
+                <p className="font-bold">{activity.name}</p>
                 <p className="mt-1 leading-relaxed">
                   <RichText runs={activity.body} />
                 </p>

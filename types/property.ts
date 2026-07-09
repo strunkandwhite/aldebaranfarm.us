@@ -19,7 +19,7 @@ export interface PropertyLocation {
 
 export interface PropertyImage {
   /**
-   * Path RELATIVE TO /public, e.g. "/images/property/living-room.jpg".
+   * Path RELATIVE TO /public, e.g. "/images/property/living-room.png".
    * Never reference this directly in a component — pass it through
    * `imageUrl()` from `lib/images` so a future move to a CDN is one change.
    */
@@ -54,18 +54,22 @@ export interface Property {
   /** Sleeping arrangements — one line per bed/room, shown on The House page. */
   beds: string[];
   amenities: string[];
-  houseRules: string[];
   /** Long-form property history — one entry per paragraph (The House page). */
   history: string[];
   images: PropertyImage[];
-
-  /** Outbound link to the property's Airbnb listing. */
-  airbnbUrl: string;
-  /** Outbound link to the property's VRBO listing. */
-  vrboUrl: string;
 
   /** Owner inbox for "email to book" inquiries (used to build a mailto link). */
   contactEmail: string;
   /** Owner phone for booking inquiries (used to build a tel link). */
   contactPhone: string;
+  /**
+   * The property's Airbnb listing URL, e.g. "https://www.airbnb.com/rooms/30441325".
+   * Used to build both a direct link and the official Airbnb embed widget.
+   */
+  airbnbUrl: string;
+  /**
+   * The property's Vrbo listing URL, e.g. "https://www.vrbo.com/1893752".
+   * Used to build a direct link (Vrbo has no confirmed official embed widget).
+   */
+  vrboUrl: string;
 }
