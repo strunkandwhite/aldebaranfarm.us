@@ -3,7 +3,6 @@ import Image from "next/image";
 
 import { Container } from "./Container";
 import { leftNavLinks, rightNavLinks, bookNowHref } from "./Nav";
-import { ReviewsBadge } from "@/components/reviews/ReviewsBadge";
 import { ExternalLink } from "@/components/shared/ExternalLink";
 import { imageUrl } from "@/lib/images";
 
@@ -52,9 +51,6 @@ export function Footer() {
               (312) 401-2484
             </a>
           </p>
-          <div className="mt-3">
-            <ReviewsBadge />
-          </div>
         </div>
 
         <nav aria-label="Footer">
