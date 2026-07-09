@@ -7,10 +7,14 @@ import type { Property } from "@/types/property";
  * is `buildInquiryMailtoUrl()`, which the reservations page uses to open the
  * guest's mail client with a pre-filled inquiry.
  *
+ * ALSO LIVE: the reservations page offers a secondary, off-site path directly
+ * to the property's Airbnb listing (see `AirbnbLink`/`AirbnbEmbed` in
+ * `components/property`), alongside the mailto flow above.
+ *
  * FUTURE: direct booking + Airbnb/VRBO calendar sync is a future concern that
  * will live in this module when built. The intended surface is described in
- * `docs/architecture.md` — we never send guests off-site to book; platform
- * listings matter only as calendars to sync against.
+ * `docs/architecture.md`; platform listings matter here as calendars to sync
+ * against.
  */
 
 // ---------------------------------------------------------------------------
