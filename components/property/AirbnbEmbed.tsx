@@ -35,7 +35,7 @@ export function AirbnbEmbed({ property }: { property: Property }) {
       data-id={listingId}
       data-view="home"
       data-hide-price="true"
-      style={{ width: 450, height: 300, margin: "auto" }}
+      style={{ width: 450, maxWidth: "100%", height: 300, margin: "auto" }}
     >
       <ExternalLink href={fallbackHref} data-track-destination="airbnb">
         View On Airbnb

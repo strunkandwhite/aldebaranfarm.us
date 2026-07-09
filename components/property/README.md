@@ -11,3 +11,7 @@ content or know where the data came from.
 - **`History.tsx`** — The House: history paragraphs + historic photo.
 - **`RateTable.tsx`** — Reservations: the Peak/Off-Peak rate table (rows come
   from `content/rates.ts`).
+- **`AirbnbLink.tsx`** — Reservations: a button that opens the property's
+  Airbnb listing in a new tab (reuses `components/shared/ExternalLink`).
+- **`AirbnbEmbed.tsx`** — Reservations: Airbnb's official embed widget,
+  reproduced as JSX; derives the listing ID from `property.airbnbUrl`.

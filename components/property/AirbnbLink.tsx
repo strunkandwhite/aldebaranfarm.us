@@ -13,7 +13,6 @@ import type { Property } from "@/types/property";
 export function AirbnbLink({ property }: { property: Property }) {
   return (
     <Button
-      variant="outline"
       nativeButton={false}
       render={<ExternalLink href={property.airbnbUrl} data-track-destination="airbnb" />}
     >

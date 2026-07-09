@@ -46,13 +46,12 @@ Each is the single point of change for its concern.
 Today booking is deliberately low-tech:
 
 - `lib/booking.buildInquiryMailtoUrl(property)` builds a `mailto:` link to the
-  owner, used by the reservations page. This remains the primary,
-  commission-free "make a booking" path.
-- The reservations page also offers a secondary, off-site path directly to the
-  property's **Airbnb** listing (`property.airbnbUrl`) — a custom link plus
-  Airbnb's official embed widget, both opening in a new tab. This is a
-  deliberate exception to keeping guests on-site, trialed starting
-  2026-07-09 (see
+  owner, used by the reservations page. It's commission-free for the guest.
+- The reservations page also presents a direct link to the property's
+  **Airbnb** listing (`property.airbnbUrl`) — a custom link plus Airbnb's
+  official embed widget, both opening in a new tab — as an equally-weighted
+  third way to book, alongside email and phone. This is a deliberate
+  exception to keeping guests on-site, trialed starting 2026-07-09 (see
   `docs/superpowers/specs/2026-07-09-airbnb-booking-option-design.md`). The
   **VRBO** listing exists but isn't linked from the site; both platform
   listings still matter as calendars to keep in sync.

@@ -61,7 +61,9 @@ export default async function ReservationsPage() {
           </a>
         </p>
 
-        <p className="mt-6 font-bold">Or book directly on Airbnb:</p>
+        <p className="mt-6">
+          <span className="font-bold">Airbnb:</span>
+        </p>
         <div className="mt-3 flex flex-col items-start gap-4 sm:flex-row sm:items-center">
           <AirbnbLink property={property} />
           <AirbnbEmbed property={property} />
