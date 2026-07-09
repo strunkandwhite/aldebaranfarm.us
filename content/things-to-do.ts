@@ -94,6 +94,9 @@ export const architecture = {
 
 export const mapCta: TextRun[] = [
   "For a full list of recommendations, here's a ",
-  { text: "google map", href: "https://maps.app.goo.gl/wTCEa937xL92YzRt5" },
+  {
+    text: "google map",
+    href: "https://www.google.com/maps/d/viewer?mid=1Pir8XA5ZBdTADb010WpOWV1a0W2qGUQ&ehbc=2E312F",
+  },
   " of our favorite spots.",
 ];

@@ -41,11 +41,18 @@ export function GalleryGrid({ categories }: { categories: GalleryCategory[] }) {
   useEffect(() => {
     if (!open) return;
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === "ArrowLeft") prev();
-      else if (e.key === "ArrowRight") next();
+      if (e.key === "ArrowLeft") {
+        e.preventDefault();
+        prev();
+      } else if (e.key === "ArrowRight") {
+        e.preventDefault();
+        next();
+      }
     };
-    window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
+    // Listen in the capture phase: Base UI's Dialog stops keydown propagation
+    // before it reaches the bubble phase, so a bubble-phase listener never fires.
+    window.addEventListener("keydown", onKey, true);
+    return () => window.removeEventListener("keydown", onKey, true);
   }, [open, prev, next]);
 
   const current = index !== null ? flat[index] : null;
@@ -62,7 +69,7 @@ export function GalleryGrid({ categories }: { categories: GalleryCategory[] }) {
                 type="button"
                 onClick={() => setIndex(offsets[ci] + ii)}
                 aria-label={`View ${img.alt}`}
-                className="group relative aspect-[4/3] overflow-hidden focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+                className="group relative aspect-[4/3] cursor-pointer overflow-hidden focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
               >
                 <Image
                   src={imageUrl(img.src)}

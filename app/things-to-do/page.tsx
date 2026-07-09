@@ -81,12 +81,28 @@ export default function ThingsToDoPage() {
         </div>
       </section>
 
-      {/* Recommendations map link */}
-      <div className="pb-16 pt-4 text-center">
-        <p className="leading-relaxed">
+      {/* Recommendations map — link + embedded Google My Maps */}
+      <section className="pb-16 pt-4">
+        <p className="text-center leading-relaxed">
           <RichText runs={mapCta} />
         </p>
-      </div>
+        {/*
+          The My Maps embed has a ~67px header bar showing the map's title and
+          author (name + avatar) that Google gives no option to hide. We crop it
+          off: a fixed-height overflow-hidden box with the iframe made taller and
+          shifted up by the header height, so the header is clipped while the map
+          fills the frame. Google's "©Google / Terms" attribution stays visible
+          at the bottom.
+        */}
+        <div className="relative mt-6 h-[480px] overflow-hidden rounded-lg border border-border">
+          <iframe
+            src="https://www.google.com/maps/d/embed?mid=1Pir8XA5ZBdTADb010WpOWV1a0W2qGUQ&ehbc=2E312F"
+            title="Map of our favorite spots around Aldebaran Farm"
+            loading="lazy"
+            className="absolute inset-x-0 -top-[68px] h-[548px] w-full border-0"
+          />
+        </div>
+      </section>
     </Container>
   );
 }

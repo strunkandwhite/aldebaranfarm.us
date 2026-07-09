@@ -31,8 +31,6 @@ beds:
   - Upstairs Bedroom 1 - full bed + twin bed
   - Upstairs Bedroom 2 - queen bed + twin bed
   - Upstairs loft - twin bed
-  - Screened sleeping porch - twin bed (not included in sleep count)
-
 amenities:
   - Solar Power
   - Central A/C

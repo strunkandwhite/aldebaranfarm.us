@@ -24,7 +24,7 @@ export function Hero({ property }: { property: Property }) {
   ].join(" • ");
 
   return (
-    <section className="grid items-center gap-8 py-12 md:grid-cols-[22rem_1fr] md:gap-12 md:py-20 lg:gap-16">
+    <section className="grid items-center gap-8 pt-12 pb-8 md:grid-cols-[22rem_1fr] md:gap-12 md:pt-20 md:pb-12 lg:gap-16">
       <FramedImage
         src={lead.src}
         alt={lead.alt}

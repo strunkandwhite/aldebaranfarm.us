@@ -23,18 +23,13 @@ export const galleryCategories: GalleryCategory[] = [
     title: "Exterior & Grounds",
     slug: "exterior",
     images: [
-      { src: "/images/gallery/exterior/tz-37.jpg", alt: "Exterior & Grounds at Aldebaran Farm" },
-      { src: "/images/gallery/exterior/tz-38.jpg", alt: "Exterior & Grounds at Aldebaran Farm" },
-      { src: "/images/gallery/exterior/tz-39.jpg", alt: "Exterior & Grounds at Aldebaran Farm" },
-      { src: "/images/gallery/exterior/tz-36.jpg", alt: "Exterior & Grounds at Aldebaran Farm" },
-      { src: "/images/gallery/exterior/tz-41.jpg", alt: "Exterior & Grounds at Aldebaran Farm" },
-      { src: "/images/gallery/exterior/tz-42.jpg", alt: "Exterior & Grounds at Aldebaran Farm" },
-      { src: "/images/gallery/exterior/tz-43.jpg", alt: "Exterior & Grounds at Aldebaran Farm" },
-      { src: "/images/gallery/exterior/tz-47.jpg", alt: "Exterior & Grounds at Aldebaran Farm" },
       { src: "/images/gallery/exterior/tz-40.jpg", alt: "Exterior & Grounds at Aldebaran Farm" },
+      { src: "/images/gallery/exterior/tz-42.jpg", alt: "Exterior & Grounds at Aldebaran Farm" },
+      { src: "/images/gallery/exterior/tz-37.jpg", alt: "Exterior & Grounds at Aldebaran Farm" },
+      { src: "/images/gallery/exterior/tz-39.jpg", alt: "Exterior & Grounds at Aldebaran Farm" },
+      { src: "/images/gallery/exterior/tz-41.jpg", alt: "Exterior & Grounds at Aldebaran Farm" },
+      { src: "/images/gallery/exterior/tz-47.jpg", alt: "Exterior & Grounds at Aldebaran Farm" },
       { src: "/images/gallery/exterior/tz-44.jpg", alt: "Exterior & Grounds at Aldebaran Farm" },
-      { src: "/images/gallery/exterior/tz-45.jpg", alt: "Exterior & Grounds at Aldebaran Farm" },
-      { src: "/images/gallery/exterior/tz-46.jpg", alt: "Exterior & Grounds at Aldebaran Farm" },
     ],
   },
   {
@@ -105,13 +100,6 @@ export const galleryCategories: GalleryCategory[] = [
       { src: "/images/gallery/upstairs-loft/tz-24.jpg", alt: "Upstairs Loft at Aldebaran Farm" },
       { src: "/images/gallery/upstairs-loft/tz-25.jpg", alt: "Upstairs Loft at Aldebaran Farm" },
       { src: "/images/gallery/upstairs-loft/tz-26.jpg", alt: "Upstairs Loft at Aldebaran Farm" },
-    ],
-  },
-  {
-    title: "Screened Porch",
-    slug: "screened-porch",
-    images: [
-      { src: "/images/gallery/screened-porch/tz-35.jpg", alt: "Screened Porch at Aldebaran Farm" },
     ],
   },
 ];
