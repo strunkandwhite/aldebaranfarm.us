@@ -7,9 +7,10 @@ import type { Property } from "@/types/property";
  * is `buildInquiryMailtoUrl()`, which the reservations page uses to open the
  * guest's mail client with a pre-filled inquiry.
  *
- * ALSO LIVE: the reservations page also presents a direct path to the
+ * ALSO LIVE: the reservations page also presents direct paths to the
  * property's Airbnb listing (see `AirbnbLink`/`AirbnbEmbed` in
- * `components/property`) as an equally-weighted alternative alongside the
+ * `components/property`) and Vrbo listing (see `VrboLink` in
+ * `components/property`) as equally-weighted alternatives alongside the
  * mailto flow above.
  *
  * FUTURE: direct booking + Airbnb/VRBO calendar sync is a future concern that

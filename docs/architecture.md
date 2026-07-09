@@ -50,11 +50,13 @@ Today booking is deliberately low-tech:
 - The reservations page also presents a direct link to the property's
   **Airbnb** listing (`property.airbnbUrl`) — a custom link plus Airbnb's
   official embed widget, both opening in a new tab — as an equally-weighted
-  third way to book, alongside email and phone. This is a deliberate
-  exception to keeping guests on-site, trialed starting 2026-07-09 (see
+  way to book, alongside email and phone. This is a deliberate exception to
+  keeping guests on-site, trialed starting 2026-07-09 (see
   `docs/superpowers/specs/2026-07-09-airbnb-booking-option-design.md`). The
-  **VRBO** listing exists but isn't linked from the site; both platform
-  listings still matter as calendars to keep in sync.
+  reservations page also links directly to the property's **VRBO** listing
+  (`property.vrboUrl`) the same equally-weighted way — VRBO has no confirmed
+  official embed widget, so it's link-only. Both platform listings still
+  matter as calendars to keep in sync.
 
 The goal is direct booking with availability kept in sync across platforms so we
 never double-book. The intended surface, to be built in `lib/booking`:

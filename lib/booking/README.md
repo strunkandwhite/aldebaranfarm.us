@@ -9,9 +9,10 @@ The booking layer. Isolates _how a guest books_ from the rest of the app.
   of "make a booking". Used by the reservations page (`app/reservations`).
 
 Guests can also book directly through the property's Airbnb listing
-(`AirbnbLink`/`AirbnbEmbed` in `components/property`) — presented as an
-equally-weighted alternative alongside `buildInquiryMailtoUrl` above, which
-remains commission-free for the guest. See
+(`AirbnbLink`/`AirbnbEmbed` in `components/property`) or Vrbo listing
+(`VrboLink` in `components/property`) — both presented as equally-weighted
+alternatives alongside `buildInquiryMailtoUrl` above, which remains
+commission-free for the guest. See
 `docs/superpowers/specs/2026-07-09-airbnb-booking-option-design.md`. The
 Airbnb/VRBO listings also matter here as calendars to sync against (below) so
 we don't double-book.

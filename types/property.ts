@@ -67,4 +67,9 @@ export interface Property {
    * Used to build both a direct link and the official Airbnb embed widget.
    */
   airbnbUrl: string;
+  /**
+   * The property's Vrbo listing URL, e.g. "https://www.vrbo.com/1893752".
+   * Used to build a direct link (Vrbo has no confirmed official embed widget).
+   */
+  vrboUrl: string;
 }
