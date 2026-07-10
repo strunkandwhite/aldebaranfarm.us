@@ -7,12 +7,14 @@ The booking layer. Isolates _how a guest books_ from the rest of the app.
 - **`buildInquiryMailtoUrl(property, details?)`** — builds a `mailto:` link that
   pre-fills a booking inquiry to the owner. This is the current implementation
   of "make a booking". Used by the reservations page (`app/reservations`).
+- **`buildInquiryTelUrl(property)`** — builds a `tel:` link for the owner's
+  booking phone line, normalizing any US formatting in the content file to a
+  single E.164 target. Also used by the reservations page.
 
-Guests can also book directly through the property's Airbnb listing
-(`AirbnbLink` in `components/property`) or Vrbo listing (`VrboLink` in
-`components/property`) — both presented as equally-weighted
-alternatives alongside `buildInquiryMailtoUrl` above, which remains
-commission-free for the guest. See
+Direct email/phone booking is commission-free for the guest and gets the best
+rate, so the reservations page leads with it. Below the rates table, the page
+also links out to the property's Airbnb and Vrbo listings (`ListingLink` in
+`components/property`) as secondary paths, presented at higher rates. See
 `docs/superpowers/specs/2026-07-09-airbnb-booking-option-design.md`. The
 Airbnb/VRBO listings also matter here as calendars to sync against (below) so
 we don't double-book.

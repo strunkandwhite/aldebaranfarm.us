@@ -23,7 +23,7 @@ export function Header() {
   return (
     <header className="bg-background">
       <Container className="py-6">
-        {/* Desktop (xl+): full evenly-spaced nav */}
+        {/* Desktop (820px+): full evenly-spaced nav */}
         <nav aria-label="Primary" className="hidden items-center justify-between min-[820px]:flex">
           {leftNavLinks.map((link) => (
             <Link key={link.href} href={link.href} className={navLinkClass}>

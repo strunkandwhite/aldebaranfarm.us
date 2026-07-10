@@ -24,8 +24,8 @@ components/property/*          ← Hero renders the name/tagline/facts; the
 Rules that keep this clean:
 
 - **Only `lib/data` reads content.** No component imports `gray-matter` or
-  touches `content/`. Grep test: `gray-matter` and `content/property.md` should
-  appear only under `lib/data`.
+  touches `content/`. Grep test: `content/property.md` is _imported/read_ only
+  under `lib/data` (doc comments elsewhere may mention it by name).
 - **`types/property.ts` is the contract.** Components depend on the `Property`
   type, not on the file format.
 - **`getProperty()` is `async`** even though reading a local file is sync — so
@@ -46,19 +46,20 @@ Each is the single point of change for its concern.
 Today booking is deliberately low-tech:
 
 - `lib/booking.buildInquiryMailtoUrl(property)` builds a `mailto:` link to the
-  owner, used by the reservations page. It's commission-free for the guest.
-- The reservations page also presents a direct link to the property's
-  **Airbnb** listing (`property.airbnbUrl`), opening in a new tab, as an
-  equally-weighted way to book, alongside email and phone. This is a
-  deliberate exception to keeping guests on-site, trialed starting
-  2026-07-09 (see
+  owner, and `lib/booking.buildInquiryTelUrl(property)` builds a `tel:` link;
+  both are used by the reservations page. Direct booking is commission-free
+  for the guest and gets the best rate, so the reservations page leads with
+  it (email and phone).
+- Below the rates table, the reservations page also links out to the
+  property's **Airbnb** listing (`property.airbnbUrl`) and **VRBO** listing
+  (`property.vrboUrl`) via `ListingLink` (`components/property`), each
+  opening in a new tab, as secondary paths presented at higher rates than
+  direct booking. This steering was trialed starting 2026-07-09 (see
   `docs/superpowers/specs/2026-07-09-airbnb-booking-option-design.md`). An
   earlier version also embedded Airbnb's official listing widget
   (`airbnb_jssdk`), but it was dropped — slow and unreliable in practice — in
-  favor of the link alone. The reservations page also links directly to the
-  property's **VRBO** listing (`property.vrboUrl`) the same equally-weighted,
-  link-only way. Both platform listings still matter as calendars to keep in
-  sync.
+  favor of the link alone. Both platform listings still matter as calendars
+  to keep in sync.
 
 The goal is direct booking with availability kept in sync across platforms so we
 never double-book. The intended surface, to be built in `lib/booking`:
@@ -88,6 +89,16 @@ mailto today, hybrid tomorrow, full direct booking later — same component tree
 Same idea for content. To move off the Markdown file, reimplement
 `lib/data.getProperty()` to fetch from the API/CMS and map the response to
 `Property`. The content file is retired; no component changes.
+
+## Reviews
+
+`content/reviews.ts` holds hand-curated guest reviews (author, rating, quote,
+and a `source` platform). `app/page.tsx` imports the reviews plus
+`googleReviewsUrl`, derives the Airbnb/Vrbo attribution URLs from the
+`Property` returned by `getProperty()` (so listing URLs still live only in
+`content/property.md`), and passes both down as props to `Reviews` →
+`ReviewCard`. Components in `components/reviews` never import `content/`
+themselves.
 
 ## Hosting
 

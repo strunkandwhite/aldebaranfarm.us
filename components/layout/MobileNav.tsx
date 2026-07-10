@@ -20,7 +20,7 @@ const menuLinks = [...leftNavLinks, ...rightNavLinks];
  * for free; the slide/fade are Tailwind transitions driven by Base UI's
  * `data-[starting-style]` / `data-[ending-style]` hooks.
  *
- * Rendered by `Header` only below the `xl` breakpoint (see there).
+ * Rendered by `Header` only below the 820px breakpoint (see there).
  */
 export function MobileNav() {
   return (

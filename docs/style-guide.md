@@ -9,12 +9,13 @@ CSS uses OKLCH approximations — **confirm/fine-tune against Figma** as pages a
 
 ## Colors
 
-| Name     | Hex       | CSS value               | Semantic role                                                | Utility          |
-| -------- | --------- | ----------------------- | ------------------------------------------------------------ | ---------------- |
-| Burgundy | `#770A15` | `#770a15`               | `--foreground`, `--primary`, `--ring` (text, buttons, links) | `brand-burgundy` |
-| Cream    | `#F4EDE1` | `oklch(0.955 0.012 85)` | `--background`, `--card`                                     | `brand-cream`    |
-| Sand     | `#E6DAC6` | `oklch(0.89 0.022 80)`  | `--secondary`, image frames, borders                         | `brand-sand`     |
-| Sage     | `#6C7F63` | `oklch(0.56 0.045 135)` | `--accent`                                                   | `brand-sage`     |
+| Name     | Hex       | CSS value               | Semantic role                                                | Utility           |
+| -------- | --------- | ----------------------- | ------------------------------------------------------------ | ----------------- |
+| Burgundy | `#770A15` | `#770a15`               | `--foreground`, `--primary`, `--ring` (text, buttons, links) | `brand-burgundy`  |
+| Cream    | `#F4EDE1` | `oklch(0.955 0.012 85)` | `--background`, `--card`                                     | `brand-cream`     |
+| Sand     | `#E6DAC6` | `oklch(0.89 0.022 80)`  | `--secondary`, borders                                       | `brand-sand`      |
+| Sage     | `#6C7F63` | `oklch(0.56 0.045 135)` | `--accent`                                                   | `brand-sage`      |
+| Shadow   | `#E8DED2` | `#e8ded2`               | `--color-brand-shadow` — the `FramedImage` offset block      | `bg-brand-shadow` |
 
 - **All text is `#770A15` (burgundy) by default** — both `--foreground` (body) and
   `--primary` (headings, links, button fill) are set to it. Use a different text color only
@@ -49,10 +50,16 @@ One "underline = link" language, since link color equals body text (#770A15):
 - **Prose / inline links** (within body copy): underlined at rest
   (`underline underline-offset-4`) — required for accessibility, since color alone
   doesn't distinguish them from surrounding text. Hover fades to 70% opacity.
-- **Nav & footer links** (grouped, their placement signals link-ness): no underline
-  at rest, **underline on hover** (`underline-offset-4 hover:underline`). Shared via
-  `navLinkClass` in `components/layout/Nav.tsx`.
-- **Primary actions** (Book Now, View Gallery) are filled burgundy buttons, not links.
+  Shared via `proseLinkClass` in `components/shared/links.ts`.
+- **Nav links** (header, mobile drawer; grouped, their placement signals
+  link-ness): no underline at rest, **underline on hover**
+  (`underline-offset-4 hover:underline`). Shared via `navLinkClass` in the
+  same file. The footer's quick links use their own, smaller version of the
+  same treatment (see `Footer.tsx`) rather than sharing the constant.
+- **Primary actions** (Book Now, View Gallery) are filled burgundy buttons, not
+  links: the `brand` variant of `Button` (`components/ui/button.tsx`) — square
+  corners, Playfair, filled `--primary` — is the canonical CTA, paired with
+  the `brand-sm`/`brand-lg` sizes rather than the default shadcn sizes.
 
 ## Radius
 
@@ -61,7 +68,9 @@ One "underline = link" language, since link color equals body text (#770A15):
 
 ## Brand assets
 
-- [x] Wordmark is text (Playfair `Aldebaran Farm`) in `Header` — no logo image needed.
+- [x] Wordmark is text (Playfair `Aldebaran Farm`) in `Header`. The footer
+      pairs it with a small logo image (`/images/brand/logo.png`) beside the
+      text wordmark, rather than text alone.
 - [x] Favicon set → `app/favicon.ico` (16/32/48), `app/icon.png` + `app/apple-icon.png`
       (180px), from the client-supplied mark. A 512px source would let us add a crisp
       Android/PWA icon later.
