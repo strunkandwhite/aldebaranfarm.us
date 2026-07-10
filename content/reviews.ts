@@ -29,15 +29,11 @@ export interface Review {
  */
 export const googleReviewsUrl = "https://www.google.com/maps?cid=3949785469219734696";
 
-/**
- * Display label + outbound listing URL for each source. The Airbnb/Vrbo URLs
- * mirror `content/property.md` (airbnbUrl / vrboUrl).
- */
-export const reviewSources: Record<ReviewSource, { label: string; url: string }> = {
-  google: { label: "Google", url: googleReviewsUrl },
-  airbnb: { label: "Airbnb", url: "https://www.airbnb.com/rooms/30441325" },
-  vrbo: { label: "Vrbo", url: "https://www.vrbo.com/1893752" },
-};
+/** Display label + outbound listing URL for a review source. */
+export interface ReviewSourceInfo {
+  label: string;
+  url: string;
+}
 
 export const reviews: Review[] = [
   {
