@@ -20,7 +20,7 @@ import {
 import { EVENTS } from "@/lib/analytics/events";
 
 export const metadata: Metadata = {
-  title: "Rates & Reservations — Aldebaran Farm",
+  title: "Rates & Reservations",
   description:
     "Peak and off-peak rates for direct bookings at Aldebaran Farm in Spring Green, Wisconsin — also listed on Airbnb and Vrbo.",
 };

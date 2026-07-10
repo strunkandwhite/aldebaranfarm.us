@@ -7,7 +7,7 @@ import { QAItem } from "@/components/shared/QAItem";
 import { faqGroups } from "@/content/faqs";
 
 export const metadata: Metadata = {
-  title: "FAQs — Aldebaran Farm",
+  title: "FAQs",
   description:
     "Frequently asked questions about staying at Aldebaran Farm: booking, location, the house, and house rules.",
 };

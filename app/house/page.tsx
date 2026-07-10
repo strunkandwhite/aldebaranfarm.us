@@ -6,11 +6,14 @@ import { PageTitle } from "@/components/layout/PageTitle";
 import { DetailsAndAmenities } from "@/components/property/DetailsAndAmenities";
 import { History } from "@/components/property/History";
 
-export const metadata: Metadata = {
-  title: "The House — Aldebaran Farm",
-  description:
-    "Details, amenities, and history of the main house at Aldebaran Farm — a historic 1861 home in Spring Green, Wisconsin, sleeping 11 across 4 bedrooms.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const property = await getProperty();
+  const { city, region } = property.location;
+  return {
+    title: "The House",
+    description: `Details, amenities, and history of the main house at ${property.name} — a historic 1861 home in ${city}, ${region}, sleeping ${property.maxGuests} across ${property.bedrooms} bedrooms.`,
+  };
+}
 
 /**
  * The House page: sleeping arrangements & amenities, then the property's history.

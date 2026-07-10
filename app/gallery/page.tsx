@@ -6,7 +6,7 @@ import { GalleryGrid } from "@/components/gallery/GalleryGrid";
 import { galleryCategories } from "@/content/gallery";
 
 export const metadata: Metadata = {
-  title: "Gallery — Aldebaran Farm",
+  title: "Gallery",
   description:
     "Photos of Aldebaran Farm in Spring Green, Wisconsin — the kitchen, living and dining rooms, bedrooms, baths, and the grounds.",
 };

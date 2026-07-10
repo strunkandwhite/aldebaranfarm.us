@@ -8,7 +8,7 @@ import { RichText } from "@/components/shared/RichText";
 import { inTown, outdoors, architecture, mapCta } from "@/content/things-to-do";
 
 export const metadata: Metadata = {
-  title: "Things To Do — Aldebaran Farm",
+  title: "Things To Do",
   description:
     "Favorite things to do near Aldebaran Farm in Spring Green, Wisconsin: downtown shops, Driftless hiking and paddling, Frank Lloyd Wright's Taliesin, and American Players Theatre.",
 };
