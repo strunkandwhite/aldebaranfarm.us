@@ -2,7 +2,7 @@ import Link from "next/link";
 
 import { Button } from "@/components/ui/button";
 import { FramedImage } from "@/components/shared/FramedImage";
-import { bookNowHref } from "@/components/layout/Nav";
+import { bookNowHref } from "@/lib/site";
 import type { Property } from "@/types/property";
 
 /**

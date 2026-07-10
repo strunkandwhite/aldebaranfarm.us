@@ -2,9 +2,10 @@ import Link from "next/link";
 import Image from "next/image";
 
 import { Container } from "./Container";
-import { leftNavLinks, rightNavLinks, bookNowHref } from "./Nav";
+import { leftNavLinks, rightNavLinks } from "./Nav";
 import { ExternalLink } from "@/components/shared/ExternalLink";
 import { imageUrl } from "@/lib/images";
+import { bookNowHref } from "@/lib/site";
 
 /** Google Maps deep link to the property's location. */
 const mapsUrl =

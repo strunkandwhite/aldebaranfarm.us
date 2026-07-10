@@ -3,7 +3,8 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Container } from "./Container";
 import { MobileNav } from "./MobileNav";
-import { leftNavLinks, rightNavLinks, bookNowHref, navLinkClass } from "./Nav";
+import { leftNavLinks, rightNavLinks, navLinkClass } from "./Nav";
+import { bookNowHref } from "@/lib/site";
 
 /**
  * Header — responsive site header.

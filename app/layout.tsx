@@ -9,6 +9,7 @@ import { Footer } from "@/components/layout/Footer";
 import { TrackedClicks } from "@/components/analytics/TrackedClicks";
 import { ConsoleWordmark } from "@/components/shared/ConsoleWordmark";
 import { imageUrl } from "@/lib/images";
+import { siteUrl } from "@/lib/site";
 
 import "./globals.css";
 
@@ -42,13 +43,6 @@ const fontSans = localFont({
     { path: "./fonts/HelveticaNeue-Bold.woff2", weight: "700", style: "normal" },
   ],
 });
-
-/**
- * Site URL used for absolute metadata (OG image, sitemap, robots). Set
- * NEXT_PUBLIC_SITE_URL to the production domain at deploy; the fallback is a
- * placeholder to update. Also exported for robots.ts / sitemap.ts.
- */
-export const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://aldebaranfarm.us";
 
 const description =
   "A historic countryside retreat in Spring Green, Wisconsin's Driftless region, across the road from Frank Lloyd Wright's Taliesin. Book directly by email or phone.";

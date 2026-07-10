@@ -6,7 +6,8 @@ import { Menu, X } from "lucide-react";
 
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { leftNavLinks, rightNavLinks, bookNowHref, navLinkClass } from "./Nav";
+import { leftNavLinks, rightNavLinks, navLinkClass } from "./Nav";
+import { bookNowHref } from "@/lib/site";
 
 const menuLinks = [...leftNavLinks, ...rightNavLinks];
 
