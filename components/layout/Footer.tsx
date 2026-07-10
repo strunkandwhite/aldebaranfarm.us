@@ -4,12 +4,11 @@ import Image from "next/image";
 import { Container } from "./Container";
 import { leftNavLinks, rightNavLinks } from "./Nav";
 import { ExternalLink } from "@/components/shared/ExternalLink";
+import { EVENTS } from "@/lib/analytics/events";
+import { buildInquiryMailtoUrl, buildInquiryTelUrl } from "@/lib/booking";
+import { getProperty } from "@/lib/data";
 import { imageUrl } from "@/lib/images";
 import { bookNowHref } from "@/lib/site";
-
-/** Google Maps deep link to the property's location. */
-const mapsUrl =
-  "https://www.google.com/maps/search/?api=1&query=6557+County+T%2C+Spring+Green%2C+WI";
 
 const footerLinks = [
   ...leftNavLinks,
@@ -19,8 +18,15 @@ const footerLinks = [
 
 /**
  * Footer — site footer with the wordmark, quick links, and contact details.
+ * Contact info and the address come from the Property (single source of
+ * truth: content/property.md) — never hard-code them here.
  */
-export function Footer() {
+export async function Footer() {
+  const property = await getProperty();
+  const { streetAddress, city, regionCode } = property.location;
+  const addressLine = `${streetAddress}, ${city}, ${regionCode}`;
+  const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(addressLine)}`;
+
   return (
     <footer className="mt-auto border-t border-border py-10">
       <Container className="flex flex-col gap-6 sm:flex-row sm:items-stretch sm:justify-between">
@@ -34,29 +40,36 @@ export function Footer() {
                 height={32}
                 className="size-8 rounded-sm"
               />
-              Aldebaran Farm
+              {property.name}
             </Link>
             <p className="mt-1 text-sm text-foreground">
               <ExternalLink href={mapsUrl} className="underline-offset-4 hover:underline">
-                6557 County T, Spring Green, WI
+                {addressLine}
               </ExternalLink>
             </p>
             <p className="text-sm text-foreground">
               <a
-                href="mailto:aldebaran.farm.rental@gmail.com"
+                href={buildInquiryMailtoUrl(property)}
+                data-track={EVENTS.inquiryEmailClick}
+                data-track-location="footer"
                 className="underline-offset-4 hover:underline"
               >
-                aldebaran.farm.rental@gmail.com
+                {property.contactEmail}
               </a>{" "}
               &middot;{" "}
-              <a href="tel:+13124012484" className="underline-offset-4 hover:underline">
-                (312) 401-2484
+              <a
+                href={buildInquiryTelUrl(property)}
+                data-track={EVENTS.inquiryPhoneClick}
+                data-track-location="footer"
+                className="underline-offset-4 hover:underline"
+              >
+                {property.contactPhone}
               </a>
             </p>
           </div>
 
           <p className="mt-6 text-xs text-foreground sm:mt-auto">
-            &copy; {new Date().getFullYear()} Aldebaran Farm
+            &copy; {new Date().getFullYear()} {property.name}
           </p>
         </div>
 
