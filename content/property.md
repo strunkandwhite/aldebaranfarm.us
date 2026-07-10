@@ -8,7 +8,8 @@
 # frontmatter fields below map 1:1 to the `Property` type in `types/property.ts`.
 #
 # Everything above the second `---` is YAML frontmatter (structured fields).
-# Everything below it is the Markdown `description` body.
+# Everything below it is the `description` body (rendered as plain text — keep
+# it a single plain paragraph).
 # ---------------------------------------------------------------------------
 
 slug: aldebaran-farm
@@ -16,8 +17,10 @@ name: Aldebaran Farm
 tagline: A Historic Retreat in Spring Green
 
 location:
+  streetAddress: 6557 County T
   city: Spring Green
   region: Wisconsin
+  regionCode: WI
   country: USA
 
 bedrooms: 4
@@ -77,18 +80,10 @@ history:
     late 1950s, tended to the valley lovingly and worked to protect its beauty.
 
 # Paths are relative to /public. Always render these through `imageUrl()`.
-# NOTE: the lead image below is the real hero photo; the remaining entries are
-# still placeholder scaffold images — swap once real photos are uploaded.
 images:
   - src: /images/property/aldebaran_main_house.jpg
     alt: The tree-lined drive at Aldebaran Farm with the main house beyond
     caption: The approach to the main house
-  - src: /images/property/living-room.png
-    alt: The living and dining room with exposed wood beams
-    caption: Living room
-  - src: /images/property/bedroom.png
-    alt: A bedroom with wood-paneled walls
-    caption: Downstairs bedroom
 
 contactEmail: aldebaran.farm.rental@gmail.com
 contactPhone: (312) 401-2484

@@ -26,7 +26,14 @@ const CONTENT_FILE = path.join(process.cwd(), "content", "property.md");
 type PropertyFrontmatter = Omit<Property, "description">;
 
 export async function getProperty(): Promise<Property> {
-  const raw = await fs.promises.readFile(CONTENT_FILE, "utf8");
+  return parseProperty(await fs.promises.readFile(CONTENT_FILE, "utf8"));
+}
+
+/**
+ * Parse the raw content-file text into a validated Property. Pure — exported
+ * separately from `getProperty()` so unit tests can feed it fixture strings.
+ */
+export function parseProperty(raw: string): Property {
   const { data, content } = matter(raw);
 
   const frontmatter = data as Partial<PropertyFrontmatter>;
@@ -34,51 +41,82 @@ export async function getProperty(): Promise<Property> {
 
   return {
     ...frontmatter,
-    // The Markdown body is the long-form description.
+    // The Markdown body is the long-form description (rendered as plain text).
     description: content.trim(),
   };
 }
 
 /**
- * Minimal runtime validation. The content file is authored by hand, so we fail
- * loudly and early if a required field is missing or malformed rather than
- * letting `undefined` leak into the UI. A future API implementation would do
- * the equivalent check on the API response.
+ * Runtime validation. The content file is authored by hand, so we fail loudly
+ * and early — checking types and nested shapes, not just presence — rather
+ * than letting `undefined` or a mistyped YAML scalar leak into the UI. Runs
+ * at build time (static generation), so a bad edit fails the deploy while the
+ * previous deploy stays live. A future API implementation would do the
+ * equivalent check on the API response.
  */
 function assertValidFrontmatter(
   fm: Partial<PropertyFrontmatter>
 ): asserts fm is PropertyFrontmatter {
-  const required: (keyof PropertyFrontmatter)[] = [
+  const fail = (message: string): never => {
+    throw new Error(`content/property.md: ${message}`);
+  };
+
+  const stringFields = [
     "slug",
     "name",
     "tagline",
-    "location",
-    "bedrooms",
-    "loftedBeds",
-    "bathrooms",
-    "maxGuests",
-    "beds",
-    "amenities",
-    "history",
-    "images",
     "contactEmail",
     "contactPhone",
     "airbnbUrl",
     "vrboUrl",
-  ];
+  ] as const;
+  for (const key of stringFields) {
+    const value = fm[key];
+    if (typeof value !== "string" || value.trim() === "") {
+      fail(`\`${key}\` must be a non-empty string.`);
+    }
+  }
 
-  const missing = required.filter((key) => fm[key] === undefined);
-  if (missing.length > 0) {
-    throw new Error(`content/property.md is missing required field(s): ${missing.join(", ")}`);
+  const numberFields = ["bedrooms", "loftedBeds", "bathrooms", "maxGuests"] as const;
+  for (const key of numberFields) {
+    if (typeof fm[key] !== "number" || !Number.isFinite(fm[key])) {
+      fail(`\`${key}\` must be a number.`);
+    }
+  }
+
+  const stringListFields = ["beds", "amenities", "history"] as const;
+  for (const key of stringListFields) {
+    const value = fm[key];
+    if (
+      !Array.isArray(value) ||
+      value.length === 0 ||
+      value.some((item) => typeof item !== "string")
+    ) {
+      fail(`\`${key}\` must be a non-empty list of strings.`);
+    }
+  }
+
+  const location = fm.location;
+  if (typeof location !== "object" || location === null) {
+    fail("`location` must be an object.");
+  }
+  const locationStringFields = ["streetAddress", "city", "region", "regionCode"] as const;
+  for (const key of locationStringFields) {
+    const value = (location as unknown as Record<string, unknown>)[key];
+    if (typeof value !== "string" || value.trim() === "") {
+      fail(`\`location.${key}\` must be a non-empty string.`);
+    }
   }
 
   if (!Array.isArray(fm.images) || fm.images.length === 0) {
-    throw new Error("content/property.md must define at least one image.");
+    fail("must define at least one image.");
   }
-
-  for (const image of fm.images as PropertyImage[]) {
-    if (!image.src || !image.alt) {
-      throw new Error("Every image in content/property.md needs both `src` and `alt`.");
+  for (const image of fm.images as Partial<PropertyImage>[]) {
+    if (typeof image.src !== "string" || image.src === "") {
+      fail("every image needs a string `src`.");
+    }
+    if (typeof image.alt !== "string" || image.alt === "") {
+      fail(`image \`${image.src}\` needs non-empty \`alt\` text.`);
     }
   }
 }
