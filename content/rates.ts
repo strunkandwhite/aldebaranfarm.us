@@ -25,7 +25,7 @@ export const peakDefinition =
   'Higher rates (shown below as "Peak") apply Memorial Day through Labor Day, Thanksgiving, and Christmas Eve through New Year\'s Day. All other dates are "Off-Peak." These rates apply to reservations booked directly by email or phone.';
 
 export const alsoListedIntro =
-  "Aldebaran Farm can also be booked on Airbnb and Vrbo at slightly higher rates.";
+  "Aldebaran Farm can also be booked on Airbnb and Vrbo at higher rates.";
 
 export const rateTable: RateRow[] = [
   {

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { FramedImage } from "@/components/shared/FramedImage";
 import { SectionHeading } from "@/components/layout/SectionHeading";
+import { pluralize } from "@/lib/utils";
 import type { Property } from "@/types/property";
 
 /**
@@ -13,7 +14,7 @@ import type { Property } from "@/types/property";
  * Responsive: two columns on md+, stacked (photo then details) on small screens.
  */
 export function DetailsAndAmenities({ property }: { property: Property }) {
-  const sleepsLine = `Sleeps ${property.maxGuests} comfortably in ${property.bedrooms} bedrooms / ${property.loftedBeds} lofted bed / ${property.bathrooms} full bathrooms`;
+  const sleepsLine = `Sleeps ${property.maxGuests} comfortably in ${pluralize(property.bedrooms, "bedroom")} / ${pluralize(property.loftedBeds, "lofted bed")} / ${pluralize(property.bathrooms, "full bathroom")}`;
 
   return (
     <section className="grid items-center gap-8 py-8 md:grid-cols-2 md:gap-12 md:py-12 lg:gap-16">
@@ -45,7 +46,7 @@ export function DetailsAndAmenities({ property }: { property: Property }) {
           ))}
         </ul>
 
-        <p className="mt-6">Please note there is NO TV.</p>
+        {property.amenitiesNote ? <p className="mt-6">{property.amenitiesNote}</p> : null}
 
         <Button
           variant="brand"

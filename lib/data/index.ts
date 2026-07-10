@@ -96,6 +96,10 @@ function assertValidFrontmatter(
     }
   }
 
+  if (fm.amenitiesNote !== undefined && typeof fm.amenitiesNote !== "string") {
+    fail("`amenitiesNote` must be a string when present.");
+  }
+
   const location = fm.location;
   if (typeof location !== "object" || location === null) {
     fail("`location` must be an object.");

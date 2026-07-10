@@ -49,6 +49,7 @@ amenities:
   - Outdoor barbecue grills (please supply your own charcoal)
   - Outdoor firepit
   - Books and board games
+amenitiesNote: Please note there is NO TV.
 
 # House rules live in content/faqs.ts (rendered as Q&A on the FAQs page).
 

@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { FramedImage } from "@/components/shared/FramedImage";
 import { bookNowHref } from "@/lib/site";
 import { EVENTS } from "@/lib/analytics/events";
+import { pluralize } from "@/lib/utils";
 import type { Property } from "@/types/property";
 
 /**
@@ -19,9 +20,9 @@ export function Hero({ property }: { property: Property }) {
 
   const facts = [
     `Sleeps ${property.maxGuests}`,
-    `${property.bedrooms} Bedroom${property.bedrooms === 1 ? "" : "s"}`,
-    `${property.loftedBeds} Lofted Bed${property.loftedBeds === 1 ? "" : "s"}`,
-    `${property.bathrooms} Bathroom${property.bathrooms === 1 ? "" : "s"}`,
+    pluralize(property.bedrooms, "Bedroom"),
+    pluralize(property.loftedBeds, "Lofted Bed"),
+    pluralize(property.bathrooms, "Bathroom"),
   ].join(" • ");
 
   return (

@@ -58,6 +58,8 @@ export interface Property {
   /** Sleeping arrangements — one line per bed/room, shown on The House page. */
   beds: string[];
   amenities: string[];
+  /** Optional note rendered after the amenities list (e.g. "there is NO TV"). */
+  amenitiesNote?: string;
   /** Long-form property history — one entry per paragraph (The House page). */
   history: string[];
   images: PropertyImage[];
