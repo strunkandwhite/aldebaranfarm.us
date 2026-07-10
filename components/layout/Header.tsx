@@ -5,6 +5,7 @@ import { Container } from "./Container";
 import { MobileNav } from "./MobileNav";
 import { leftNavLinks, rightNavLinks, navLinkClass } from "./Nav";
 import { bookNowHref } from "@/lib/site";
+import { EVENTS } from "@/lib/analytics/events";
 
 /**
  * Header — responsive site header.
@@ -41,7 +42,11 @@ export function Header() {
 
           <Button
             render={
-              <Link href={bookNowHref} data-track="book_now_click" data-track-location="header" />
+              <Link
+                href={bookNowHref}
+                data-track={EVENTS.bookNowClick}
+                data-track-location="header"
+              />
             }
             nativeButton={false}
             className="h-auto rounded-none px-5 py-2 font-heading text-base"

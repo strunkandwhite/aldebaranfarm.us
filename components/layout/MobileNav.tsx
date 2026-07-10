@@ -8,6 +8,7 @@ import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { leftNavLinks, rightNavLinks, navLinkClass } from "./Nav";
 import { bookNowHref } from "@/lib/site";
+import { EVENTS } from "@/lib/analytics/events";
 
 const menuLinks = [...leftNavLinks, ...rightNavLinks];
 
@@ -53,7 +54,7 @@ export function MobileNav() {
               render={
                 <Link
                   href={bookNowHref}
-                  data-track="book_now_click"
+                  data-track={EVENTS.bookNowClick}
                   data-track-location="mobile_nav"
                 />
               }

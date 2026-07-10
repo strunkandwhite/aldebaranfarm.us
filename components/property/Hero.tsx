@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { FramedImage } from "@/components/shared/FramedImage";
 import { bookNowHref } from "@/lib/site";
+import { EVENTS } from "@/lib/analytics/events";
 import type { Property } from "@/types/property";
 
 /**
@@ -44,7 +45,7 @@ export function Hero({ property }: { property: Property }) {
 
         <Button
           render={
-            <Link href={bookNowHref} data-track="book_now_click" data-track-location="hero" />
+            <Link href={bookNowHref} data-track={EVENTS.bookNowClick} data-track-location="hero" />
           }
           nativeButton={false}
           className="mt-8 h-auto rounded-none px-8 py-3 font-heading text-base"

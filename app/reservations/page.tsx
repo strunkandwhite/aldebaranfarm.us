@@ -17,6 +17,7 @@ import {
   cancellationPolicy,
   alsoListedIntro,
 } from "@/content/rates";
+import { EVENTS } from "@/lib/analytics/events";
 
 export const metadata: Metadata = {
   title: "Rates & Reservations — Aldebaran Farm",
@@ -45,7 +46,7 @@ export default async function ReservationsPage() {
           <span className="font-bold">Email:</span>{" "}
           <a
             href={buildInquiryMailtoUrl(property)}
-            data-track="inquiry_email_click"
+            data-track={EVENTS.inquiryEmailClick}
             className="underline underline-offset-4 hover:opacity-70"
           >
             {property.contactEmail}
@@ -55,7 +56,7 @@ export default async function ReservationsPage() {
           <span className="font-bold">Phone:</span>{" "}
           <a
             href={telHref}
-            data-track="inquiry_phone_click"
+            data-track={EVENTS.inquiryPhoneClick}
             className="underline underline-offset-4 hover:opacity-70"
           >
             {property.contactPhone}
