@@ -53,8 +53,8 @@ Today booking is deliberately low-tech:
 - Below the rates table, the reservations page also links out to the
   property's **Airbnb** listing (`property.airbnbUrl`) and **VRBO** listing
   (`property.vrboUrl`) via `ListingLink` (`components/property`), each
-  opening in a new tab, as secondary paths presented at higher rates than
-  direct booking. This steering was trialed starting 2026-07-09 (see
+  opening in a new tab, as secondary paths carrying additional fees compared
+  to direct booking. This steering was trialed starting 2026-07-09 (see
   `docs/superpowers/specs/2026-07-09-airbnb-booking-option-design.md`). An
   earlier version also embedded Airbnb's official listing widget
   (`airbnb_jssdk`), but it was dropped — slow and unreliable in practice — in

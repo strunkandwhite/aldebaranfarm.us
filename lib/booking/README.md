@@ -14,7 +14,7 @@ The booking layer. Isolates _how a guest books_ from the rest of the app.
 Direct email/phone booking is commission-free for the guest and gets the best
 rate, so the reservations page leads with it. Below the rates table, the page
 also links out to the property's Airbnb and Vrbo listings (`ListingLink` in
-`components/property`) as secondary paths, presented at higher rates. See
+`components/property`) as secondary paths with additional fees. See
 `docs/superpowers/specs/2026-07-09-airbnb-booking-option-design.md`. The
 Airbnb/VRBO listings also matter here as calendars to sync against (below) so
 we don't double-book.
