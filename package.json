@@ -12,7 +12,8 @@
     "knip": "knip",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "test": "vitest run"
+    "test": "vitest run",
+    "check:images": "node scripts/check-images.mjs"
   },
   "dependencies": {
     "@base-ui/react": "^1.6.0",
