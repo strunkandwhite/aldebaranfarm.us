@@ -48,7 +48,7 @@
 
 **Files:** none (repo state only)
 
-- [ ] **Step 1: Confirm clean master and create the branch**
+- [x] **Step 1: Confirm clean master and create the branch**
 
 ```bash
 git -C /Users/arpanet/dev/aldebaranfarm.us status --short   # expect: empty
@@ -57,7 +57,7 @@ git -C /Users/arpanet/dev/aldebaranfarm.us pull
 git -C /Users/arpanet/dev/aldebaranfarm.us checkout -b deep-clean-fixes
 ```
 
-- [ ] **Step 2: Re-arm husky** (the `.git` dir was restored after `pnpm install`, so `core.hooksPath` was never set)
+- [x] **Step 2: Re-arm husky** (the `.git` dir was restored after `pnpm install`, so `core.hooksPath` was never set)
 
 ```bash
 cd /Users/arpanet/dev/aldebaranfarm.us && pnpm prepare
@@ -78,7 +78,7 @@ git -C /Users/arpanet/dev/aldebaranfarm.us config core.hooksPath   # expect: .hu
 - Consumes: `Property` from `types/property.ts` (unchanged in this task).
 - Produces: `buildInquiryMailtoUrl(property, details?)` — same signature, RFC 6068-correct output. NEW `buildInquiryTelUrl(property: Property): string` returning `tel:+1<10 digits>`. Later tasks (6) import both from `@/lib/booking`.
 
-- [ ] **Step 1: Install vitest and wire scripts**
+- [x] **Step 1: Install vitest and wire scripts**
 
 ```bash
 cd /Users/arpanet/dev/aldebaranfarm.us && pnpm add -D vitest
@@ -113,7 +113,7 @@ Create `test/server-only-stub.ts` containing exactly:
 export {};
 ```
 
-- [ ] **Step 2: Write the failing test** — `lib/booking/index.test.ts`:
+- [x] **Step 2: Write the failing test** — `lib/booking/index.test.ts`:
 
 ```ts
 import { describe, expect, it } from "vitest";
@@ -183,12 +183,12 @@ describe("buildInquiryTelUrl", () => {
 });
 ```
 
-- [ ] **Step 3: Run to verify it fails**
+- [x] **Step 3: Run to verify it fails**
 
 Run: `pnpm test`
 Expected: FAIL — `buildInquiryTelUrl` is not exported, and the `+`-encoding assertions fail against the `URLSearchParams` implementation.
 
-- [ ] **Step 4: Fix the implementation** — in `lib/booking/index.ts`, replace the `params`/`return` block of `buildInquiryMailtoUrl` (lines 48–53) with:
+- [x] **Step 4: Fix the implementation** — in `lib/booking/index.ts`, replace the `params`/`return` block of `buildInquiryMailtoUrl` (lines 48–53) with:
 
 ```ts
 // RFC 6068 requires percent-encoding (%20 for spaces). URLSearchParams must
@@ -229,13 +229,13 @@ Also in this file's header comment (lines 10–13), replace the "ALSO LIVE" para
 
 (Note: `ListingLink` is created in Task 10; at this point in history the components are still `AirbnbLink`/`VrboLink`. Write the comment as above anyway — it becomes exact within this branch, and pre-commit doesn't check prose.)
 
-- [ ] **Step 5: Use the tel builder in the reservations page** — in `app/reservations/page.tsx`, add `buildInquiryTelUrl` to the existing `@/lib/booking` import and replace line 33:
+- [x] **Step 5: Use the tel builder in the reservations page** — in `app/reservations/page.tsx`, add `buildInquiryTelUrl` to the existing `@/lib/booking` import and replace line 33:
 
 ```ts
 const telHref = buildInquiryTelUrl(property);
 ```
 
-- [ ] **Step 6: Add tests to the pre-commit gate** — `.husky/pre-commit` becomes:
+- [x] **Step 6: Add tests to the pre-commit gate** — `.husky/pre-commit` becomes:
 
 ```sh
 pnpm exec lint-staged --no-stash
@@ -244,12 +244,12 @@ pnpm tsc --noEmit
 pnpm test
 ```
 
-- [ ] **Step 7: Verify**
+- [x] **Step 7: Verify**
 
 Run: `pnpm test && pnpm typecheck && pnpm lint && pnpm knip`
 Expected: all pass. (If knip flags `vitest` or `vitest.config.ts`, add `"vitest"` to nothing — knip's vitest plugin should auto-detect the config; if it genuinely errors, add `"ignore": ["test/server-only-stub.ts"]` to `knip.json` rather than ignoring the dependency.)
 
-- [ ] **Step 8: Commit**
+- [x] **Step 8: Commit**
 
 ```bash
 git -C /Users/arpanet/dev/aldebaranfarm.us add -A
@@ -273,7 +273,7 @@ Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>"
 
 - Produces: `imageUrl(src: string): string` — same signature; now strips trailing slashes from the base, passes through protocol-relative (`//…`) URLs, and reads the env var per-call so tests can stub it. (Next.js still statically inlines `process.env.NEXT_PUBLIC_IMAGE_BASE_URL` because the member expression stays literal.)
 
-- [ ] **Step 1: Write the failing test** — `lib/images/index.test.ts`:
+- [x] **Step 1: Write the failing test** — `lib/images/index.test.ts`:
 
 ```ts
 import { afterEach, describe, expect, it, vi } from "vitest";
@@ -311,9 +311,9 @@ describe("imageUrl", () => {
 });
 ```
 
-- [ ] **Step 2: Run to verify it fails** — `pnpm test` — the trailing-slash, protocol-relative, and stubbed-env cases fail (env is currently read at module scope, and the base isn't normalized).
+- [x] **Step 2: Run to verify it fails** — `pnpm test` — the trailing-slash, protocol-relative, and stubbed-env cases fail (env is currently read at module scope, and the base isn't normalized).
 
-- [ ] **Step 3: Fix the implementation** — replace lines 14–29 of `lib/images/index.ts` (delete the module-scope `IMAGE_BASE_URL` const) with:
+- [x] **Step 3: Fix the implementation** — replace lines 14–29 of `lib/images/index.ts` (delete the module-scope `IMAGE_BASE_URL` const) with:
 
 ```ts
 /**
@@ -338,9 +338,9 @@ export function imageUrl(src: string): string {
 }
 ```
 
-- [ ] **Step 4: Verify** — `pnpm test && pnpm typecheck && pnpm lint && pnpm knip` — all pass.
+- [x] **Step 4: Verify** — `pnpm test && pnpm typecheck && pnpm lint && pnpm knip` — all pass.
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git -C /Users/arpanet/dev/aldebaranfarm.us add -A
@@ -365,7 +365,7 @@ Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>"
 - Produces: `siteUrl: string`, `routes: string[]`, `bookNowHref: string` — all from `@/lib/site`. Tasks 6 and 8 consume these.
 - `components/layout/Nav.tsx` keeps `leftNavLinks`, `rightNavLinks`, `navLinkClass` (navLinkClass moves in Task 10) but no longer exports `bookNowHref`.
 
-- [ ] **Step 1: Create `lib/site.ts`**
+- [x] **Step 1: Create `lib/site.ts`**
 
 ```ts
 /**
@@ -392,7 +392,7 @@ export const routes = ["", "/house", "/gallery", "/things-to-do", "/faqs", "/res
 export const bookNowHref = "/reservations";
 ```
 
-- [ ] **Step 2: Update consumers**
+- [x] **Step 2: Update consumers**
 
 - `app/layout.tsx`: delete lines 46–51 (the `siteUrl` doc comment + export); add `import { siteUrl } from "@/lib/site";` with the other imports.
 - `app/robots.ts` and `app/sitemap.ts`: change `import { siteUrl } from "./layout";` to `import { siteUrl } from "@/lib/site";`. In `app/sitemap.ts` also replace the local `routes` const (line 5) with adding `routes` to the lib/site import: `import { routes, siteUrl } from "@/lib/site";`. (Leave `lastModified` alone here — Task 8 removes it.)
@@ -402,9 +402,9 @@ export const bookNowHref = "/reservations";
 - `components/layout/Footer.tsx`: `import { leftNavLinks, rightNavLinks } from "./Nav";` plus `import { bookNowHref } from "@/lib/site";`.
 - `components/property/Hero.tsx`: replace `import { bookNowHref } from "@/components/layout/Nav";` with `import { bookNowHref } from "@/lib/site";`.
 
-- [ ] **Step 3: Verify** — `pnpm typecheck && pnpm lint && pnpm knip && pnpm build` — all pass; build still emits 13 static routes.
+- [x] **Step 3: Verify** — `pnpm typecheck && pnpm lint && pnpm knip && pnpm build` — all pass; build still emits 13 static routes.
 
-- [ ] **Step 4: Commit**
+- [x] **Step 4: Commit**
 
 ```bash
 git -C /Users/arpanet/dev/aldebaranfarm.us add -A
@@ -429,7 +429,7 @@ Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>"
 
 - Produces: `PropertyLocation` gains `streetAddress: string` and `regionCode: string`. NEW export `parseProperty(raw: string): Property` from `@/lib/data` (pure; `getProperty()` now reads the file and delegates to it). Task 6 consumes `property.location.streetAddress/city/regionCode`.
 
-- [ ] **Step 1: Extend the types** — in `types/property.ts`, `PropertyLocation` becomes:
+- [x] **Step 1: Extend the types** — in `types/property.ts`, `PropertyLocation` becomes:
 
 ```ts
 export interface PropertyLocation {
@@ -452,7 +452,7 @@ Also fix three stale doc comments in this file:
 - `airbnbUrl` (lines 65–68): change the second sentence to `Used to build a direct link to the listing.` (the embed widget was tried and dropped — see docs/architecture.md).
 - `PropertyImage.src` (line 22): the example path cites `living-room.png`, which Step 6 deletes — change the example to `"/images/property/aldebaran_main_house.jpg"`.
 
-- [ ] **Step 2: Write the failing tests** — `lib/data/index.test.ts`:
+- [x] **Step 2: Write the failing tests** — `lib/data/index.test.ts`:
 
 ```ts
 import { describe, expect, it } from "vitest";
@@ -528,9 +528,9 @@ describe("parseProperty", () => {
 });
 ```
 
-- [ ] **Step 3: Run to verify it fails** — `pnpm test` — `parseProperty` is not exported.
+- [x] **Step 3: Run to verify it fails** — `pnpm test` — `parseProperty` is not exported.
 
-- [ ] **Step 4: Implement** — in `lib/data/index.ts`:
+- [x] **Step 4: Implement** — in `lib/data/index.ts`:
 
 Replace `getProperty` (lines 28–40) with:
 
@@ -636,22 +636,22 @@ function assertValidFrontmatter(
 }
 ```
 
-- [ ] **Step 5: Update `content/property.md`**
+- [x] **Step 5: Update `content/property.md`**
 
 - Under `location:`, add `streetAddress: 6557 County T` (first line) and `regionCode: WI` (after `region`).
 - Delete the two placeholder image entries (`living-room.png` and `bedroom.png`, lines 86–91) and the stale NOTE comment lines 80–81 (`# NOTE: the lead image below is the real hero photo…`), keeping the `# Paths are relative to /public…` comment line.
 - In the header comment (line 11), change `Everything below it is the Markdown \`description\` body.`to`Everything below it is the \`description\` body (rendered as plain text — keep it a single plain paragraph).`
 
-- [ ] **Step 6: Delete the orphaned placeholder files** (verify nothing references them first; `exterior.png` is a third scaffold placeholder that was already referenced nowhere)
+- [x] **Step 6: Delete the orphaned placeholder files** (verify nothing references them first; `exterior.png` is a third scaffold placeholder that was already referenced nowhere)
 
 ```bash
 grep -rn "living-room.png\|bedroom.png\|exterior.png" app components content lib   # expect: no matches after Step 5
 rm public/images/property/living-room.png public/images/property/bedroom.png public/images/property/exterior.png
 ```
 
-- [ ] **Step 7: Verify** — `pnpm test && pnpm typecheck && pnpm lint && pnpm knip && pnpm build` — all pass (the build exercises the new validation against the real content file).
+- [x] **Step 7: Verify** — `pnpm test && pnpm typecheck && pnpm lint && pnpm knip && pnpm build` — all pass (the build exercises the new validation against the real content file).
 
-- [ ] **Step 8: Commit**
+- [x] **Step 8: Commit**
 
 ```bash
 git -C /Users/arpanet/dev/aldebaranfarm.us add -A
@@ -675,7 +675,7 @@ Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>"
 
 - Produces: `EVENTS` from `@/lib/analytics/events` (vendor-free — safe for Server Components). `@/lib/analytics` re-exports it, so `GalleryGrid`'s existing import keeps working. Task 6 (Footer) consumes `EVENTS` from `@/lib/analytics/events`.
 
-- [ ] **Step 1: Create `lib/analytics/events.ts`** (move the const verbatim from `index.ts`, new doc comment):
+- [x] **Step 1: Create `lib/analytics/events.ts`** (move the const verbatim from `index.ts`, new doc comment):
 
 ```ts
 /**
@@ -694,13 +694,13 @@ export const EVENTS = {
 } as const;
 ```
 
-- [ ] **Step 2: Slim `lib/analytics/index.ts`** — delete the `EVENTS` const (lines 13–23) and add at the top, after the vendor import:
+- [x] **Step 2: Slim `lib/analytics/index.ts`** — delete the `EVENTS` const (lines 13–23) and add at the top, after the vendor import:
 
 ```ts
 export { EVENTS } from "./events";
 ```
 
-- [ ] **Step 3: Wire every `data-track` literal to the constant.** In each file, add `import { EVENTS } from "@/lib/analytics/events";` and replace:
+- [x] **Step 3: Wire every `data-track` literal to the constant.** In each file, add `import { EVENTS } from "@/lib/analytics/events";` and replace:
 
 - `components/layout/Header.tsx:43`: `data-track="book_now_click"` → `data-track={EVENTS.bookNowClick}`
 - `components/layout/MobileNav.tsx:55`: same replacement
@@ -708,7 +708,7 @@ export { EVENTS } from "./events";
 - `app/reservations/page.tsx:48`: `data-track="inquiry_email_click"` → `data-track={EVENTS.inquiryEmailClick}`
 - `app/reservations/page.tsx:58`: `data-track="inquiry_phone_click"` → `data-track={EVENTS.inquiryPhoneClick}`
 
-- [ ] **Step 4: ExternalLink — use the constant AND make the security attrs unoverridable** — `components/shared/ExternalLink.tsx` body becomes:
+- [x] **Step 4: ExternalLink — use the constant AND make the security attrs unoverridable** — `components/shared/ExternalLink.tsx` body becomes:
 
 ```tsx
 import { EVENTS } from "@/lib/analytics/events";
@@ -741,9 +741,9 @@ export function ExternalLink({
 }
 ```
 
-- [ ] **Step 5: Verify** — `pnpm test && pnpm typecheck && pnpm lint && pnpm knip && pnpm build`. Then confirm the rendered HTML is unchanged: `grep -o 'data-track="[a-z_]*"' .next/server/app/index.html | sort | uniq -c` should still show `book_now_click` (and `outbound_click` on external links).
+- [x] **Step 5: Verify** — `pnpm test && pnpm typecheck && pnpm lint && pnpm knip && pnpm build`. Then confirm the rendered HTML is unchanged: `grep -o 'data-track="[a-z_]*"' .next/server/app/index.html | sort | uniq -c` should still show `book_now_click` (and `outbound_click` on external links).
 
-- [ ] **Step 6: Commit**
+- [x] **Step 6: Commit**
 
 ```bash
 git -C /Users/arpanet/dev/aldebaranfarm.us add -A
@@ -767,7 +767,7 @@ Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>"
 - Consumes: `getProperty()` (Task 4's location fields), `buildInquiryMailtoUrl`/`buildInquiryTelUrl` (Task 1), `EVENTS` (Task 5), `bookNowHref` (Task 3).
 - Produces: `Footer` becomes an **async** Server Component (no prop changes — `app/layout.tsx` needs no edit; React supports async components in the layout body).
 
-- [ ] **Step 1: Rewrite `components/layout/Footer.tsx`**
+- [x] **Step 1: Rewrite `components/layout/Footer.tsx`**
 
 ```tsx
 import Link from "next/link";
@@ -864,9 +864,9 @@ export async function Footer() {
 
 Notes: the email link now opens the pre-filled inquiry template (same as the reservations page) instead of a bare mailto — deliberate upgrade, and it means one mailto implementation. Both contact links are now instrumented with `data-track-location="footer"` so footer conversions stop undercounting.
 
-- [ ] **Step 2: Verify** — `pnpm test && pnpm typecheck && pnpm lint && pnpm knip && pnpm build`. Then: `grep -c "6557 County T" .next/server/app/index.html` → still ≥1 (address renders), and `grep -rn "aldebaran.farm.rental@gmail.com\|401-2484\|6557 County T" components/ app/ lib/` → **no matches** (all copies now flow from content).
+- [x] **Step 2: Verify** — `pnpm test && pnpm typecheck && pnpm lint && pnpm knip && pnpm build`. Then: `grep -c "6557 County T" .next/server/app/index.html` → still ≥1 (address renders), and `grep -rn "aldebaran.farm.rental@gmail.com\|401-2484\|6557 County T" components/ app/ lib/` → **no matches** (all copies now flow from content).
 
-- [ ] **Step 3: Commit**
+- [x] **Step 3: Commit**
 
 ```bash
 git -C /Users/arpanet/dev/aldebaranfarm.us add -A
@@ -890,7 +890,7 @@ Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>"
 - Consumes: `Property.airbnbUrl` / `Property.vrboUrl`.
 - Produces: `content/reviews.ts` exports `ReviewSource`, `Review`, `ReviewSourceInfo { label: string; url: string }`, `googleReviewsUrl`, `reviews` — and NO LONGER exports `reviewSources`. `Reviews({ reviews, sources })` and `ReviewCard({ review, sources })` where `sources: Record<ReviewSource, ReviewSourceInfo>`.
 
-- [ ] **Step 1: `content/reviews.ts`** — replace the `reviewSources` block (lines 32–40) with:
+- [x] **Step 1: `content/reviews.ts`** — replace the `reviewSources` block (lines 32–40) with:
 
 ```ts
 /** Display label + outbound listing URL for a review source. */
@@ -902,7 +902,7 @@ export interface ReviewSourceInfo {
 
 (Keep `googleReviewsUrl`. The Airbnb/Vrbo URLs are gone from this file — the page derives them from the `Property`, so a re-listing under a new ID is a one-file content edit again.)
 
-- [ ] **Step 2: `app/page.tsx`** — the page owns composition:
+- [x] **Step 2: `app/page.tsx`** — the page owns composition:
 
 ```tsx
 import { getProperty } from "@/lib/data";
@@ -947,7 +947,7 @@ export default async function HomePage() {
 }
 ```
 
-- [ ] **Step 3: `components/reviews/Reviews.tsx`** — data arrives as props (imports of `reviews` removed):
+- [x] **Step 3: `components/reviews/Reviews.tsx`** — data arrives as props (imports of `reviews` removed):
 
 ```tsx
 import { SectionHeading } from "@/components/layout/SectionHeading";
@@ -981,7 +981,7 @@ export function Reviews({
 }
 ```
 
-- [ ] **Step 4: `components/reviews/ReviewCard.tsx`** — imports become type-only; `const source = sources[review.source];`:
+- [x] **Step 4: `components/reviews/ReviewCard.tsx`** — imports become type-only; `const source = sources[review.source];`:
 
 ```tsx
 import { StarRating } from "./StarRating";
@@ -1004,9 +1004,9 @@ export function ReviewCard({
 
 (The JSX body is unchanged in this task — the `underline-offset-2` deviation is fixed in Task 10.)
 
-- [ ] **Step 5: Verify** — `pnpm test && pnpm typecheck && pnpm lint && pnpm knip && pnpm build`, then `grep -rn "airbnb.com/rooms\|vrbo.com/" content/ components/ app/` → matches only in `content/property.md`.
+- [x] **Step 5: Verify** — `pnpm test && pnpm typecheck && pnpm lint && pnpm knip && pnpm build`, then `grep -rn "airbnb.com/rooms\|vrbo.com/" content/ components/ app/` → matches only in `content/property.md`.
 
-- [ ] **Step 6: Commit**
+- [x] **Step 6: Commit**
 
 ```bash
 git -C /Users/arpanet/dev/aldebaranfarm.us add -A
@@ -1030,7 +1030,7 @@ Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>"
 - Consumes: `getProperty()`, `siteUrl`/`routes` from `@/lib/site`.
 - Produces: `app/layout.tsx` exports `generateMetadata()` instead of `metadata`. Page `metadata.title` values become bare names (template appends the brand).
 
-- [ ] **Step 1: `app/layout.tsx`** — replace the `description` const and `export const metadata` block (lines 53–84) with:
+- [x] **Step 1: `app/layout.tsx`** — replace the `description` const and `export const metadata` block (lines 53–84) with:
 
 ```tsx
 export async function generateMetadata(): Promise<Metadata> {
@@ -1074,14 +1074,14 @@ export async function generateMetadata(): Promise<Metadata> {
 
 Add `import { getProperty } from "@/lib/data";` to the layout imports.
 
-- [ ] **Step 2: Page titles become bare (template adds the suffix)**
+- [x] **Step 2: Page titles become bare (template adds the suffix)**
 
 - `app/gallery/page.tsx:9`: `title: "Gallery",`
 - `app/faqs/page.tsx:10`: `title: "FAQs",`
 - `app/things-to-do/page.tsx:11`: `title: "Things To Do",`
 - `app/reservations/page.tsx:22`: `title: "Rates & Reservations",`
 
-- [ ] **Step 3: `app/house/page.tsx`** — property facts must not be frozen into the description. Replace the `export const metadata` block (lines 9–13) with:
+- [x] **Step 3: `app/house/page.tsx`** — property facts must not be frozen into the description. Replace the `export const metadata` block (lines 9–13) with:
 
 ```tsx
 export async function generateMetadata(): Promise<Metadata> {
@@ -1094,7 +1094,7 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 ```
 
-- [ ] **Step 4: `app/sitemap.ts`** — drop the build-time `lastModified` stamp (it claimed every page changed on every deploy):
+- [x] **Step 4: `app/sitemap.ts`** — drop the build-time `lastModified` stamp (it claimed every page changed on every deploy):
 
 ```ts
 import type { MetadataRoute } from "next";
@@ -1108,7 +1108,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 }
 ```
 
-- [ ] **Step 5: Verify** — `pnpm test && pnpm typecheck && pnpm lint && pnpm knip && pnpm build`, then check the rendered social-graph surface:
+- [x] **Step 5: Verify** — `pnpm test && pnpm typecheck && pnpm lint && pnpm knip && pnpm build`, then check the rendered social-graph surface:
 
 - `grep -o "<title>[^<]*</title>" .next/server/app/house.html` → `<title>The House — Aldebaran Farm</title>`
 - `grep -o "<title>[^<]*</title>" .next/server/app/index.html` → `<title>Aldebaran Farm in Spring Green, WI</title>`
@@ -1116,7 +1116,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 - `grep -o 'name="twitter:title" content="[^"]*"' .next/server/app/index.html` → same
 - `grep -o 'property="og:image"[^>]*' .next/server/app/index.html` → absolute URL ending in `/images/brand/og-image.jpg` (metadataBase applied)
 
-- [ ] **Step 6: Commit**
+- [x] **Step 6: Commit**
 
 ```bash
 git -C /Users/arpanet/dev/aldebaranfarm.us add -A
@@ -1135,7 +1135,7 @@ Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>"
 
 - Modify: `next.config.ts`
 
-- [ ] **Step 1: Add a `headers()` block** to `nextConfig` (calibrated to a static brochure site — no cookies, no auth; `frame-ancestors 'none'` closes the clickjacking/brand-abuse vector):
+- [x] **Step 1: Add a `headers()` block** to `nextConfig` (calibrated to a static brochure site — no cookies, no auth; `frame-ancestors 'none'` closes the clickjacking/brand-abuse vector):
 
 ```ts
   async headers() {
@@ -1154,9 +1154,9 @@ Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>"
   },
 ```
 
-- [ ] **Step 2: Verify** — `pnpm build` passes; then `pnpm start` in the background and `curl -sI http://localhost:3000 | grep -i -E "frame|nosniff|referrer|permissions"` shows all five headers; stop the server.
+- [x] **Step 2: Verify** — `pnpm build` passes; then `pnpm start` in the background and `curl -sI http://localhost:3000 | grep -i -E "frame|nosniff|referrer|permissions"` shows all five headers; stop the server.
 
-- [ ] **Step 3: Commit**
+- [x] **Step 3: Commit**
 
 ```bash
 git -C /Users/arpanet/dev/aldebaranfarm.us add -A
@@ -1181,7 +1181,7 @@ Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>"
 
 - Produces: Button gains `variant="brand"` + sizes `brand-sm` / `brand-lg`. `navLinkClass` and `proseLinkClass` from `@/components/shared/links` (`Nav.tsx` no longer exports `navLinkClass`). `PageTitle` now carries its own `pt-6 md:pt-10`. `ListingLink({ href, label, destination }: { href: string; label: string; destination: string })` replaces `AirbnbLink`/`VrboLink`.
 
-- [ ] **Step 1: Brand button variant** — in `components/ui/button.tsx`, inside the `cva` variants add (after `link:`):
+- [x] **Step 1: Brand button variant** — in `components/ui/button.tsx`, inside the `cva` variants add (after `link:`):
 
 ```ts
         // Deliberate brand customization (see docs/style-guide.md): the
@@ -1197,7 +1197,7 @@ and inside `size` (after `"icon-lg"`):
         "brand-lg": "h-auto gap-1.5 px-8 py-3",
 ```
 
-- [ ] **Step 2: Update the four CTA call sites**
+- [x] **Step 2: Update the four CTA call sites**
 
 - `components/layout/Header.tsx` (lines 41–49): the Button becomes
 
@@ -1216,7 +1216,7 @@ and inside `size` (after `"icon-lg"`):
 - `components/property/Hero.tsx` (lines 45–53): `variant="brand" size="brand-lg"`, className becomes just `className="mt-8"`.
 - `components/property/DetailsAndAmenities.tsx` (lines 50–56): `variant="brand" size="brand-lg"`, className becomes just `className="mt-6"`.
 
-- [ ] **Step 3: Link class constants** — create `components/shared/links.ts`:
+- [x] **Step 3: Link class constants** — create `components/shared/links.ts`:
 
 ```ts
 /**
@@ -1236,7 +1236,7 @@ export const proseLinkClass = "underline underline-offset-4 hover:opacity-70";
 - `components/reviews/ReviewCard.tsx` line 24: `className={proseLinkClass}` (this intentionally normalizes the deviant `underline-offset-2` to the shared offset-4 — the one sanctioned visual change).
 - `app/reservations/page.tsx`: import `proseLinkClass` from `@/components/shared/links`; use it on the email link (line 49), phone link (line 59), and FAQs `Link` (line 67), replacing the literal `"underline underline-offset-4 hover:opacity-70"`.
 
-- [ ] **Step 4: PageTitle absorbs the header rhythm** — `components/layout/PageTitle.tsx` h1 className becomes:
+- [x] **Step 4: PageTitle absorbs the header rhythm** — `components/layout/PageTitle.tsx` h1 className becomes:
 
 ```tsx
         "pt-6 text-center font-heading text-[32px] leading-tight text-primary sm:text-[40px] md:pt-10",
@@ -1252,7 +1252,7 @@ Then in all five inner pages (`app/house/page.tsx`, `app/gallery/page.tsx`, `app
 
 with the bare `<PageTitle>…</PageTitle>` (keep each page's title text).
 
-- [ ] **Step 5: ListingLink** — create `components/property/ListingLink.tsx`:
+- [x] **Step 5: ListingLink** — create `components/property/ListingLink.tsx`:
 
 ```tsx
 import { ExternalLink as ExternalLinkIcon } from "lucide-react";
@@ -1296,11 +1296,11 @@ Delete `components/property/AirbnbLink.tsx` and `components/property/VrboLink.ts
 </div>
 ```
 
-- [ ] **Step 6: Remove the unused spacing tokens** — in `app/globals.css`, delete the two `--spacing-brand-gutter` / `--spacing-brand-section` lines and their `/* Named brand spacing … */` comment (grep confirms zero usages; they were false affordances).
+- [x] **Step 6: Remove the unused spacing tokens** — in `app/globals.css`, delete the two `--spacing-brand-gutter` / `--spacing-brand-section` lines and their `/* Named brand spacing … */` comment (grep confirms zero usages; they were false affordances).
 
-- [ ] **Step 7: Verify** — `pnpm test && pnpm typecheck && pnpm lint && pnpm knip && pnpm build`. Visual spot-check via `pnpm start` + browser (or curl the HTML): header/hero CTAs still render `rounded-none` filled burgundy; page titles keep their top padding.
+- [x] **Step 7: Verify** — `pnpm test && pnpm typecheck && pnpm lint && pnpm knip && pnpm build`. Visual spot-check via `pnpm start` + browser (or curl the HTML): header/hero CTAs still render `rounded-none` filled burgundy; page titles keep their top padding.
 
-- [ ] **Step 8: Commit**
+- [x] **Step 8: Commit**
 
 ```bash
 git -C /Users/arpanet/dev/aldebaranfarm.us add -A
@@ -1323,7 +1323,7 @@ Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>"
 
 - Produces: `pluralize(count: number, noun: string): string` in `@/lib/utils`. `Property.amenitiesNote?: string`.
 
-- [ ] **Step 1: `pluralize` in `lib/utils.ts`** — append:
+- [x] **Step 1: `pluralize` in `lib/utils.ts`** — append:
 
 ```ts
 /** "1 bedroom" / "3 bedrooms" — naive English pluralization for quick-facts copy. */
@@ -1332,7 +1332,7 @@ export function pluralize(count: number, noun: string): string {
 }
 ```
 
-- [ ] **Step 2: amenitiesNote** — in `types/property.ts`, after `amenities: string[];` add:
+- [x] **Step 2: amenitiesNote** — in `types/property.ts`, after `amenities: string[];` add:
 
 ```ts
   /** Optional note rendered after the amenities list (e.g. "there is NO TV"). */
@@ -1353,7 +1353,7 @@ In `content/property.md`, after the `amenities:` list (before the house-rules co
 amenitiesNote: Please note there is NO TV.
 ```
 
-- [ ] **Step 3: `components/property/DetailsAndAmenities.tsx`** — add `import { pluralize } from "@/lib/utils";`; replace line 16 with:
+- [x] **Step 3: `components/property/DetailsAndAmenities.tsx`** — add `import { pluralize } from "@/lib/utils";`; replace line 16 with:
 
 ```ts
 const sleepsLine = `Sleeps ${property.maxGuests} comfortably in ${pluralize(property.bedrooms, "bedroom")} / ${pluralize(property.loftedBeds, "lofted bed")} / ${pluralize(property.bathrooms, "full bathroom")}`;
@@ -1367,7 +1367,7 @@ and replace the hard-coded `<p className="mt-6">Please note there is NO TV.</p>`
 }
 ```
 
-- [ ] **Step 4: `components/property/Hero.tsx`** — use the same helper (add the import); lines 19–24 become:
+- [x] **Step 4: `components/property/Hero.tsx`** — use the same helper (add the import); lines 19–24 become:
 
 ```ts
 const facts = [
@@ -1378,14 +1378,14 @@ const facts = [
 ].join(" • ");
 ```
 
-- [ ] **Step 5: Rates copy** (owner request) — in `content/rates.ts`, `alsoListedIntro` becomes:
+- [x] **Step 5: Rates copy** (owner request) — in `content/rates.ts`, `alsoListedIntro` becomes:
 
 ```ts
 export const alsoListedIntro =
   "Aldebaran Farm can also be booked on Airbnb and Vrbo at higher rates.";
 ```
 
-- [ ] **Step 6: Remove the recommendations map entirely** (owner request — link AND embed, the whole section; the footer's Google Maps _address_ link is a different feature and stays).
+- [x] **Step 6: Remove the recommendations map entirely** (owner request — link AND embed, the whole section; the footer's Google Maps _address_ link is a different feature and stays).
 
 In `app/things-to-do/page.tsx`:
 
@@ -1399,9 +1399,9 @@ In `content/things-to-do.ts`:
 - Delete the `mapCta` export (lines 107–114) — knip would flag it as unused otherwise. `TextRun` is still used by the remaining exports.
 - If the file's header doc comment mentions the map link, update it.
 
-- [ ] **Step 7: Verify** — `pnpm test && pnpm typecheck && pnpm lint && pnpm knip && pnpm build`; `grep -c "NO TV" .next/server/app/house.html` → 1 (still renders); `grep -rn "maps/d/" app/ content/ components/` → no matches (the recommendations map is fully gone); `grep -c "google.com/maps/search" .next/server/app/index.html` → ≥1 (the footer address link survives); `grep -rn "slightly higher" content/ app/ components/` → no matches.
+- [x] **Step 7: Verify** — `pnpm test && pnpm typecheck && pnpm lint && pnpm knip && pnpm build`; `grep -c "NO TV" .next/server/app/house.html` → 1 (still renders); `grep -rn "maps/d/" app/ content/ components/` → no matches (the recommendations map is fully gone); `grep -c "google.com/maps/search" .next/server/app/index.html` → ≥1 (the footer address link survives); `grep -rn "slightly higher" content/ app/ components/` → no matches.
 
-- [ ] **Step 8: Commit**
+- [x] **Step 8: Commit**
 
 ```bash
 git -C /Users/arpanet/dev/aldebaranfarm.us add -A
@@ -1420,7 +1420,7 @@ Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>"
 
 - Modify: `components/gallery/GalleryGrid.tsx`, `app/things-to-do/page.tsx`, `package.json`
 
-- [ ] **Step 1: Preload lightbox neighbors** — in `components/gallery/GalleryGrid.tsx`, after `const current = …` (line 59) add:
+- [x] **Step 1: Preload lightbox neighbors** — in `components/gallery/GalleryGrid.tsx`, after `const current = …` (line 59) add:
 
 ```ts
 // Photo indexes to warm while the lightbox is open, so prev/next swaps are
@@ -1457,7 +1457,7 @@ Then inside the lightbox, in the `{current && (…)}` block, directly after the 
 
 (`invisible` = `visibility: hidden`, which keeps layout so the image still loads; `display: none` would let lazy-loading skip it. `loading="eager"` makes the intent explicit.)
 
-- [ ] **Step 2: `/things-to-do` LCP candidate** — in `app/things-to-do/page.tsx`, the Outdoors `FramedImage` (line 53) gains `priority` (it sits above/near the fold on both desktop and mobile, mirroring the `/house` treatment):
+- [x] **Step 2: `/things-to-do` LCP candidate** — in `app/things-to-do/page.tsx`, the Outdoors `FramedImage` (line 53) gains `priority` (it sits above/near the fold on both desktop and mobile, mirroring the `/house` treatment):
 
 ```tsx
 <FramedImage
@@ -1470,11 +1470,11 @@ Then inside the lightbox, in the `{current && (…)}` block, directly after the 
 />
 ```
 
-- [ ] **Step 3: `shadcn` to devDependencies** — in `package.json`, move `"shadcn": "^4.13.0"` from `dependencies` to `devDependencies`, then `pnpm install` to sync the lockfile.
+- [x] **Step 3: `shadcn` to devDependencies** — in `package.json`, move `"shadcn": "^4.13.0"` from `dependencies` to `devDependencies`, then `pnpm install` to sync the lockfile.
 
-- [ ] **Step 4: Verify** — `pnpm test && pnpm typecheck && pnpm lint && pnpm knip && pnpm build`. Manual check (optional but preferred): `pnpm start`, open `/gallery`, open the lightbox with DevTools Network → arrow to the next photo → it should already be cached (no new full-size request at click time).
+- [x] **Step 4: Verify** — `pnpm test && pnpm typecheck && pnpm lint && pnpm knip && pnpm build`. Manual check (optional but preferred): `pnpm start`, open `/gallery`, open the lightbox with DevTools Network → arrow to the next photo → it should already be cached (no new full-size request at click time).
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git -C /Users/arpanet/dev/aldebaranfarm.us add -A
@@ -1494,7 +1494,7 @@ Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>"
 - Create: `scripts/check-images.mjs`
 - Modify: `package.json` (script), `.husky/pre-commit`
 
-- [ ] **Step 1: Write the script** — `scripts/check-images.mjs`:
+- [x] **Step 1: Write the script** — `scripts/check-images.mjs`:
 
 ```js
 #!/usr/bin/env node
@@ -1571,7 +1571,7 @@ console.log(
 );
 ```
 
-- [ ] **Step 2: Delete the orphaned gallery photos** (owner decision 2026-07-10; they remain recoverable from git history on GitHub):
+- [x] **Step 2: Delete the orphaned gallery photos** (owner decision 2026-07-10; they remain recoverable from git history on GitHub):
 
 ```bash
 rm public/images/gallery/exterior/tz-36.jpg public/images/gallery/exterior/tz-38.jpg public/images/gallery/exterior/tz-43.jpg public/images/gallery/exterior/tz-45.jpg public/images/gallery/exterior/tz-46.jpg
@@ -1579,11 +1579,11 @@ rm public/images/gallery/screened-porch/tz-35.jpg
 rmdir public/images/gallery/screened-porch
 ```
 
-- [ ] **Step 3: Wire it up** — `package.json` scripts: add `"check:images": "node scripts/check-images.mjs"`. `.husky/pre-commit` gains a final line: `pnpm check:images`.
+- [x] **Step 3: Wire it up** — `package.json` scripts: add `"check:images": "node scripts/check-images.mjs"`. `.husky/pre-commit` gains a final line: `pnpm check:images`.
 
-- [ ] **Step 4: Verify** — `pnpm check:images` → exits 0, all references resolve, **0 orphans**. Sanity-check failure mode: temporarily change one `src` in `content/gallery.ts` to a bogus path, run again → exit 1 naming it → revert.
+- [x] **Step 4: Verify** — `pnpm check:images` → exits 0, all references resolve, **0 orphans**. Sanity-check failure mode: temporarily change one `src` in `content/gallery.ts` to a bogus path, run again → exit 1 naming it → revert.
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git -C /Users/arpanet/dev/aldebaranfarm.us add -A
@@ -1605,12 +1605,12 @@ Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>"
 
 Every edit below corrects a claim verified false against the code, or documents something that exists but is undocumented. Don't rewrite accurate prose.
 
-- [ ] **Step 1: Stale in-code comments**
+- [x] **Step 1: Stale in-code comments**
 
 - `components/layout/Header.tsx:23`: `{/* Desktop (xl+): full evenly-spaced nav */}` → `{/* Desktop (820px+): full evenly-spaced nav */}`
 - `components/layout/MobileNav.tsx:20`: `Rendered by \`Header\` only below the \`xl\` breakpoint (see there).`→`Rendered by \`Header\` only below the 820px breakpoint (see there).`
 
-- [ ] **Step 2: `CLAUDE.md`**
+- [x] **Step 2: `CLAUDE.md`**
 
 - Commands list: add `- \`pnpm knip\` — dead code/deps check`, `- \`pnpm test\` — Vitest unit tests for \`lib/\``, `- \`pnpm check:images\` — verify every referenced \`/images/…\` path exists under \`public/\``.
 - Replace `There is no test suite.` with: `Tests are minimal and deliberate: Vitest covers the pure-logic lib modules (booking URL builders, imageUrl, property parsing/validation). Static JSX is not unit-tested; the pre-commit gate and build-time validation are the main quality net.`
@@ -1622,9 +1622,9 @@ Every edit below corrects a claim verified false against the code, or documents 
 - Line 50 (link language): change `nav/footer links underline on hover (shared \`navLinkClass\` in \`components/layout/Nav.tsx\`)`to`nav links underline on hover (shared \`navLinkClass\` in \`components/shared/links.ts\`; the footer uses its own smaller treatment)`.
 - Architecture section: add one sentence: `\`lib/site.ts\` holds site-wide config (siteUrl, route manifest for the sitemap, bookNowHref).`
 
-- [ ] **Step 3: `components/README.md`** — add `reviews/` to the group list (`reviews/ — the home page's guest-reviews section (Reviews, ReviewCard, StarRating)`); update the data rule with the same type-only wording as CLAUDE.md.
+- [x] **Step 3: `components/README.md`** — add `reviews/` to the group list (`reviews/ — the home page's guest-reviews section (Reviews, ReviewCard, StarRating)`); update the data rule with the same type-only wording as CLAUDE.md.
 
-- [ ] **Step 4: Create `components/reviews/README.md`**
+- [x] **Step 4: Create `components/reviews/README.md`**
 
 ```markdown
 # components/reviews
@@ -1638,27 +1638,27 @@ The home page's guest-reviews section.
 Data flow: `app/page.tsx` imports the curated reviews from `content/reviews.ts`, derives the Airbnb/Vrbo attribution URLs from the `Property` (so listing URLs live only in `content/property.md`), and passes both down as props. Components here never import content values themselves.
 ```
 
-- [ ] **Step 5: `content/README.md`** — add `reviews.ts` to the file list (`reviews.ts — hand-curated guest reviews + source labels; attribution URLs for Airbnb/Vrbo derive from the Property at the page level`); extend the `rates.ts` line to mention `reservationIntro` and `alsoListedIntro`.
+- [x] **Step 5: `content/README.md`** — add `reviews.ts` to the file list (`reviews.ts — hand-curated guest reviews + source labels; attribution URLs for Airbnb/Vrbo derive from the Property at the page level`); extend the `rates.ts` line to mention `reservationIntro` and `alsoListedIntro`.
 
-- [ ] **Step 6: `lib/README.md`** — line 11: remove `(stubs present)`; the booking line should read `\`booking/\` — mailto/tel URL builders for email-to-book today; direct booking + Airbnb/VRBO calendar sync will live here when built.`Add a line for`site.ts`: `\`site.ts\` — site-wide config: siteUrl, sitemap route manifest, bookNowHref.`
+- [x] **Step 6: `lib/README.md`** — line 11: remove `(stubs present)`; the booking line should read `\`booking/\` — mailto/tel URL builders for email-to-book today; direct booking + Airbnb/VRBO calendar sync will live here when built.`Add a line for`site.ts`: `\`site.ts\` — site-wide config: siteUrl, sitemap route manifest, bookNowHref.`
 
-- [ ] **Step 7: `lib/analytics/README.md`** — update the EVENTS description: event names live in `events.ts` (vendor-free so Server Components can import them); all `data-track` attributes reference `EVENTS.*` — never string literals.
+- [x] **Step 7: `lib/analytics/README.md`** — update the EVENTS description: event names live in `events.ts` (vendor-free so Server Components can import them); all `data-track` attributes reference `EVENTS.*` — never string literals.
 
-- [ ] **Step 8: `components/shared/README.md`** — update `ExternalLink` line: used by things-to-do links, `ListingLink`, `ReviewCard`, and the footer maps link; sets `data-track="outbound_click"` by default; `target`/`rel` cannot be overridden by spread. Update the `FramedImage` frame-color wording from "sand-colored" to `the \`--color-brand-shadow\` token (#E8DED2)`. Add `links.ts` (`navLinkClass`/`proseLinkClass`).
+- [x] **Step 8: `components/shared/README.md`** — update `ExternalLink` line: used by things-to-do links, `ListingLink`, `ReviewCard`, and the footer maps link; sets `data-track="outbound_click"` by default; `target`/`rel` cannot be overridden by spread. Update the `FramedImage` frame-color wording from "sand-colored" to `the \`--color-brand-shadow\` token (#E8DED2)`. Add `links.ts` (`navLinkClass`/`proseLinkClass`).
 
-- [ ] **Step 9: `app/README.md`** — home page line: `renders the hero and the guest-reviews section`; reservations line: mention the rates table and the Airbnb/Vrbo section; things-to-do line: remove any mention of the recommendations map (removed in Task 11).
+- [x] **Step 9: `app/README.md`** — home page line: `renders the hero and the guest-reviews section`; reservations line: mention the rates table and the Airbnb/Vrbo section; things-to-do line: remove any mention of the recommendations map (removed in Task 11).
 
-- [ ] **Step 9b: Purge remaining recommendations-map references from docs** — `grep -rn "My Maps\|recommendations map\|maps/d/" CLAUDE.md README.md docs/ components/ content/ app/ --include="*.md"` (excluding `docs/superpowers/`) and update `content/README.md`'s `things-to-do.ts` line and any other hits so no doc describes the removed map.
+- [x] **Step 9b: Purge remaining recommendations-map references from docs** — `grep -rn "My Maps\|recommendations map\|maps/d/" CLAUDE.md README.md docs/ components/ content/ app/ --include="*.md"` (excluding `docs/superpowers/`) and update `content/README.md`'s `things-to-do.ts` line and any other hits so no doc describes the removed map.
 
-- [ ] **Step 10: `docs/architecture.md`** — three surgical edits: (1) replace the "equally-weighted" description of the reservations page with the steering description (direct booking leads at the best rate; platform links below the rates table at higher rates); (2) update the grep test to `\`content/property.md\` is _imported/read_ only under \`lib/data\` (doc comments elsewhere may mention it by name)`; (3) add a short "Reviews" paragraph describing `content/reviews.ts` → home page → props flow.
+- [x] **Step 10: `docs/architecture.md`** — three surgical edits: (1) replace the "equally-weighted" description of the reservations page with the steering description (direct booking leads at the best rate; platform links below the rates table at higher rates); (2) update the grep test to `\`content/property.md\` is _imported/read_ only under \`lib/data\` (doc comments elsewhere may mention it by name)`; (3) add a short "Reviews" paragraph describing `content/reviews.ts` → home page → props flow.
 
-- [ ] **Step 11: `docs/style-guide.md`** — (1) color table: image-frame row should name `--color-brand-shadow` `#E8DED2` (Sand `#E6DAC6` remains a brand color but is not the frame color); (2) line 52–54: nav links share `navLinkClass` (now in `components/shared/links.ts`); footer links use their own smaller treatment; prose links share `proseLinkClass`; (3) line 64: replace "no logo image needed" with a note that the footer renders `/images/brand/logo.png` beside the text wordmark; (4) document the `brand` Button variant (+ `brand-sm`/`brand-lg` sizes) as the canonical CTA.
+- [x] **Step 11: `docs/style-guide.md`** — (1) color table: image-frame row should name `--color-brand-shadow` `#E8DED2` (Sand `#E6DAC6` remains a brand color but is not the frame color); (2) line 52–54: nav links share `navLinkClass` (now in `components/shared/links.ts`); footer links use their own smaller treatment; prose links share `proseLinkClass`; (3) line 64: replace "no logo image needed" with a note that the footer renders `/images/brand/logo.png` beside the text wordmark; (4) document the `brand` Button variant (+ `brand-sm`/`brand-lg` sizes) as the canonical CTA.
 
-- [ ] **Step 12: Root `README.md`** — read it; fix only claims made stale by this branch (commands, test suite). If accurate, leave it.
+- [x] **Step 12: Root `README.md`** — read it; fix only claims made stale by this branch (commands, test suite). If accurate, leave it.
 
-- [ ] **Step 13: Verify** — `pnpm format:check` (prettier covers md); re-run the doc grep tests: `grep -rn "equally-weighted" CLAUDE.md docs/ lib/ components/` → no stale claims remain; `grep -rn "xl breakpoint\|Desktop (xl" components/` → nothing.
+- [x] **Step 13: Verify** — `pnpm format:check` (prettier covers md); re-run the doc grep tests: `grep -rn "equally-weighted" CLAUDE.md docs/ lib/ components/` → no stale claims remain; `grep -rn "xl breakpoint\|Desktop (xl" components/` → nothing.
 
-- [ ] **Step 14: Commit**
+- [x] **Step 14: Commit**
 
 ```bash
 git -C /Users/arpanet/dev/aldebaranfarm.us add -A
@@ -1677,7 +1677,7 @@ Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>"
 
 - Create: `docs/audits/2026-07-09-deep-clean.md`
 
-- [ ] **Step 1: Full gate from scratch**
+- [x] **Step 1: Full gate from scratch**
 
 ```bash
 cd /Users/arpanet/dev/aldebaranfarm.us && pnpm typecheck && pnpm lint && pnpm knip && pnpm test && pnpm check:images && pnpm format:check && pnpm build
@@ -1685,7 +1685,7 @@ cd /Users/arpanet/dev/aldebaranfarm.us && pnpm typecheck && pnpm lint && pnpm kn
 
 Expected: everything passes; build still emits the same 13 static routes.
 
-- [ ] **Step 2: Behavioral spot-checks** (`pnpm start` in background, then curl):
+- [x] **Step 2: Behavioral spot-checks** (`pnpm start` in background, then curl):
 
 - `curl -s http://localhost:3000/reservations | grep -o 'mailto:[^"]*' | head -1` → contains `%20`, no `+`.
 - `curl -s http://localhost:3000 | grep -c "6557 County T"` → ≥1.
@@ -1693,9 +1693,9 @@ Expected: everything passes; build still emits the same 13 static routes.
 - `curl -s http://localhost:3000/house | grep -o "<title>[^<]*</title>"` → `The House — Aldebaran Farm`.
 - Stop the server.
 
-- [ ] **Step 3: Write `docs/audits/2026-07-09-deep-clean.md`** using the deep-clean skill's report template: branch stats from `git -C /Users/arpanet/dev/aldebaranfarm.us diff master --stat | tail -1` and `git -C /Users/arpanet/dev/aldebaranfarm.us log master..HEAD --oneline | wc -l`; findings-by-category tables mapping each audit finding to its fix (use the Finding → Task map at the top of this plan); test impact (0 tests → the new lib test counts); new modules table (`lib/site.ts`, `lib/analytics/events.ts`, `components/shared/links.ts`, `components/property/ListingLink.tsx`, `scripts/check-images.mjs`, `vitest.config.ts`); and the **Not Addressed** section copied from this plan's "Deliberately NOT addressed" list (plus anything skipped during execution).
+- [x] **Step 3: Write `docs/audits/2026-07-09-deep-clean.md`** using the deep-clean skill's report template: branch stats from `git -C /Users/arpanet/dev/aldebaranfarm.us diff master --stat | tail -1` and `git -C /Users/arpanet/dev/aldebaranfarm.us log master..HEAD --oneline | wc -l`; findings-by-category tables mapping each audit finding to its fix (use the Finding → Task map at the top of this plan); test impact (0 tests → the new lib test counts); new modules table (`lib/site.ts`, `lib/analytics/events.ts`, `components/shared/links.ts`, `components/property/ListingLink.tsx`, `scripts/check-images.mjs`, `vitest.config.ts`); and the **Not Addressed** section copied from this plan's "Deliberately NOT addressed" list (plus anything skipped during execution).
 
-- [ ] **Step 4: Commit the report**
+- [x] **Step 4: Commit the report**
 
 ```bash
 git -C /Users/arpanet/dev/aldebaranfarm.us add docs/audits
@@ -1704,4 +1704,4 @@ git -C /Users/arpanet/dev/aldebaranfarm.us commit -m "Add deep-clean audit repor
 Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>"
 ```
 
-- [ ] **Step 5: Hand back to the user** — do NOT merge or push without an explicit decision; present the branch summary and options (merge to master, push branch for review, or further changes).
+- [x] **Step 5: Hand back to the user** — do NOT merge or push without an explicit decision; present the branch summary and options (merge to master, push branch for review, or further changes).

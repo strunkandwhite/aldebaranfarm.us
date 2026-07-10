@@ -1,6 +1,6 @@
 # Deep Clean Audit Report — 2026-07-09
 
-**Branch:** `deep-clean-fixes` (15 commits, 73 files changed, +3017 / -370)
+**Branch:** `deep-clean-fixes` (18 commits, 75 files changed, +3153 / -370)
 
 ## Summary
 
@@ -123,5 +123,5 @@ Plus these review-logged minors, deliberately left for a future pass:
 ## Verification Notes
 
 - Full gate (`typecheck`, `lint`, `knip`, `test`, `check:images`, `build`) passes clean.
-- `pnpm format:check` reports issues only under `.superpowers/sdd/` — a directory with its own nested `.gitignore` that git honors but Prettier v3 does not (Prettier reads only the root `.gitignore`). Those are SDD process scratch files (task briefs/reports), not part of the deliverable and untouched by any of the 15 tasks; all tracked source files are clean.
+- `pnpm format:check` passes clean, including `.superpowers/sdd/` — that directory's nested `.gitignore` is honored by git but was not read by Prettier v3 (which reads only the root `.gitignore`); it's now listed in `.prettierignore` directly.
 - Build emits the same 13 static routes as before the branch.

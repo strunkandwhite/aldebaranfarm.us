@@ -51,13 +51,15 @@ export function buildInquiryMailtoUrl(property: Property, details: InquiryDetail
   // RFC 6068 requires percent-encoding (%20 for spaces). URLSearchParams must
   // NOT be used here: it produces form-encoding, where spaces become "+", and
   // spec-compliant mail clients (Apple Mail, iOS, Outlook) render those
-  // pluses literally in the draft.
+  // pluses literally in the draft. The address itself is NOT percent-encoded:
+  // RFC 6068's addr-spec requires a literal "@" between local part and
+  // domain (encoding it to "%40" breaks conformant mail clients).
   const query = [
     `subject=${encodeURIComponent(subject)}`,
     `body=${encodeURIComponent(lines.join("\n"))}`,
   ].join("&");
 
-  return `mailto:${encodeURIComponent(property.contactEmail)}?${query}`;
+  return `mailto:${property.contactEmail}?${query}`;
 }
 
 /**

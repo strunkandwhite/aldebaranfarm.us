@@ -47,6 +47,12 @@ describe("buildInquiryMailtoUrl", () => {
     const body = decodeURIComponent(url.split("body=")[1]);
     expect(body).toBe("Hi, I'd like to inquire about staying at Aldebaran Farm.");
   });
+
+  it("keeps a literal @ in the address (RFC 6068 addr-spec)", () => {
+    const url = buildInquiryMailtoUrl(property);
+    expect(url.startsWith("mailto:aldebaran.farm.rental@gmail.com?")).toBe(true);
+    expect(url).not.toContain("%40");
+  });
 });
 
 describe("buildInquiryTelUrl", () => {
