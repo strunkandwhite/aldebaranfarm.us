@@ -30,6 +30,18 @@ export const galleryCategories: GalleryCategory[] = [
       { src: "/images/gallery/exterior/tz-41.jpg", alt: "Exterior & Grounds at Aldebaran Farm" },
       { src: "/images/gallery/exterior/tz-47.jpg", alt: "Exterior & Grounds at Aldebaran Farm" },
       { src: "/images/gallery/exterior/tz-44.jpg", alt: "Exterior & Grounds at Aldebaran Farm" },
+      {
+        src: "/images/gallery/exterior/drive-to-main-house.jpg",
+        alt: "The gravel drive winding beneath mature trees toward the main house",
+      },
+      {
+        src: "/images/gallery/exterior/spring-meadow.jpg",
+        alt: "A crimson-leaved tree in the spring meadow, framed by trees along the drive",
+      },
+      {
+        src: "/images/gallery/exterior/cabin-in-fresh-snow.jpg",
+        alt: "A red-trimmed cabin on the property after fresh snowfall",
+      },
     ],
   },
   {
