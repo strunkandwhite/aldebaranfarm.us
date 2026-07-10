@@ -21,9 +21,7 @@ export const metadata: Metadata = {
 export default function ThingsToDoPage() {
   return (
     <Container>
-      <div className="pt-6 md:pt-10">
-        <PageTitle>Things To Do</PageTitle>
-      </div>
+      <PageTitle>Things To Do</PageTitle>
 
       {/* In Town — text only, full container width */}
       <section className="py-8 md:py-10">

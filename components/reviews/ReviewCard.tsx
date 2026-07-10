@@ -1,5 +1,6 @@
 import { StarRating } from "./StarRating";
 import { ExternalLink } from "@/components/shared/ExternalLink";
+import { proseLinkClass } from "@/components/shared/links";
 import type { Review, ReviewSource, ReviewSourceInfo } from "@/content/reviews";
 
 /**
@@ -27,7 +28,7 @@ export function ReviewCard({
         <span className="font-semibold">{review.author}</span>
         <span className="text-muted-foreground">
           {review.date ? <> &middot; {review.date}</> : null} &middot; via{" "}
-          <ExternalLink href={source.url} className="underline underline-offset-2 hover:opacity-70">
+          <ExternalLink href={source.url} className={proseLinkClass}>
             {source.label}
           </ExternalLink>
         </span>

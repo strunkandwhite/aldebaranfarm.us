@@ -39,10 +39,6 @@
   /* Offset dropshadow block behind framed images (exact hex from the mock). */
   --color-brand-shadow: #e8ded2;
 
-  /* Named brand spacing (usable as p-brand-section, gap-brand-gutter, etc.) */
-  --spacing-brand-gutter: 1.5rem;
-  --spacing-brand-section: 5rem;
-
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);

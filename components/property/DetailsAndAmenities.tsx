@@ -48,9 +48,11 @@ export function DetailsAndAmenities({ property }: { property: Property }) {
         <p className="mt-6">Please note there is NO TV.</p>
 
         <Button
+          variant="brand"
+          size="brand-lg"
           render={<Link href="/gallery" />}
           nativeButton={false}
-          className="mt-6 h-auto rounded-none px-8 py-3 font-heading text-base"
+          className="mt-6"
         >
           View Gallery &rarr;
         </Button>

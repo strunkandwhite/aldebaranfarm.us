@@ -1,6 +1,7 @@
 import { Fragment } from "react";
 
 import { ExternalLink } from "./ExternalLink";
+import { proseLinkClass } from "./links";
 
 /**
  * A run of rich text: either a plain string, or an external link. Lets editable
@@ -20,11 +21,7 @@ export function RichText({ runs }: { runs: TextRun[] }) {
         typeof run === "string" ? (
           <Fragment key={i}>{run}</Fragment>
         ) : (
-          <ExternalLink
-            key={i}
-            href={run.href}
-            className="underline underline-offset-4 hover:opacity-70"
-          >
+          <ExternalLink key={i} href={run.href} className={proseLinkClass}>
             {run.text}
           </ExternalLink>
         )

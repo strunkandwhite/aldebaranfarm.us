@@ -18,6 +18,10 @@ const buttonVariants = cva(
         destructive:
           "bg-destructive/10 text-destructive hover:bg-destructive/20 focus-visible:border-destructive/40 focus-visible:ring-destructive/20 dark:bg-destructive/20 dark:hover:bg-destructive/30 dark:focus-visible:ring-destructive/40",
         link: "text-primary underline-offset-4 hover:underline",
+        // Deliberate brand customization (see docs/style-guide.md): the
+        // filled-burgundy CTA used site-wide — square corners, Playfair.
+        brand:
+          "rounded-none bg-primary font-heading text-base text-primary-foreground hover:bg-primary/80",
       },
       size: {
         default:
@@ -31,6 +35,8 @@ const buttonVariants = cva(
         "icon-sm":
           "size-7 rounded-[min(var(--radius-md),12px)] in-data-[slot=button-group]:rounded-lg",
         "icon-lg": "size-9",
+        "brand-sm": "h-auto gap-1.5 px-5 py-2",
+        "brand-lg": "h-auto gap-1.5 px-8 py-3",
       },
     },
     defaultVariants: {

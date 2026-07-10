@@ -26,9 +26,7 @@ export default async function HousePage() {
 
   return (
     <Container>
-      <div className="pt-6 md:pt-10">
-        <PageTitle>The House</PageTitle>
-      </div>
+      <PageTitle>The House</PageTitle>
 
       <DetailsAndAmenities property={property} />
       <History property={property} />

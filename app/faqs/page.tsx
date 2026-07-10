@@ -19,9 +19,7 @@ export const metadata: Metadata = {
 export default function FaqsPage() {
   return (
     <Container>
-      <div className="pt-6 md:pt-10">
-        <PageTitle>FAQs</PageTitle>
-      </div>
+      <PageTitle>FAQs</PageTitle>
 
       <div className="mx-auto max-w-3xl space-y-10 pb-16 pt-8 md:space-y-12 md:pt-12">
         {faqGroups.map((group) => (

@@ -10,6 +10,3 @@ export const leftNavLinks = [
 ] as const;
 
 export const rightNavLinks = [{ href: "/faqs", label: "FAQs" }] as const;
-
-/** Shared styling for a nav link (Playfair, burgundy, underline on hover). */
-export const navLinkClass = "font-heading text-lg text-primary underline-offset-4 hover:underline";

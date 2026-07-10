@@ -19,9 +19,7 @@ export const metadata: Metadata = {
 export default function GalleryPage() {
   return (
     <Container>
-      <div className="pt-6 md:pt-10">
-        <PageTitle>Gallery</PageTitle>
-      </div>
+      <PageTitle>Gallery</PageTitle>
 
       <div className="pb-16 pt-8 md:pt-12">
         <GalleryGrid categories={galleryCategories} />

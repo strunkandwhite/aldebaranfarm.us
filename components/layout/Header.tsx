@@ -3,7 +3,8 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Container } from "./Container";
 import { MobileNav } from "./MobileNav";
-import { leftNavLinks, rightNavLinks, navLinkClass } from "./Nav";
+import { leftNavLinks, rightNavLinks } from "./Nav";
+import { navLinkClass } from "@/components/shared/links";
 import { bookNowHref } from "@/lib/site";
 import { EVENTS } from "@/lib/analytics/events";
 
@@ -41,6 +42,8 @@ export function Header() {
           ))}
 
           <Button
+            variant="brand"
+            size="brand-sm"
             render={
               <Link
                 href={bookNowHref}
@@ -49,7 +52,6 @@ export function Header() {
               />
             }
             nativeButton={false}
-            className="h-auto rounded-none px-5 py-2 font-heading text-base"
           >
             Book Now
           </Button>
