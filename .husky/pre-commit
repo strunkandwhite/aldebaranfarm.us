@@ -1,3 +1,4 @@
 pnpm exec lint-staged --no-stash
 pnpm knip
 pnpm tsc --noEmit
+pnpm test

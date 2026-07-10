@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
-import { buildInquiryMailtoUrl } from "@/lib/booking";
+import { buildInquiryMailtoUrl, buildInquiryTelUrl } from "@/lib/booking";
 import { getProperty } from "@/lib/data";
 import { Container } from "@/components/layout/Container";
 import { PageTitle } from "@/components/layout/PageTitle";
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
  */
 export default async function ReservationsPage() {
   const property = await getProperty();
-  const telHref = `tel:+1${property.contactPhone.replace(/\D/g, "")}`;
+  const telHref = buildInquiryTelUrl(property);
 
   return (
     <Container>
