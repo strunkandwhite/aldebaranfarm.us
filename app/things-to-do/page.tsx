@@ -52,6 +52,7 @@ export default function ThingsToDoPage() {
           src="/images/things-to-do/aldebaran_outdoors.jpg"
           alt="Kayaking on the Wisconsin River near Aldebaran Farm"
           orientation="portrait"
+          priority
           className="order-first mx-auto w-full max-w-xs sm:max-w-sm md:order-none md:mx-0 md:max-w-none"
           sizes="(min-width: 768px) 45vw, 85vw"
         />

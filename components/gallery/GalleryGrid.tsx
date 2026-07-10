@@ -58,6 +58,15 @@ export function GalleryGrid({ categories }: { categories: GalleryCategory[] }) {
 
   const current = index !== null ? flat[index] : null;
 
+  // Photo indexes to warm while the lightbox is open, so prev/next swaps are
+  // instant instead of showing the previous photo while the new one loads.
+  const preloadIndexes =
+    index === null || flat.length <= 1
+      ? []
+      : [...new Set([(index + 1) % flat.length, (index - 1 + flat.length) % flat.length])].filter(
+          (i) => i !== index
+        );
+
   return (
     <div className="space-y-12">
       {categories.map((cat, ci) => (
@@ -119,6 +128,22 @@ export function GalleryGrid({ categories }: { categories: GalleryCategory[] }) {
                   sizes="(min-width: 1024px) 1024px, 100vw"
                   className="object-contain"
                 />
+
+                {preloadIndexes.map((i) => (
+                  // Invisible (but laid-out) copies of the neighboring photos,
+                  // with identical props to the visible Image so the browser
+                  // requests the exact same optimized URL and warms the cache.
+                  <Image
+                    key={flat[i].src}
+                    src={imageUrl(flat[i].src)}
+                    alt=""
+                    aria-hidden
+                    fill
+                    loading="eager"
+                    sizes="(min-width: 1024px) 1024px, 100vw"
+                    className="invisible object-contain"
+                  />
+                ))}
               </div>
             )}
 
