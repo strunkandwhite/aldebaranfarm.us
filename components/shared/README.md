@@ -14,7 +14,8 @@ aren't structural layout chrome.
 - **`JsonLd.tsx`** — serializes a `lib/seo` JSON-LD object into a
   `script type="application/ld+json"` tag, escaping `<` so content can't
   inject markup.
-- **`QAItem.tsx`** — a question/answer pair (FAQs page).
+- **`QAItem.tsx`** — a question/answer pair (FAQs page); answers may embed
+  inline links as `TextRun[]`.
 - **`RichText.tsx`** — renders content strings that may contain inline links.
 - **`ConsoleWordmark.tsx`** — logs the Lenehan–Hu wordmark to the console once
   per page load (easter egg; renders nothing).

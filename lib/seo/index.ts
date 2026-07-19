@@ -11,6 +11,7 @@
 
 import { imageUrl } from "@/lib/images";
 import { siteUrl } from "@/lib/site";
+import type { TextRun } from "@/components/shared/RichText";
 import type { FaqGroup } from "@/content/faqs";
 import type { Review } from "@/content/reviews";
 import type { Property } from "@/types/property";
@@ -96,6 +97,14 @@ export function vacationRentalJsonLd(
   };
 }
 
+/** Flatten a rich-text answer to the plain text a schema.org Answer wants. */
+function plainText(answer: string | TextRun[]): string {
+  if (typeof answer === "string") {
+    return answer;
+  }
+  return answer.map((run) => (typeof run === "string" ? run : run.text)).join("");
+}
+
 /** The FAQ page's Q&A pairs as a schema.org FAQPage (groups are flattened). */
 export function faqPageJsonLd(groups: FaqGroup[]): JsonLdObject {
   return {
@@ -106,7 +115,7 @@ export function faqPageJsonLd(groups: FaqGroup[]): JsonLdObject {
       .map((item) => ({
         "@type": "Question",
         name: item.q,
-        acceptedAnswer: { "@type": "Answer", text: item.a },
+        acceptedAnswer: { "@type": "Answer", text: plainText(item.a) },
       })),
   };
 }

@@ -113,4 +113,26 @@ describe("faqPageJsonLd", () => {
       },
     ]);
   });
+
+  it("flattens rich-text answers (inline links) to plain text", () => {
+    const groups: FaqGroup[] = [
+      {
+        heading: "House",
+        items: [
+          {
+            q: "Where's the nearest grocery store?",
+            a: [{ text: "River Valley Market", href: "https://example.com/" }, " in Spring Green."],
+          },
+        ],
+      },
+    ];
+    const jsonLd = faqPageJsonLd(groups);
+    expect(jsonLd.mainEntity).toEqual([
+      {
+        "@type": "Question",
+        name: "Where's the nearest grocery store?",
+        acceptedAnswer: { "@type": "Answer", text: "River Valley Market in Spring Green." },
+      },
+    ]);
+  });
 });

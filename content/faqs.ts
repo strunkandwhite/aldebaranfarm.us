@@ -1,13 +1,16 @@
 /**
  * FAQ content (the /faqs page), grouped by topic. Edit here — the page renders
- * these groups and their Q&A pairs directly.
+ * these groups and their Q&A pairs directly. Answers are plain strings, or
+ * `TextRun[]` when they need inline links (see `RichText`).
  */
+
+import type { TextRun } from "@/components/shared/RichText";
 
 import { cancellationPolicy } from "./rates";
 
 export interface FaqItem {
   q: string;
-  a: string;
+  a: string | TextRun[];
 }
 
 export interface FaqGroup {
@@ -55,7 +58,10 @@ export const faqGroups: FaqGroup[] = [
       },
       {
         q: "Where's the nearest grocery store?",
-        a: "Molter's Market in Spring Green, open until 8pm weekdays, 6pm Saturday, 5pm Sunday.",
+        a: [
+          { text: "River Valley Market", href: "https://www.shoprivervalleymarket.com/" },
+          " in Spring Green, open until 8pm weekdays, 6pm Saturday, 5pm Sunday.",
+        ],
       },
       {
         q: "Is there a TV?",
@@ -79,7 +85,7 @@ export const faqGroups: FaqGroup[] = [
       },
       {
         q: "What's provided, and what should we bring?",
-        a: "We supply all towels and linens, plus a fully stocked kitchen with cookware, dishes, and basic staples. There should also be shampoo, conditioner, and soap in the bathrooms. Firewood is in the low stone building behind the house, and the grills are in the shed just north of the house. We do not supply charcoal for the grill, so bring your own.",
+        a: "We supply all towels and linens, plus a fully stocked kitchen with cookware, dishes, and basic staples. We suggest you bring your own shampoo, conditioner, and soap or body wash. Firewood is in the low stone building behind the house, and the grills are in the shed just north of the house. We do not supply charcoal for the grill, so bring your own.",
       },
     ],
   },
