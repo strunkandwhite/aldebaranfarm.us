@@ -51,7 +51,6 @@ export const galleryCategories: GalleryCategory[] = [
       { src: "/images/gallery/kitchen/tz-1.jpg", alt: "Kitchen at Aldebaran Farm" },
       { src: "/images/gallery/kitchen/tz-2.jpg", alt: "Kitchen at Aldebaran Farm" },
       { src: "/images/gallery/kitchen/tz-3.jpg", alt: "Kitchen at Aldebaran Farm" },
-      { src: "/images/gallery/kitchen/tz-4.jpg", alt: "Kitchen at Aldebaran Farm" },
     ],
   },
   {
@@ -63,19 +62,11 @@ export const galleryCategories: GalleryCategory[] = [
         alt: "Living & Dining Room at Aldebaran Farm",
       },
       {
-        src: "/images/gallery/living-dining/tz-10.jpg",
-        alt: "Living & Dining Room at Aldebaran Farm",
-      },
-      {
         src: "/images/gallery/living-dining/tz-13.jpg",
         alt: "Living & Dining Room at Aldebaran Farm",
       },
       {
         src: "/images/gallery/living-dining/tz-14.jpg",
-        alt: "Living & Dining Room at Aldebaran Farm",
-      },
-      {
-        src: "/images/gallery/living-dining/tz-11.jpg",
         alt: "Living & Dining Room at Aldebaran Farm",
       },
       {
