@@ -4,10 +4,10 @@ Reusable, cross-cutting components that aren't tied to the property domain and
 aren't structural layout chrome.
 
 - **`ExternalLink.tsx`** — outbound anchor with safe `target`/`rel` defaults,
-  used by the Things To Do activity links, `ListingLink`, `ReviewCard`, and the
-  footer's maps link; sets `data-track="outbound_click"` by default. `target`/
-  `rel` come after the prop spread, so callers can override `data-track` but
-  not the tab-isolation attributes.
+  used by the Things To Do activity links, `ListingLink`, and `ReviewCard`;
+  sets `data-track="outbound_click"` by default. `target`/`rel` come after the
+  prop spread, so callers can override `data-track` but not the tab-isolation
+  attributes.
 - **`FramedImage.tsx`** — image with the offset shadow block (the
   `--color-brand-shadow` token, `#E8DED2`) used throughout the site. Resolves
   its src through `imageUrl()`.

@@ -3,7 +3,6 @@ import Image from "next/image";
 
 import { Container } from "./Container";
 import { leftNavLinks, rightNavLinks } from "./Nav";
-import { ExternalLink } from "@/components/shared/ExternalLink";
 import { EVENTS } from "@/lib/analytics/events";
 import { buildInquiryMailtoUrl, buildInquiryTelUrl } from "@/lib/booking";
 import { getProperty } from "@/lib/data";
@@ -18,14 +17,15 @@ const footerLinks = [
 
 /**
  * Footer — site footer with the wordmark, quick links, and contact details.
- * Contact info and the address come from the Property (single source of
- * truth: content/property.md) — never hard-code them here.
+ * Contact info and the locality come from the Property (single source of
+ * truth: content/property.md) — never hard-code them here. Deliberately no
+ * street address: bookings are by email/phone only, and a footer address
+ * reads like an invitation to mail business inquiries. (The address still
+ * appears in the FAQs and the home page's structured data.)
  */
 export async function Footer() {
   const property = await getProperty();
-  const { streetAddress, city, regionCode } = property.location;
-  const addressLine = `${streetAddress}, ${city}, ${regionCode}`;
-  const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(addressLine)}`;
+  const { city, region } = property.location;
 
   return (
     <footer className="mt-auto border-t border-border py-10">
@@ -42,15 +42,10 @@ export async function Footer() {
               />
               {property.name}
             </Link>
-            {/* py-1 keeps each contact link at the 24px minimum touch-target height. */}
             <p className="mt-1 text-sm text-foreground">
-              <ExternalLink
-                href={mapsUrl}
-                className="inline-block py-1 underline-offset-4 hover:underline"
-              >
-                {addressLine}
-              </ExternalLink>
+              {city}, {region}
             </p>
+            {/* py-1 keeps each contact link at the 24px minimum touch-target height. */}
             <p className="text-sm text-foreground">
               <a
                 href={buildInquiryMailtoUrl(property)}
