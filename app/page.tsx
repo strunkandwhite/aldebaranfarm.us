@@ -1,7 +1,9 @@
 import { getProperty } from "@/lib/data";
+import { vacationRentalJsonLd } from "@/lib/seo";
 import { Container } from "@/components/layout/Container";
 import { Hero } from "@/components/property/Hero";
 import { Reviews } from "@/components/reviews/Reviews";
+import { JsonLd } from "@/components/shared/JsonLd";
 import {
   googleReviewsUrl,
   reviews,
@@ -33,6 +35,7 @@ export default async function HomePage() {
 
   return (
     <Container>
+      <JsonLd data={vacationRentalJsonLd(property, reviews, [googleReviewsUrl])} />
       <Hero property={property} />
       <Reviews reviews={reviews} sources={reviewSources} />
     </Container>

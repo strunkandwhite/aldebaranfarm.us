@@ -66,6 +66,11 @@ export async function generateMetadata(): Promise<Metadata> {
       template: `%s — ${property.name}`,
     },
     description,
+    // "./" resolves against the current route, giving every page a
+    // self-referencing canonical URL without per-page boilerplate.
+    alternates: {
+      canonical: "./",
+    },
     openGraph: {
       type: "website",
       siteName: property.name,

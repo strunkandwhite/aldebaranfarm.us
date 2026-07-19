@@ -3,7 +3,9 @@ import type { Metadata } from "next";
 import { Container } from "@/components/layout/Container";
 import { PageTitle } from "@/components/layout/PageTitle";
 import { SectionHeading } from "@/components/layout/SectionHeading";
+import { JsonLd } from "@/components/shared/JsonLd";
 import { QAItem } from "@/components/shared/QAItem";
+import { faqPageJsonLd } from "@/lib/seo";
 import { faqGroups } from "@/content/faqs";
 
 export const metadata: Metadata = {
@@ -19,6 +21,7 @@ export const metadata: Metadata = {
 export default function FaqsPage() {
   return (
     <Container>
+      <JsonLd data={faqPageJsonLd(faqGroups)} />
       <PageTitle>FAQs</PageTitle>
 
       <div className="mx-auto max-w-3xl space-y-10 pb-16 pt-8 md:space-y-12 md:pt-12">

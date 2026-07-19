@@ -42,8 +42,12 @@ export async function Footer() {
               />
               {property.name}
             </Link>
+            {/* py-1 keeps each contact link at the 24px minimum touch-target height. */}
             <p className="mt-1 text-sm text-foreground">
-              <ExternalLink href={mapsUrl} className="underline-offset-4 hover:underline">
+              <ExternalLink
+                href={mapsUrl}
+                className="inline-block py-1 underline-offset-4 hover:underline"
+              >
                 {addressLine}
               </ExternalLink>
             </p>
@@ -52,7 +56,7 @@ export async function Footer() {
                 href={buildInquiryMailtoUrl(property)}
                 data-track={EVENTS.inquiryEmailClick}
                 data-track-location="footer"
-                className="underline-offset-4 hover:underline"
+                className="inline-block py-1 underline-offset-4 hover:underline"
               >
                 {property.contactEmail}
               </a>{" "}
@@ -61,7 +65,7 @@ export async function Footer() {
                 href={buildInquiryTelUrl(property)}
                 data-track={EVENTS.inquiryPhoneClick}
                 data-track-location="footer"
-                className="underline-offset-4 hover:underline"
+                className="inline-block py-1 underline-offset-4 hover:underline"
               >
                 {property.contactPhone}
               </a>

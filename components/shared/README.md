@@ -11,6 +11,9 @@ aren't structural layout chrome.
 - **`FramedImage.tsx`** — image with the offset shadow block (the
   `--color-brand-shadow` token, `#E8DED2`) used throughout the site. Resolves
   its src through `imageUrl()`.
+- **`JsonLd.tsx`** — serializes a `lib/seo` JSON-LD object into a
+  `script type="application/ld+json"` tag, escaping `<` so content can't
+  inject markup.
 - **`QAItem.tsx`** — a question/answer pair (FAQs page).
 - **`RichText.tsx`** — renders content strings that may contain inline links.
 - **`ConsoleWordmark.tsx`** — logs the Lenehan–Hu wordmark to the console once

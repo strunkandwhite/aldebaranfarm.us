@@ -11,6 +11,8 @@ touching components.
   booking + Airbnb/VRBO calendar sync will live here when built.
 - **`analytics/`** — `trackEvent()` / `EVENTS`. The only caller of
   `@vercel/analytics`'s `track()`; swap vendors here.
+- **`seo/`** — JSON-LD builders (`vacationRentalJsonLd()`, `faqPageJsonLd()`).
+  The one place that maps our data onto schema.org vocabulary.
 - **`site.ts`** — site-wide config: siteUrl, sitemap route manifest,
   bookNowHref.
 - **`utils.ts`** — shared helpers (`cn()` for Tailwind class merging, used by
