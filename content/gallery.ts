@@ -162,7 +162,6 @@ export const galleryCategories: GalleryCategory[] = [
       { src: "/images/gallery/upstairs-loft/tz-23.jpg", alt: "Upstairs Loft at Aldebaran Farm" },
       { src: "/images/gallery/upstairs-loft/tz-24.jpg", alt: "Upstairs Loft at Aldebaran Farm" },
       { src: "/images/gallery/upstairs-loft/tz-25.jpg", alt: "Upstairs Loft at Aldebaran Farm" },
-      { src: "/images/gallery/upstairs-loft/tz-26.jpg", alt: "Upstairs Loft at Aldebaran Farm" },
     ],
   },
 ];
