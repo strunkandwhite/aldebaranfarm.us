@@ -104,11 +104,25 @@ function assertValidFrontmatter(
   if (typeof location !== "object" || location === null) {
     fail("`location` must be an object.");
   }
-  const locationStringFields = ["streetAddress", "city", "region", "regionCode"] as const;
+  const locationStringFields = [
+    "streetAddress",
+    "city",
+    "region",
+    "regionCode",
+    "postalCode",
+  ] as const;
   for (const key of locationStringFields) {
     const value = (location as unknown as Record<string, unknown>)[key];
     if (typeof value !== "string" || value.trim() === "") {
       fail(`\`location.${key}\` must be a non-empty string.`);
+    }
+  }
+
+  const locationNumberFields = ["latitude", "longitude"] as const;
+  for (const key of locationNumberFields) {
+    const value = (location as unknown as Record<string, unknown>)[key];
+    if (typeof value !== "number" || !Number.isFinite(value)) {
+      fail(`\`location.${key}\` must be a number.`);
     }
   }
 

@@ -4,6 +4,7 @@ import { Container } from "@/components/layout/Container";
 import { Hero } from "@/components/property/Hero";
 import { Reviews } from "@/components/reviews/Reviews";
 import { JsonLd } from "@/components/shared/JsonLd";
+import { galleryCategories } from "@/content/gallery";
 import {
   googleReviewsUrl,
   reviews,
@@ -35,7 +36,14 @@ export default async function HomePage() {
 
   return (
     <Container>
-      <JsonLd data={vacationRentalJsonLd(property, reviews, [googleReviewsUrl])} />
+      <JsonLd
+        data={vacationRentalJsonLd(property, reviews, {
+          // Google wants ≥8 listing photos covering bedrooms/bathrooms/common
+          // areas; the gallery is where the full photo set lives.
+          galleryImages: galleryCategories.flatMap((category) => category.images),
+          extraSameAs: [googleReviewsUrl],
+        })}
+      />
       <Hero property={property} />
       <Reviews reviews={reviews} sources={reviewSources} />
     </Container>

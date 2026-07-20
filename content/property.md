@@ -21,7 +21,10 @@ location:
   city: Spring Green
   region: Wisconsin
   regionCode: WI
+  postalCode: "53588"
   country: USA
+  latitude: 43.130228
+  longitude: -90.056299
 
 bedrooms: 4
 loftedBeds: 1

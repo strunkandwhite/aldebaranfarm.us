@@ -15,6 +15,13 @@ export interface Review {
   author: string;
   /** Human-readable date, e.g. "September 2025". Optional — omit if unknown. */
   date?: string;
+  /**
+   * Publication date in ISO 8601 (month precision is fine, e.g. "2025-09").
+   * Feeds the structured-data markup, which requires a real date — omit it if
+   * the source platform only shows a relative date ("4 years ago"), and the
+   * review is then simply left out of the JSON-LD `review` list.
+   */
+  datePublished?: string;
   /** Star rating, 1–5. Convert other scales (e.g. Vrbo's 10/10) to 5. */
   rating: number;
   /** The review text. Trim very long reviews to a few sentences. */
@@ -47,6 +54,7 @@ export const reviews: Review[] = [
   {
     author: "Julie",
     date: "September 2025",
+    datePublished: "2025-09",
     rating: 5,
     source: "airbnb",
     quote:
@@ -56,6 +64,7 @@ export const reviews: Review[] = [
     // Originally 10/10 on Vrbo — converted to 5 stars for a consistent star row.
     author: "Anne L.",
     date: "August 2023",
+    datePublished: "2023-08",
     rating: 5,
     source: "vrbo",
     quote:

@@ -17,8 +17,16 @@ export interface PropertyLocation {
   region: string;
   /** Short region code for compact display, e.g. "WI" */
   regionCode: string;
+  /** ZIP / postal code, e.g. "53588" (quote it in YAML so it stays a string). */
+  postalCode: string;
   /** Optional country; defaults are handled in the UI, not here. */
   country?: string;
+  /**
+   * WGS84 coordinates of the property. Google's vacation-rental structured
+   * data requires them at ≥5 decimal places of precision.
+   */
+  latitude: number;
+  longitude: number;
 }
 
 export interface PropertyImage {
