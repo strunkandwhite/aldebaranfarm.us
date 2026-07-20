@@ -111,7 +111,7 @@ export function GalleryGrid({ categories }: { categories: GalleryCategory[] }) {
         <Dialog.Portal>
           <Dialog.Backdrop className="fixed inset-0 z-50 bg-black/90 transition-opacity duration-200 data-[ending-style]:opacity-0 data-[starting-style]:opacity-0" />
           <Dialog.Popup
-            className="fixed inset-0 z-50 flex items-center justify-center p-4 focus:outline-none sm:p-6"
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 pb-12 focus:outline-none sm:p-6 sm:pb-12"
             onClick={() => setIndex(null)}
           >
             <Dialog.Title className="sr-only">Photo gallery</Dialog.Title>
