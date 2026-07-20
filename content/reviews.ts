@@ -45,7 +45,8 @@ export interface ReviewSourceInfo {
 export const reviews: Review[] = [
   {
     author: "Linda M.",
-    date: "4 years ago",
+    date: "July 2021",
+    datePublished: "2021-07-31",
     rating: 5,
     source: "google",
     quote:
