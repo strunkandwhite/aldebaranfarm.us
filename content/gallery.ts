@@ -23,6 +23,10 @@ export const galleryCategories: GalleryCategory[] = [
     title: "Exterior & Grounds",
     slug: "exterior",
     images: [
+      {
+        src: "/images/gallery/exterior/tz-43.jpg",
+        alt: "Aerial view of the main house nestled among mature oaks, with the drive curving past",
+      },
       { src: "/images/gallery/exterior/tz-40.jpg", alt: "Exterior & Grounds at Aldebaran Farm" },
       { src: "/images/gallery/exterior/tz-42.jpg", alt: "Exterior & Grounds at Aldebaran Farm" },
       { src: "/images/gallery/exterior/tz-37.jpg", alt: "Exterior & Grounds at Aldebaran Farm" },
