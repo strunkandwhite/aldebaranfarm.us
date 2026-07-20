@@ -103,3 +103,12 @@ export const architecture = {
     ],
   ] as TextRun[][],
 };
+
+export const mapCta: TextRun[] = [
+  "For a full list of recommendations, here's a ",
+  {
+    text: "google map",
+    href: "https://www.google.com/maps/d/viewer?mid=1z69yattXk__7tmCT6wJpeZ22su4HAg4&ll=43.22697909207566%2C-89.93349570000001&z=11",
+  },
+  " of our favorite spots.",
+];

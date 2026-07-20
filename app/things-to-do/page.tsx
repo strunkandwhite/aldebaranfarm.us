@@ -5,7 +5,7 @@ import { PageTitle } from "@/components/layout/PageTitle";
 import { SectionHeading } from "@/components/layout/SectionHeading";
 import { FramedImage } from "@/components/shared/FramedImage";
 import { RichText } from "@/components/shared/RichText";
-import { inTown, outdoors, architecture } from "@/content/things-to-do";
+import { inTown, outdoors, architecture, mapCta } from "@/content/things-to-do";
 
 export const metadata: Metadata = {
   title: "Things To Do",
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 
 /**
  * Things To Do page: In Town, The Outdoors (with activity subsections), and
- * Architecture & Theater.
+ * Architecture & Theater, then the owners' recommendations map (link + embed).
  * Content (with inline links) comes from `content/things-to-do.ts`.
  */
 export default function ThingsToDoPage() {
@@ -59,7 +59,7 @@ export default function ThingsToDoPage() {
       </section>
 
       {/* Architecture & Theater — landscape photo left, text right */}
-      <section className="grid items-center gap-8 pt-8 pb-16 md:grid-cols-2 md:gap-12 md:pt-12 lg:gap-16">
+      <section className="grid items-center gap-8 py-8 md:grid-cols-2 md:gap-12 md:py-12 lg:gap-16">
         <FramedImage
           src="/images/things-to-do/aldebaran_architecture.jpg"
           alt="A window wall framing the valley view at Taliesin"
@@ -77,6 +77,21 @@ export default function ThingsToDoPage() {
               </p>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Recommendations map — link + embedded Google My Maps */}
+      <section className="pb-16 pt-4">
+        <p className="text-center leading-relaxed">
+          <RichText runs={mapCta} />
+        </p>
+        <div className="mt-6 overflow-hidden rounded-lg border border-border">
+          <iframe
+            src="https://www.google.com/maps/d/embed?mid=1z69yattXk__7tmCT6wJpeZ22su4HAg4&ehbc=770A15&ll=43.22697909207566%2C-89.93349570000001&z=11"
+            title="Map of our favorite spots around Aldebaran Farm"
+            loading="lazy"
+            className="h-[480px] w-full border-0"
+          />
         </div>
       </section>
     </Container>
