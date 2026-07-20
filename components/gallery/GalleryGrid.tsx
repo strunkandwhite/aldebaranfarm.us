@@ -111,21 +111,18 @@ export function GalleryGrid({ categories }: { categories: GalleryCategory[] }) {
         <Dialog.Portal>
           <Dialog.Backdrop className="fixed inset-0 z-50 bg-black/90 transition-opacity duration-200 data-[ending-style]:opacity-0 data-[starting-style]:opacity-0" />
           <Dialog.Popup
-            className="fixed inset-0 z-50 flex items-center justify-center p-4 focus:outline-none sm:p-8"
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 focus:outline-none sm:p-6"
             onClick={() => setIndex(null)}
           >
             <Dialog.Title className="sr-only">Photo gallery</Dialog.Title>
 
             {current && (
-              <div
-                className="relative h-[80vh] w-full max-w-5xl"
-                onClick={(e) => e.stopPropagation()}
-              >
+              <div className="relative h-full w-full" onClick={(e) => e.stopPropagation()}>
                 <Image
                   src={imageUrl(current.src)}
                   alt={current.alt}
                   fill
-                  sizes="(min-width: 1024px) 1024px, 100vw"
+                  sizes="100vw"
                   className="object-contain"
                 />
 
@@ -140,7 +137,7 @@ export function GalleryGrid({ categories }: { categories: GalleryCategory[] }) {
                     aria-hidden
                     fill
                     loading="eager"
-                    sizes="(min-width: 1024px) 1024px, 100vw"
+                    sizes="100vw"
                     className="invisible object-contain"
                   />
                 ))}
