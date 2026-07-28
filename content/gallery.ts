@@ -23,6 +23,10 @@ export const galleryCategories: GalleryCategory[] = [
     title: "Exterior & Grounds",
     slug: "exterior",
     images: [
+      {
+        src: "/images/gallery/exterior/tz-43.jpg",
+        alt: "Aerial view of the main house nestled among mature oaks, with the drive curving past",
+      },
       { src: "/images/gallery/exterior/tz-40.jpg", alt: "Exterior & Grounds at Aldebaran Farm" },
       { src: "/images/gallery/exterior/tz-42.jpg", alt: "Exterior & Grounds at Aldebaran Farm" },
       { src: "/images/gallery/exterior/tz-37.jpg", alt: "Exterior & Grounds at Aldebaran Farm" },
@@ -30,6 +34,18 @@ export const galleryCategories: GalleryCategory[] = [
       { src: "/images/gallery/exterior/tz-41.jpg", alt: "Exterior & Grounds at Aldebaran Farm" },
       { src: "/images/gallery/exterior/tz-47.jpg", alt: "Exterior & Grounds at Aldebaran Farm" },
       { src: "/images/gallery/exterior/tz-44.jpg", alt: "Exterior & Grounds at Aldebaran Farm" },
+      {
+        src: "/images/gallery/exterior/drive-to-main-house.jpg",
+        alt: "The gravel drive winding beneath mature trees toward the main house",
+      },
+      {
+        src: "/images/gallery/exterior/spring-meadow.jpg",
+        alt: "A crimson-leaved tree in the spring meadow, framed by trees along the drive",
+      },
+      {
+        src: "/images/gallery/exterior/cabin-in-fresh-snow.jpg",
+        alt: "A red-trimmed cabin on the property after fresh snowfall",
+      },
     ],
   },
   {
@@ -39,7 +55,6 @@ export const galleryCategories: GalleryCategory[] = [
       { src: "/images/gallery/kitchen/tz-1.jpg", alt: "Kitchen at Aldebaran Farm" },
       { src: "/images/gallery/kitchen/tz-2.jpg", alt: "Kitchen at Aldebaran Farm" },
       { src: "/images/gallery/kitchen/tz-3.jpg", alt: "Kitchen at Aldebaran Farm" },
-      { src: "/images/gallery/kitchen/tz-4.jpg", alt: "Kitchen at Aldebaran Farm" },
     ],
   },
   {
@@ -51,19 +66,11 @@ export const galleryCategories: GalleryCategory[] = [
         alt: "Living & Dining Room at Aldebaran Farm",
       },
       {
-        src: "/images/gallery/living-dining/tz-10.jpg",
-        alt: "Living & Dining Room at Aldebaran Farm",
-      },
-      {
         src: "/images/gallery/living-dining/tz-13.jpg",
         alt: "Living & Dining Room at Aldebaran Farm",
       },
       {
         src: "/images/gallery/living-dining/tz-14.jpg",
-        alt: "Living & Dining Room at Aldebaran Farm",
-      },
-      {
-        src: "/images/gallery/living-dining/tz-11.jpg",
         alt: "Living & Dining Room at Aldebaran Farm",
       },
       {
@@ -159,7 +166,6 @@ export const galleryCategories: GalleryCategory[] = [
       { src: "/images/gallery/upstairs-loft/tz-23.jpg", alt: "Upstairs Loft at Aldebaran Farm" },
       { src: "/images/gallery/upstairs-loft/tz-24.jpg", alt: "Upstairs Loft at Aldebaran Farm" },
       { src: "/images/gallery/upstairs-loft/tz-25.jpg", alt: "Upstairs Loft at Aldebaran Farm" },
-      { src: "/images/gallery/upstairs-loft/tz-26.jpg", alt: "Upstairs Loft at Aldebaran Farm" },
     ],
   },
 ];

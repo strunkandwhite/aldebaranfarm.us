@@ -58,6 +58,15 @@ export function GalleryGrid({ categories }: { categories: GalleryCategory[] }) {
 
   const current = index !== null ? flat[index] : null;
 
+  // Photo indexes to warm while the lightbox is open, so prev/next swaps are
+  // instant instead of showing the previous photo while the new one loads.
+  const preloadIndexes =
+    index === null || flat.length <= 1
+      ? []
+      : [...new Set([(index + 1) % flat.length, (index - 1 + flat.length) % flat.length])].filter(
+          (i) => i !== index
+        );
+
   return (
     <div className="space-y-12">
       {categories.map((cat, ci) => (
@@ -102,23 +111,36 @@ export function GalleryGrid({ categories }: { categories: GalleryCategory[] }) {
         <Dialog.Portal>
           <Dialog.Backdrop className="fixed inset-0 z-50 bg-black/90 transition-opacity duration-200 data-[ending-style]:opacity-0 data-[starting-style]:opacity-0" />
           <Dialog.Popup
-            className="fixed inset-0 z-50 flex items-center justify-center p-4 focus:outline-none sm:p-8"
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 pb-12 focus:outline-none sm:p-6 sm:pb-12"
             onClick={() => setIndex(null)}
           >
             <Dialog.Title className="sr-only">Photo gallery</Dialog.Title>
 
             {current && (
-              <div
-                className="relative h-[80vh] w-full max-w-5xl"
-                onClick={(e) => e.stopPropagation()}
-              >
+              <div className="relative h-full w-full" onClick={(e) => e.stopPropagation()}>
                 <Image
                   src={imageUrl(current.src)}
                   alt={current.alt}
                   fill
-                  sizes="(min-width: 1024px) 1024px, 100vw"
+                  sizes="100vw"
                   className="object-contain"
                 />
+
+                {preloadIndexes.map((i) => (
+                  // Invisible (but laid-out) copies of the neighboring photos,
+                  // with identical props to the visible Image so the browser
+                  // requests the exact same optimized URL and warms the cache.
+                  <Image
+                    key={flat[i].src}
+                    src={imageUrl(flat[i].src)}
+                    alt=""
+                    aria-hidden
+                    fill
+                    loading="eager"
+                    sizes="100vw"
+                    className="invisible object-contain"
+                  />
+                ))}
               </div>
             )}
 

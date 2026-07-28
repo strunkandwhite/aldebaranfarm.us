@@ -11,17 +11,29 @@
 import type { TextRun } from "@/components/shared/RichText";
 
 export interface PropertyLocation {
+  /** Street address, e.g. "6557 County T". Published pre-booking by design. */
+  streetAddress: string;
   /** e.g. "Spring Green" */
   city: string;
   /** State / province / region, e.g. "Wisconsin" */
   region: string;
+  /** Short region code for compact display, e.g. "WI" */
+  regionCode: string;
+  /** ZIP / postal code, e.g. "53588" (quote it in YAML so it stays a string). */
+  postalCode: string;
   /** Optional country; defaults are handled in the UI, not here. */
   country?: string;
+  /**
+   * WGS84 coordinates of the property. Google's vacation-rental structured
+   * data requires them at ≥5 decimal places of precision.
+   */
+  latitude: number;
+  longitude: number;
 }
 
 export interface PropertyImage {
   /**
-   * Path RELATIVE TO /public, e.g. "/images/property/living-room.png".
+   * Path RELATIVE TO /public, e.g. "/images/property/aldebaran_main_house.jpg".
    * Never reference this directly in a component — pass it through
    * `imageUrl()` from `lib/images` so a future move to a CDN is one change.
    */
@@ -50,12 +62,14 @@ export interface Property {
   /** Total guests the property sleeps. */
   maxGuests: number;
 
-  /** Long-form description. Markdown source taken from the content file body. */
+  /** Long-form description — plain text (a single paragraph) taken from the content file body. */
   description: string;
 
   /** Sleeping arrangements — one line per bed/room, shown on The House page. */
   beds: string[];
   amenities: string[];
+  /** Optional note rendered after the amenities list (e.g. "there is NO TV"). */
+  amenitiesNote?: string;
   /**
    * Long-form property history — one entry per paragraph (The House page).
    * Each paragraph is a list of `RichText` runs, so prose can carry inline
@@ -70,7 +84,7 @@ export interface Property {
   contactPhone: string;
   /**
    * The property's Airbnb listing URL, e.g. "https://www.airbnb.com/rooms/30441325".
-   * Used to build both a direct link and the official Airbnb embed widget.
+   * Used to build a direct link to the listing.
    */
   airbnbUrl: string;
   /**

@@ -10,9 +10,3 @@ export const leftNavLinks = [
 ] as const;
 
 export const rightNavLinks = [{ href: "/faqs", label: "FAQs" }] as const;
-
-/** The Book Now call-to-action target (email/phone reservations page). */
-export const bookNowHref = "/reservations";
-
-/** Shared styling for a nav link (Playfair, burgundy, underline on hover). */
-export const navLinkClass = "font-heading text-lg text-primary underline-offset-4 hover:underline";

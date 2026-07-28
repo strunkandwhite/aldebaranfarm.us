@@ -1,6 +1,7 @@
 import { StarRating } from "./StarRating";
 import { ExternalLink } from "@/components/shared/ExternalLink";
-import { reviewSources, type Review } from "@/content/reviews";
+import { proseLinkClass } from "@/components/shared/links";
+import type { Review, ReviewSource, ReviewSourceInfo } from "@/content/reviews";
 
 /**
  * ReviewCard — a single guest review: stars, the quote, and attribution
@@ -8,8 +9,14 @@ import { reviewSources, type Review } from "@/content/reviews";
  * listing it came from. A hairline-bordered panel using the shared border token
  * so it sits quietly alongside the rest of the site's minimal blocks.
  */
-export function ReviewCard({ review }: { review: Review }) {
-  const source = reviewSources[review.source];
+export function ReviewCard({
+  review,
+  sources,
+}: {
+  review: Review;
+  sources: Record<ReviewSource, ReviewSourceInfo>;
+}) {
+  const source = sources[review.source];
 
   return (
     <figure className="flex h-full flex-col gap-3 rounded-lg border border-border p-5">
@@ -21,7 +28,7 @@ export function ReviewCard({ review }: { review: Review }) {
         <span className="font-semibold">{review.author}</span>
         <span className="text-muted-foreground">
           {review.date ? <> &middot; {review.date}</> : null} &middot; via{" "}
-          <ExternalLink href={source.url} className="underline underline-offset-2 hover:opacity-70">
+          <ExternalLink href={source.url} className={proseLinkClass}>
             {source.label}
           </ExternalLink>
         </span>

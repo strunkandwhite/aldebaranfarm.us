@@ -8,7 +8,9 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { TrackedClicks } from "@/components/analytics/TrackedClicks";
 import { ConsoleWordmark } from "@/components/shared/ConsoleWordmark";
+import { getProperty } from "@/lib/data";
 import { imageUrl } from "@/lib/images";
+import { siteUrl } from "@/lib/site";
 
 import "./globals.css";
 
@@ -43,45 +45,48 @@ const fontSans = localFont({
   ],
 });
 
-/**
- * Site URL used for absolute metadata (OG image, sitemap, robots). Set
- * NEXT_PUBLIC_SITE_URL to the production domain at deploy; the fallback is a
- * placeholder to update. Also exported for robots.ts / sitemap.ts.
- */
-export const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://aldebaranfarm.us";
+export async function generateMetadata(): Promise<Metadata> {
+  const property = await getProperty();
+  const { city, region, regionCode } = property.location;
+  // "in", not "—": link-preview scrapers that strip the site name from an
+  // em-dash title were showing bare "Spring Green, Wisconsin" as the preview.
+  const defaultTitle = `${property.name} in ${city}, ${regionCode}`;
+  const description = `A historic countryside retreat in ${city}, ${region}'s Driftless region, across the road from Frank Lloyd Wright's Taliesin. Book directly by email or phone.`;
+  const ogImage = {
+    url: imageUrl("/images/brand/og-image.jpg"),
+    width: 1200,
+    height: 630,
+    alt: `${property.name} — ${property.tagline}`,
+  };
 
-const description =
-  "A historic countryside retreat in Spring Green, Wisconsin's Driftless region, across the road from Frank Lloyd Wright's Taliesin. Book directly by email or phone.";
-
-export const metadata: Metadata = {
-  metadataBase: new URL(siteUrl),
-  title: {
-    default: "Aldebaran Farm — Spring Green, Wisconsin",
-    template: "%s", // per-page titles already include "— Aldebaran Farm"
-  },
-  description,
-  openGraph: {
-    type: "website",
-    siteName: "Aldebaran Farm",
-    title: "Aldebaran Farm — Spring Green, Wisconsin",
+  return {
+    metadataBase: new URL(siteUrl),
+    title: {
+      default: defaultTitle,
+      template: `%s — ${property.name}`,
+    },
     description,
-    url: siteUrl,
-    images: [
-      {
-        url: imageUrl("/images/brand/og-image.jpg"),
-        width: 1200,
-        height: 630,
-        alt: "Aldebaran Farm — A Historic Retreat in Spring Green, Wisconsin",
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Aldebaran Farm — Spring Green, Wisconsin",
-    description,
-    images: [imageUrl("/images/brand/og-image.jpg")],
-  },
-};
+    // "./" resolves against the current route, giving every page a
+    // self-referencing canonical URL without per-page boilerplate.
+    alternates: {
+      canonical: "./",
+    },
+    openGraph: {
+      type: "website",
+      siteName: property.name,
+      title: defaultTitle,
+      description,
+      url: siteUrl,
+      images: [ogImage],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: defaultTitle,
+      description,
+      images: [ogImage.url],
+    },
+  };
+}
 
 export default function RootLayout({
   children,

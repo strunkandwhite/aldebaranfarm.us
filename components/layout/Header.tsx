@@ -3,7 +3,10 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Container } from "./Container";
 import { MobileNav } from "./MobileNav";
-import { leftNavLinks, rightNavLinks, bookNowHref, navLinkClass } from "./Nav";
+import { leftNavLinks, rightNavLinks } from "./Nav";
+import { navLinkClass } from "@/components/shared/links";
+import { bookNowHref } from "@/lib/site";
+import { EVENTS } from "@/lib/analytics/events";
 
 /**
  * Header — responsive site header.
@@ -20,7 +23,7 @@ export function Header() {
   return (
     <header className="bg-background">
       <Container className="py-6">
-        {/* Desktop (xl+): full evenly-spaced nav */}
+        {/* Desktop (820px+): full evenly-spaced nav */}
         <nav aria-label="Primary" className="hidden items-center justify-between min-[820px]:flex">
           {leftNavLinks.map((link) => (
             <Link key={link.href} href={link.href} className={navLinkClass}>
@@ -39,11 +42,16 @@ export function Header() {
           ))}
 
           <Button
+            variant="brand"
+            size="brand-sm"
             render={
-              <Link href={bookNowHref} data-track="book_now_click" data-track-location="header" />
+              <Link
+                href={bookNowHref}
+                data-track={EVENTS.bookNowClick}
+                data-track-location="header"
+              />
             }
             nativeButton={false}
-            className="h-auto rounded-none px-5 py-2 font-heading text-base"
           >
             Book Now
           </Button>

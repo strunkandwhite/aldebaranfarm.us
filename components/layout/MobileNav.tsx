@@ -6,7 +6,10 @@ import { Menu, X } from "lucide-react";
 
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { leftNavLinks, rightNavLinks, bookNowHref, navLinkClass } from "./Nav";
+import { leftNavLinks, rightNavLinks } from "./Nav";
+import { navLinkClass } from "@/components/shared/links";
+import { bookNowHref } from "@/lib/site";
+import { EVENTS } from "@/lib/analytics/events";
 
 const menuLinks = [...leftNavLinks, ...rightNavLinks];
 
@@ -17,7 +20,7 @@ const menuLinks = [...leftNavLinks, ...rightNavLinks];
  * for free; the slide/fade are Tailwind transitions driven by Base UI's
  * `data-[starting-style]` / `data-[ending-style]` hooks.
  *
- * Rendered by `Header` only below the `xl` breakpoint (see there).
+ * Rendered by `Header` only below the 820px breakpoint (see there).
  */
 export function MobileNav() {
   return (
@@ -52,14 +55,11 @@ export function MobileNav() {
               render={
                 <Link
                   href={bookNowHref}
-                  data-track="book_now_click"
+                  data-track={EVENTS.bookNowClick}
                   data-track-location="mobile_nav"
                 />
               }
-              className={cn(
-                buttonVariants(),
-                "mt-2 h-auto rounded-none px-5 py-2 font-heading text-base"
-              )}
+              className={cn(buttonVariants({ variant: "brand", size: "brand-sm" }), "mt-2")}
             >
               Book Now
             </Dialog.Close>

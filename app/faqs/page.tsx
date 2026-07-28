@@ -3,11 +3,13 @@ import type { Metadata } from "next";
 import { Container } from "@/components/layout/Container";
 import { PageTitle } from "@/components/layout/PageTitle";
 import { SectionHeading } from "@/components/layout/SectionHeading";
+import { JsonLd } from "@/components/shared/JsonLd";
 import { QAItem } from "@/components/shared/QAItem";
+import { faqPageJsonLd } from "@/lib/seo";
 import { faqGroups } from "@/content/faqs";
 
 export const metadata: Metadata = {
-  title: "FAQs — Aldebaran Farm",
+  title: "FAQs",
   description:
     "Frequently asked questions about staying at Aldebaran Farm: booking, location, the house, and house rules.",
 };
@@ -19,9 +21,8 @@ export const metadata: Metadata = {
 export default function FaqsPage() {
   return (
     <Container>
-      <div className="pt-6 md:pt-10">
-        <PageTitle>FAQs</PageTitle>
-      </div>
+      <JsonLd data={faqPageJsonLd(faqGroups)} />
+      <PageTitle>FAQs</PageTitle>
 
       <div className="mx-auto max-w-3xl space-y-10 pb-16 pt-8 md:space-y-12 md:pt-12">
         {faqGroups.map((group) => (

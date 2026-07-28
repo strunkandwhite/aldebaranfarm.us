@@ -6,7 +6,7 @@ import { GalleryGrid } from "@/components/gallery/GalleryGrid";
 import { galleryCategories } from "@/content/gallery";
 
 export const metadata: Metadata = {
-  title: "Gallery — Aldebaran Farm",
+  title: "Gallery",
   description:
     "Photos of Aldebaran Farm in Spring Green, Wisconsin — the kitchen, living and dining rooms, bedrooms, baths, and the grounds.",
 };
@@ -19,9 +19,7 @@ export const metadata: Metadata = {
 export default function GalleryPage() {
   return (
     <Container>
-      <div className="pt-6 md:pt-10">
-        <PageTitle>Gallery</PageTitle>
-      </div>
+      <PageTitle>Gallery</PageTitle>
 
       <div className="pb-16 pt-8 md:pt-12">
         <GalleryGrid categories={galleryCategories} />

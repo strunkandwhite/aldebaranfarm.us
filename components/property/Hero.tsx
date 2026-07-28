@@ -2,7 +2,9 @@ import Link from "next/link";
 
 import { Button } from "@/components/ui/button";
 import { FramedImage } from "@/components/shared/FramedImage";
-import { bookNowHref } from "@/components/layout/Nav";
+import { bookNowHref } from "@/lib/site";
+import { EVENTS } from "@/lib/analytics/events";
+import { pluralize } from "@/lib/utils";
 import type { Property } from "@/types/property";
 
 /**
@@ -18,9 +20,9 @@ export function Hero({ property }: { property: Property }) {
 
   const facts = [
     `Sleeps ${property.maxGuests}`,
-    `${property.bedrooms} Bedroom${property.bedrooms === 1 ? "" : "s"}`,
-    `${property.loftedBeds} Lofted Bed${property.loftedBeds === 1 ? "" : "s"}`,
-    `${property.bathrooms} Bathroom${property.bathrooms === 1 ? "" : "s"}`,
+    pluralize(property.bedrooms, "Bedroom"),
+    pluralize(property.loftedBeds, "Lofted Bed"),
+    pluralize(property.bathrooms, "Bathroom"),
   ].join(" • ");
 
   return (
@@ -43,11 +45,13 @@ export function Hero({ property }: { property: Property }) {
         <p className="mt-6 font-medium text-primary">{facts}</p>
 
         <Button
+          variant="brand"
+          size="brand-lg"
           render={
-            <Link href={bookNowHref} data-track="book_now_click" data-track-location="hero" />
+            <Link href={bookNowHref} data-track={EVENTS.bookNowClick} data-track-location="hero" />
           }
           nativeButton={false}
-          className="mt-8 h-auto rounded-none px-8 py-3 font-heading text-base"
+          className="mt-8"
         >
           Book Now
         </Button>

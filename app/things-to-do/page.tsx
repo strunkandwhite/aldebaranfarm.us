@@ -8,22 +8,20 @@ import { RichText } from "@/components/shared/RichText";
 import { inTown, outdoors, architecture, mapCta } from "@/content/things-to-do";
 
 export const metadata: Metadata = {
-  title: "Things To Do — Aldebaran Farm",
+  title: "Things To Do",
   description:
     "Favorite things to do near Aldebaran Farm in Spring Green, Wisconsin: downtown shops, Driftless hiking and paddling, Frank Lloyd Wright's Taliesin, and American Players Theatre.",
 };
 
 /**
  * Things To Do page: In Town, The Outdoors (with activity subsections), and
- * Architecture & Theater, then a link to the owners' recommendations map.
+ * Architecture & Theater, then the owners' recommendations map (link + embed).
  * Content (with inline links) comes from `content/things-to-do.ts`.
  */
 export default function ThingsToDoPage() {
   return (
     <Container>
-      <div className="pt-6 md:pt-10">
-        <PageTitle>Things To Do</PageTitle>
-      </div>
+      <PageTitle>Things To Do</PageTitle>
 
       {/* In Town — text only, full container width */}
       <section className="py-8 md:py-10">
@@ -54,6 +52,7 @@ export default function ThingsToDoPage() {
           src="/images/things-to-do/aldebaran_outdoors.jpg"
           alt="Kayaking on the Wisconsin River near Aldebaran Farm"
           orientation="portrait"
+          priority
           className="order-first mx-auto w-full max-w-xs sm:max-w-sm md:order-none md:mx-0 md:max-w-none"
           sizes="(min-width: 768px) 45vw, 85vw"
         />
@@ -86,20 +85,12 @@ export default function ThingsToDoPage() {
         <p className="text-center leading-relaxed">
           <RichText runs={mapCta} />
         </p>
-        {/*
-          The My Maps embed has a ~67px header bar showing the map's title and
-          author (name + avatar) that Google gives no option to hide. We crop it
-          off: a fixed-height overflow-hidden box with the iframe made taller and
-          shifted up by the header height, so the header is clipped while the map
-          fills the frame. Google's "©Google / Terms" attribution stays visible
-          at the bottom.
-        */}
-        <div className="relative mt-6 h-[480px] overflow-hidden rounded-lg border border-border">
+        <div className="mt-6 overflow-hidden rounded-lg border border-border">
           <iframe
-            src="https://www.google.com/maps/d/embed?mid=1Pir8XA5ZBdTADb010WpOWV1a0W2qGUQ&ehbc=2E312F"
+            src="https://www.google.com/maps/d/embed?mid=1z69yattXk__7tmCT6wJpeZ22su4HAg4&ehbc=770A15&ll=43.22697909207566%2C-89.93349570000001&z=11"
             title="Map of our favorite spots around Aldebaran Farm"
             loading="lazy"
-            className="absolute inset-x-0 -top-[68px] h-[548px] w-full border-0"
+            className="h-[480px] w-full border-0"
           />
         </div>
       </section>

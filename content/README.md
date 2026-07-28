@@ -8,9 +8,11 @@ single property.
   `types/property.ts`.
 - **`faqs.ts`** — grouped Q&A for the FAQs page (includes house rules).
 - **`rates.ts`** — rate table rows, peak definition, tax note, cancellation
-  policy.
+  policy, `reservationIntro`, and `alsoListedIntro`.
 - **`things-to-do.ts`** — activity sections + outbound links.
 - **`gallery.ts`** — room categories → image lists for the gallery.
+- **`reviews.ts`** — hand-curated guest reviews + source labels; attribution
+  URLs for Airbnb/Vrbo derive from the Property at the page level.
 
 The `.ts` files are already-structured data and are imported directly by their
 pages; only `property.md` needs the parsing layer below.

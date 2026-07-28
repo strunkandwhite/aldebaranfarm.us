@@ -16,9 +16,11 @@ pnpm build         # production build
 pnpm typecheck     # tsc --noEmit
 pnpm lint          # ESLint
 pnpm format        # Prettier (write)
+pnpm test          # Vitest unit tests for lib/
+pnpm check:images  # verify every referenced /images/… path exists under public/
 ```
 
-Commits run a pre-commit hook (lint-staged, knip, typecheck) via husky.
+Commits run a pre-commit hook (lint-staged, knip, typecheck, test, check:images) via husky.
 
 ## Where things live
 

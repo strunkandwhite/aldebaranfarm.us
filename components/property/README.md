@@ -11,7 +11,7 @@ content or know where the data came from.
 - **`History.tsx`** — The House: history paragraphs + historic photo.
 - **`RateTable.tsx`** — Reservations: the Peak/Off-Peak rate table (rows come
   from `content/rates.ts`).
-- **`AirbnbLink.tsx`** — Reservations: a button that opens the property's
-  Airbnb listing in a new tab (reuses `components/shared/ExternalLink`).
-- **`VrboLink.tsx`** — Reservations: a button that opens the property's Vrbo
-  listing in a new tab (reuses `components/shared/ExternalLink`).
+- **`ListingLink.tsx`** — Reservations: a button that opens one of the
+  property's platform listings (Airbnb, Vrbo) in a new tab, presented as a
+  secondary path below direct email/phone booking (reuses
+  `components/shared/ExternalLink`).
