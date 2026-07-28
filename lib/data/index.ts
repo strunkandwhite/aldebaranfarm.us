@@ -4,6 +4,7 @@ import fs from "node:fs";
 import path from "node:path";
 import matter from "gray-matter";
 
+import type { TextRun } from "@/components/shared/RichText";
 import type { Property, PropertyImage } from "@/types/property";
 
 /**
@@ -22,8 +23,12 @@ import type { Property, PropertyImage } from "@/types/property";
 
 const CONTENT_FILE = path.join(process.cwd(), "content", "property.md");
 
-/** Fields we expect in the frontmatter, before validation/normalization. */
-type PropertyFrontmatter = Omit<Property, "description">;
+/**
+ * Fields we expect in the frontmatter, before validation/normalization. History
+ * paragraphs are authored as Markdown strings here and become `TextRun[]` on
+ * the way out (see `parseTextRuns`).
+ */
+type PropertyFrontmatter = Omit<Property, "description" | "history"> & { history: string[] };
 
 export async function getProperty(): Promise<Property> {
   const raw = await fs.promises.readFile(CONTENT_FILE, "utf8");
@@ -34,9 +39,31 @@ export async function getProperty(): Promise<Property> {
 
   return {
     ...frontmatter,
+    history: frontmatter.history.map(parseTextRuns),
     // The Markdown body is the long-form description.
     description: content.trim(),
   };
+}
+
+const MARKDOWN_LINK = /\[([^\]]+)\]\(([^)\s]+)\)/g;
+
+/**
+ * Split a paragraph into `RichText` runs, turning Markdown links —
+ * `[label](https://example.com)` — into link runs. Keeps the content file
+ * readable Markdown while the UI stays free of any parsing.
+ */
+function parseTextRuns(paragraph: string): TextRun[] {
+  const runs: TextRun[] = [];
+  let cursor = 0;
+
+  for (const match of paragraph.matchAll(MARKDOWN_LINK)) {
+    if (match.index > cursor) runs.push(paragraph.slice(cursor, match.index));
+    runs.push({ text: match[1], href: match[2] });
+    cursor = match.index + match[0].length;
+  }
+
+  if (cursor < paragraph.length) runs.push(paragraph.slice(cursor));
+  return runs;
 }
 
 /**

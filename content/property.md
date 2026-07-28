@@ -69,12 +69,7 @@ history:
     named the farm Aldebaran, which is Arabic for "the follower" and the name of a
     bright red star in the eye of the constellation Taurus.
   - >-
-    The property, which comprises several buildings and about 18 acres, was later
-    owned by Robert and Derry Graves, who sold it to the present owners in 2003.
-    Robert and Derry had a hand in many Spring Green community enterprises, including
-    the Gard Theatre, the American Players Theatre, and the Wyoming Valley School.
-    Until his death in 2011, Robert, who was a landscape architect for Wright in the
-    late 1950s, tended to the valley lovingly and worked to protect its beauty.
+    The property, which comprises several buildings and about 18 acres, is protected in perpetuity by a conservation easement administered by the Driftless Area Land Conservancy. It is one of several protected properties along the [Lowery Creek Watershed](https://driftlessconservancy.org/lowery-creek/).
 
 # Paths are relative to /public. Always render these through `imageUrl()`.
 # NOTE: the lead image below is the real hero photo; the remaining entries are

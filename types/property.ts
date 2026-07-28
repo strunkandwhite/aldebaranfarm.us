@@ -8,6 +8,8 @@
  * does not change. See `docs/architecture.md`.
  */
 
+import type { TextRun } from "@/components/shared/RichText";
+
 export interface PropertyLocation {
   /** e.g. "Spring Green" */
   city: string;
@@ -54,8 +56,12 @@ export interface Property {
   /** Sleeping arrangements — one line per bed/room, shown on The House page. */
   beds: string[];
   amenities: string[];
-  /** Long-form property history — one entry per paragraph (The House page). */
-  history: string[];
+  /**
+   * Long-form property history — one entry per paragraph (The House page).
+   * Each paragraph is a list of `RichText` runs, so prose can carry inline
+   * links; the data layer parses them out of the content file's Markdown.
+   */
+  history: TextRun[][];
   images: PropertyImage[];
 
   /** Owner inbox for "email to book" inquiries (used to build a mailto link). */

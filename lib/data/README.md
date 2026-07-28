@@ -14,6 +14,9 @@ that knows _where_ property content comes from. Today it reads
 - Components and pages import `getProperty` from here. They never read the
   content file or import `gray-matter` themselves.
 - Returns a fully-typed `Property` (see `types/property.ts`).
+- Normalization happens here, not in the UI: history paragraphs are authored as
+  Markdown in the content file and parsed into `RichText` runs (`TextRun[]`) so
+  prose can carry inline links. Only `[label](url)` links are supported.
 - It is `async` on purpose. Reading a local file doesn't need to be, but the
   future API-backed version will be async — awaiting now makes that swap
   invisible to callers.

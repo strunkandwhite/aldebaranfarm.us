@@ -1,4 +1,5 @@
 import { FramedImage } from "@/components/shared/FramedImage";
+import { RichText } from "@/components/shared/RichText";
 import { SectionHeading } from "@/components/layout/SectionHeading";
 import type { Property } from "@/types/property";
 
@@ -16,7 +17,9 @@ export function History({ property }: { property: Property }) {
         <SectionHeading>History</SectionHeading>
         <div className="mt-4 space-y-4 leading-relaxed">
           {property.history.map((paragraph, i) => (
-            <p key={i}>{paragraph}</p>
+            <p key={i}>
+              <RichText runs={paragraph} />
+            </p>
           ))}
         </div>
       </div>
