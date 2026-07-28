@@ -26,6 +26,9 @@ const SCAN_EXTENSIONS = new Set([".ts", ".tsx", ".md", ".css"]);
 const IMAGE_REF = /["'`(\s](\/images\/[^"'`)?\s]+)/g;
 // Only image files count for the orphan report (READMEs etc. are fine).
 const IMAGE_EXTENSIONS = new Set([".jpg", ".jpeg", ".png", ".webp", ".avif", ".svg", ".gif"]);
+// Assets kept for use outside the site (see public/images/brand/README.md);
+// unreferenced by design, so excluded from the orphan report.
+const INTENTIONALLY_UNREFERENCED = new Set(["/images/brand/logo-720.png"]);
 
 function* walk(dir) {
   for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
@@ -54,7 +57,9 @@ const allFiles = fs.existsSync(imagesDir)
       .filter((file) => IMAGE_EXTENSIONS.has(path.extname(file).toLowerCase()))
       .map((file) => "/" + path.relative(PUBLIC_DIR, file).split(path.sep).join("/"))
   : [];
-const orphans = allFiles.filter((file) => !references.has(file));
+const orphans = allFiles.filter(
+  (file) => !references.has(file) && !INTENTIONALLY_UNREFERENCED.has(file)
+);
 
 if (orphans.length > 0) {
   console.warn(`⚠ ${orphans.length} file(s) under public/images are referenced nowhere:`);
