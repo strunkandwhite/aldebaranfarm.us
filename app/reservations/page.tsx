@@ -73,6 +73,9 @@ export default async function ReservationsPage() {
 
         <p className="mt-6">{taxNote}</p>
 
+        <p className="mt-8 font-bold">Cancellation Policy</p>
+        <p className="mt-1 leading-relaxed">{cancellationPolicy}</p>
+
         <SectionHeading as="h3" className="mt-8">
           Also Listed on Airbnb &amp; Vrbo
         </SectionHeading>
@@ -82,9 +85,6 @@ export default async function ReservationsPage() {
           <ListingLink href={property.airbnbUrl} label="Book on Airbnb" destination="airbnb" />
           <ListingLink href={property.vrboUrl} label="Book on Vrbo" destination="vrbo" />
         </div>
-
-        <p className="mt-8 font-bold">Cancellation Policy</p>
-        <p className="mt-1 leading-relaxed">{cancellationPolicy}</p>
       </div>
     </Container>
   );
