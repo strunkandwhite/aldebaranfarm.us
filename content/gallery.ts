@@ -78,10 +78,6 @@ export const galleryCategories: GalleryCategory[] = [
         alt: "Living & Dining Room at Aldebaran Farm",
       },
       {
-        src: "/images/gallery/living-dining/tz-18.jpg",
-        alt: "Living & Dining Room at Aldebaran Farm",
-      },
-      {
         src: "/images/gallery/living-dining/tz-15.jpg",
         alt: "Living & Dining Room at Aldebaran Farm",
       },
