@@ -2,3 +2,11 @@ allowBuilds:
   sharp: false
   unrs-resolver: false
 minimumReleaseAgeStrict: true
+overrides:
+  # postcss and sharp are pinned to vulnerable versions by next itself
+  # (postcss@8.4.31 exact, sharp ^0.34.x); drop these two overrides once
+  # Next ships patched pins.
+  postcss@<8.5.23: ">=8.5.23"
+  sharp@<0.35.0: ">=0.35.0"
+  fast-uri@>=3.0.0 <3.1.5: ">=3.1.5 <4"
+  hono@<4.12.34: ">=4.12.34"
