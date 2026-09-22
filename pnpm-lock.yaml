@@ -6,7 +6,7 @@ settings:
 
 overrides:
   fast-uri@<3.1.6: '>=3.1.6 <4'
-  hono@<4.13.5: '>=4.13.5'
+  hono@<4.13.5: '>=4.13.5 <5'
   js-yaml@>=3.0.0 <3.15.2: '>=3.15.2 <4'
   js-yaml@>=4.0.0 <4.3.2: '>=4.3.2 <5'
 
@@ -363,7 +363,7 @@ packages:
     resolution: {integrity: sha512-eWpQYr67tqJLeaSUl0Q+TquuYfUdTibpOJlUMV2FfUP7+KqCC5TufnwnlXL6mobZBJbGAYRd7ZvEBDCbLInjhg==}
     engines: {node: '>=20'}
     peerDependencies:
-      hono: '>=4.13.5'
+      hono: '>=4.13.5 <5'
 
   '@humanfs/core@0.19.2':
     resolution: {integrity: sha512-UhXNm+CFMWcbChXywFwkmhqjs3PRCmcSa/hfBgLIb7oQ5HNb1wS0icWsGtSAUNgefHeI+eBrA8I1fxmbHsGdvA==}
