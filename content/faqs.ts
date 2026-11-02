@@ -69,7 +69,14 @@ export const faqGroups: FaqGroup[] = [
       },
       {
         q: "Is there phone service and wifi?",
-        a: "Yes, there is WiFi. Cell reception is poor in the valley, so we maintain a landline for safety and convenience — we just ask that outgoing calls stay brief.",
+        a: [
+          "Traditional copper-wire landline service is no longer available in our area. Cellular service in our valley is spotty. We provide WiFi on a new fiber-optic internet connection, so you should be able to make and receive calls on your mobile using “wifi calling,” Google Voice, Facetime, WhatsApp, etc. If you’re not familiar, ask us or see ",
+          {
+            text: "https://blog.infimobile.com/technology/how-to-turn-on-wifi-calling/",
+            href: "https://blog.infimobile.com/technology/how-to-turn-on-wifi-calling/",
+          },
+          ".",
+        ],
       },
       {
         q: "Is the house good for kids?",
